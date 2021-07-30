@@ -184,14 +184,36 @@ publisher="Wiley"
 		    $(document).ready(function() {
 				//bibtexify("#bibtex", "pubTable", {'tweet': 'vkaravir'});
 				bibtexify("#bibtex", "pubTable");
+				
+				// hide the year
 				$('.sorting_1').hide();
+				// hide the type
 				$('.sorting_2').hide();
+				// remove the th tag texts
 				$('.sorting_desc').hide();
 				
-				
+				// adjust the table width to leave some spaces both side
 				$('#pubTable').css({
-					'width':'100%'
+					'width':'96%'
 				});
+				$('#pubTable').css({
+					'max-width': '920px'
+				});
+				
+				// this is to have the 1 of 10 in the middle of the browser
+				$('#pubTable_info').css({
+					'text-align': 'center'
+				});
+				
+				// move the filter close to the publication table
+				$('#pubTable_filter').css({
+					'width': '96%',
+					'margin': '0 auto',
+					'max-width': '920px'
+				});
+				// remove the bar chart div
+				$( "#pubTablepubchart" ).remove();
+				
 				/*
 				function lastModified() {
 					var modiDate = new Date(document.lastModified);
