@@ -2621,7 +2621,9 @@ var bibtexify = (function($) {
             return this.authors2html(entryData.author) + " (" + entryData.year + "). " +
                 entryData.title + ". In <em>" + entryData.booktitle +
                 ", pp. " + entryData.pages +
-                ((entryData.address)?", " + entryData.address:"") + ".<\/em>";
+				((entryData.address)?", " + entryData.address:"") + 
+                ((entryData.publisher)?". " + entryData.publisher:"") + 
+				".<\/em>";
 			
 			/*
 			return this.authors2html(entryData.author) + " " +
@@ -2643,7 +2645,9 @@ var bibtexify = (function($) {
                 entryData.title + ". <em>" + entryData.journal + ", " + entryData.volume +
                 ((entryData.number)?"(" + entryData.number + ")":"")+ ", " +
                 "pp. " + entryData.pages + ". " +
-                ((entryData.address)?entryData.address + ".":"") + "<\/em>";
+                ((entryData.address)?entryData.address + ".":"") + 
+				((entryData.publisher)?" " + entryData.publisher:"") + 
+				"<\/em>";
         },
         misc: function(entryData) {
             return this.authors2html(entryData.author) + " (" + entryData.year + "). " +
@@ -2678,6 +2682,7 @@ var bibtexify = (function($) {
                 ".";
         },
         proceedings: function(entryData) {
+			//console.log(entryData);
             return this.authors2html(entryData.editor) + ", editor(s) (" + entryData.year + "). " +
                 " <em>" + entryData.title + ".<\/em>" +
                 ((entryData.volume)?", Vol. " + entryData.volume + "":"") +
@@ -2725,6 +2730,7 @@ var bibtexify = (function($) {
     bib2html.phdthesis = bib2html.mastersthesis;
     // conference is the same as inproceedings
     bib2html.conference = bib2html.inproceedings;
+	console.log(bib2html.conference);
 
     // event handlers for the bibtex links
     var EventHandlers = {
