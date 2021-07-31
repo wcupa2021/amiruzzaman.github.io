@@ -4424,7 +4424,7 @@ var bibtexify = (function ($) {
                     ", pp. " + entryData.pages +
                     ((entryData.address) ? ", " + entryData.address : "") +
                     ((entryData.publisher) ? ". " + entryData.publisher : "") +
-                    ".<\/em>";
+                    ". [Conference]<\/em>";
 
             /*
              return this.authors2html(entryData.author) + " " +
@@ -4448,19 +4448,19 @@ var bibtexify = (function ($) {
                     "pp. " + entryData.pages + ". " +
                     ((entryData.address) ? entryData.address + "." : "") +
                     ((entryData.publisher) ? " " + entryData.publisher : "") +
-                    "<\/em>";
+                    ". [Journal]<\/em>";
         },
         misc: function (entryData) {
             return this.authors2html(entryData.author) + " (" + entryData.year + "). " +
                     entryData.title + ". " +
                     ((entryData.howpublished) ? entryData.howpublished + ". " : "") +
                     ((entryData.publisher) ? ". " + entryData.publisher : "") +
-                    ((entryData.note) ? entryData.note + "." : "");
+                    ((entryData.note) ? entryData.note + "." : " [Misc/Preprint]");
         },
         mastersthesis: function (entryData) {
             return this.authors2html(entryData.author) + " (" + entryData.year + "). " +
                     entryData.title + ". " + entryData.type + ". " +
-                    entryData.organization + ", " + entryData.school + ".";
+                    entryData.organization + ", " + entryData.school + ". [Ph.D. dissertation/MS thesis]";
         },
         techreport: function (entryData) {
             return this.authors2html(entryData.author) + " (" + entryData.year + "). " +
@@ -4532,7 +4532,7 @@ var bibtexify = (function ($) {
     bib2html.phdthesis = bib2html.mastersthesis;
     // conference is the same as inproceedings
     bib2html.conference = bib2html.inproceedings;
-    console.log(bib2html.conference);
+    //console.log(bib2html.conference);
 
     // event handlers for the bibtex links
     var EventHandlers = {
