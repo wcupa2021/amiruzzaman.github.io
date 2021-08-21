@@ -8,7 +8,31 @@
         <!--[if lt IE 9]>
         <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script type='text/javascript' src='scripts/respond.min.js'></script>
+
+        <style>
+            .container1 {
+                width:100%;
+                border:1px solid #d3d3d3;
+                /*border:solid #d3d3d3;*/
+            }
+            .container1 div {
+                width:100%;
+            }
+            .container1 .header {
+                background-color:#d3d3d3;
+                padding: 2px;
+                cursor: pointer;
+                font-weight: bold;
+            }
+            .container1 .content {
+                display: none;
+                /*                padding : 5px;*/
+            }
+        </style>
+
+
 
     </head>
     <body>
@@ -52,34 +76,69 @@
 
             <aside>
                 <h1>Teaching (past)</h1>
-				<p>Fall 2017<p>
-                <p>TECH - 56330 - 023: Visual basic programming in engineering technology</p>
-                <p>TECH - 56411 - 010: Requirements engineering and analysis technology</p>
-				<p>Summer 2017<p>
-                <p>TECH - 56330 - 023: Visual basic programming in engineering technology</p>
-                <p>TECH - 56411 - 010: Requirements engineering and analysis technology</p>
-                <p>Spring 2017<p>
-                <p>TECH - 56330 - 005: Visual basic programming in engineering technology</p>
-                <p>TECH - 56330 - 006: Visual basic programming in engineering technology</p>
-                <p>TECH - 56411 - 001: Requirements engineering and analysis technology</p>
-                <p>TECH - 56411 - 002: Requirements engineering and analysis technology</p>
+                <!--                <p>Fall 2017<p>
+                                <p>TECH - 56330 - 023: Visual basic programming in engineering technology</p>
+                                <p>TECH - 56411 - 010: Requirements engineering and analysis technology</p>
+                                <p>Summer 2017<p>
+                                <p>TECH - 56330 - 023: Visual basic programming in engineering technology</p>
+                                <p>TECH - 56411 - 010: Requirements engineering and analysis technology</p>
+                                <p>Spring 2017<p>
+                                <p>TECH - 56330 - 005: Visual basic programming in engineering technology</p>
+                                <p>TECH - 56330 - 006: Visual basic programming in engineering technology</p>
+                                <p>TECH - 56411 - 001: Requirements engineering and analysis technology</p>
+                                <p>TECH - 56411 - 002: Requirements engineering and analysis technology</p>
+                
+                                <p>Fall 2016<p>
+                                <p>MIS - 44043 - 002: Database management systems</p>
+                                <p>TECH - 66380 - 001: Advanced networking</p>
+                                <p>TECH - 56411 - 001: Requirements engineering and analysis technology</p>
+                                <p>TECH - 56411 - 002: Requirements engineering and analysis technology</p>		
+                
+                                <p>Summer 2016<p>
+                                <p>MIS - 34054 - 001: Using IS for business problems</p>
+                
+                
+                                <p>Spring 2016<p>
+                                <p>MIS - 24053 - 002: Computer Applications</p>
+                                <p>MIS - 44033 - 001: Advanced programming</p>-->
 
-                <p>Fall 2016<p>
-                <p>MIS - 44043 - 002: Database management systems</p>
-                <p>TECH - 66380 - 001: Advanced networking</p>
-                <p>TECH - 56411 - 001: Requirements engineering and analysis technology</p>
-                <p>TECH - 56411 - 002: Requirements engineering and analysis technology</p>		
 
-                <p>Summer 2016<p>
-                <p>MIS - 34054 - 001: Using IS for business problems</p>
+                <!--adding collapseable div
+                http://jsfiddle.net/hungerpain/eK8X5/7/
+                -->
+                <div class="container1">
+                    <div id="div1" class="header"><span>Fall 2017</span>
+                    </div>
+                    <div class="content">
+                        <ul>                           
+                            <li>TECH - 56330 - 023: Visual basic programming in engineering technology</li>
+                            <li>TECH - 56411 - 010: Requirements engineering and analysis technology</li>
+                        </ul>
+                    </div>
 
+                    <div id="div2" class="header"><span>Summer 2017</span>
+                    </div>
+                    <div class="content">
+                        <ul>                           
+                            <li>TECH - 56330 - 023: Visual basic programming in engineering technology</li>
+                            <li>TECH - 56411 - 010: Requirements engineering and analysis technology</li>
+                        </ul>
+                    </div>
 
-                <p>Spring 2016<p>
-                <p>MIS - 24053 - 002: Computer Applications</p>
-                <p>MIS - 44033 - 001: Advanced programming</p>
+                    <div id="div3" class="header"><span>Spring 2017</span>
+                    </div>
+                    <div class="content">
+                        <ul>                           
+                            <li>TECH - 56330 - 005: Visual basic programming in engineering technology</li>
+                            <li>TECH - 56330 - 006: Visual basic programming in engineering technology</li>
+                            <li>TECH - 56411 - 001: Requirements engineering and analysis technology</li>
+                            <li>TECH - 56411 - 002: Requirements engineering and analysis technology</li>
+                        </ul>
+                    </div>
+                </div>
                 <a href="#home" title="top">Top</a>
             </aside>
-			
+
 
             <div id="education">
                 <a name="education"></a>
@@ -90,20 +149,71 @@
                 <a href="#home" title="top">Top</a>
             </div> <!--END education-->
             <div id="publications">
-			<!--<script src="https://bibbase.org/show?bib=amiruzzaman.github.io%2Famir.bib&jsonp=1"></script>--> 
-			<!--<script src="https://bibbase.org/show?bib=https%3A%2F%2Famiruzzaman.github.io%2Famir.bib&jsonp=1"></script>-->
-                
-				<a name="publications"></a>
+                <!--<script src="https://bibbase.org/show?bib=amiruzzaman.github.io%2Famir.bib&jsonp=1"></script>--> 
+                <!--<script src="https://bibbase.org/show?bib=https%3A%2F%2Famiruzzaman.github.io%2Famir.bib&jsonp=1"></script>-->
+
+                <a name="publications"></a>
                 <h1>List of publications</h1>
-				<p style="background-color:#F7BE81">Ma, C., Zhao, Y., ALDohuki, S., Yang, J., Ye, X., Kamw, F., & Amiruzzaman, M. (2020, June). GTMapLens: Interactive Lens for Geo‐Text Data Browsing on Map. In Computer Graphics Forum (Vol. 39, No. 3, pp. 469-481).<a href="https://onlinelibrary.wiley.com/doi/full/10.1111/cgf.13995?casa_token=b1vFS51r60EAAAAA%3AtF39gbYAEfAp42eBhmvUwEo4MhB_bLMJs-lWoc5eN0TEOT6seuzFxIr1KSRCcPafj1lVHwIjDzAelQ">PDF</a></P>
-				<p style="background-color:#F6D8CE">Islam, M. R., Amiruzzaman, M., Nasim, S., & Shin, J. (2020). Smoke Object Segmentation and the Dynamic Growth Feature Model for Video-Based Smoke Detection Systems. Symmetry, 12(7), 1075.<a href="https://www.mdpi.com/2073-8994/12/7/1075">PDF</a></P>
+                <p style="background-color:#F7BE81">Ma, C., Zhao, Y., ALDohuki, S., Yang, J., Ye, X., Kamw, F., & Amiruzzaman, M. (2020, June). GTMapLens: Interactive Lens for Geo‐Text Data Browsing on Map. In Computer Graphics Forum (Vol. 39, No. 3, pp. 469-481).<a href="https://onlinelibrary.wiley.com/doi/full/10.1111/cgf.13995?casa_token=b1vFS51r60EAAAAA%3AtF39gbYAEfAp42eBhmvUwEo4MhB_bLMJs-lWoc5eN0TEOT6seuzFxIr1KSRCcPafj1lVHwIjDzAelQ">PDF</a></P>
+                <p style="background-color:#F6D8CE">Islam, M. R., Amiruzzaman, M., Nasim, S., & Shin, J. (2020). Smoke Object Segmentation and the Dynamic Growth Feature Model for Video-Based Smoke Detection Systems. Symmetry, 12(7), 1075.<a href="https://www.mdpi.com/2073-8994/12/7/1075">PDF</a></P>
                 <p style="background-color:#F7BE81">Wu, T. H., Zhao, Y., & Amiruzzaman, M. (2020). Interactive Visualization of AI-based Speech Recognition Texts. EuroVA.<a href="https://diglib.eg.org/handle/10.2312/eurova20201091">PDF</a></P>
-				<p style="background-color:#F7BE81">Amiruzzaman, M., Peyravi, H., Abdullah-Al-Wadud, M., & Chung, Y. (2010). Concurrent covert communication channels. In Advances in Computer Science and Information Technology (pp. 203-213). Springer Berlin Heidelberg.</p>
+                <p style="background-color:#F7BE81">Amiruzzaman, M., Peyravi, H., Abdullah-Al-Wadud, M., & Chung, Y. (2010). Concurrent covert communication channels. In Advances in Computer Science and Information Technology (pp. 203-213). Springer Berlin Heidelberg.</p>
                 <p style="background-color:#F6D8CE">Hossain, N., Alma, M. G. R., Amiruzzaman, M., & Quadir, S. M. (2004, April). An efficient merge sort technique that reduces both times and comparisons. In Information and Communication Technologies: From Theory to Applications, 2004. Proceedings. 2004 International Conference on (pp. 537-538). IEEE.</p>
                 <a href="#home" title="top">Top</a>
-				
+
             </div> <!--END experience-->
         </div>
+        <script>
+            $(".header").click(function (e) {
+                console.log($(this));
+                e.preventDefault();
+                var text = jQuery(this).text(); // 'this' refers to the h3 element that you clicked.. not the div with the class .results
+                //console.log('here', text);
+                $header = $(this);
+                //getting the next element
+                $content = $header.next();
+                //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+                $content.slideToggle(500, function () {
+                    //execute this after slideToggle is done
+                    //change text of header based on visibility of content div
+                    $header.text(function (e) {
+                        //e.preventDefault();
+                        var text = jQuery(this).text(); // 'this' refers to the h3 element that you clicked.. not the div with the class .results
+                        console.log('here', text);
+                        //change text based on condition
+                        //return $content.is(":visible") ? text + "" : text + "..";
+                        return $content.is(":visible") ? text + "" : text + "";
+                    });
+                });
 
+            });
+            // random color generator function
+            function getRandomColor() {
+                var letters = '0123456789ABCDEF';
+                var color = '#';
+                for (var i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+            }
+
+
+            // different shades of grey
+            function randomGreyHex() {
+                var v = (Math.random() * (256) | 0).toString(16);//bitwise OR. Gives value in the range 0-255 which is then converted to base 16 (hex).
+                return "#" + v + v + v;
+            }
+
+            // A $( document ).ready() block.
+            $(document).ready(function () {
+                console.log("ready!");
+
+                for (let i = 1; i < 4; i++)
+                {
+                    //$("#div" + i).css("background-color", getRandomColor());
+                    $("#div" + i).css("background-color", randomGreyHex());
+                }
+            });
+        </script>
     </body>
 </html>
