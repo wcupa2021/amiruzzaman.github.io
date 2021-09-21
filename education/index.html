@@ -4,7 +4,7 @@
         <meta charset="utf-8"/>
         <title> Amir | Md Amiruzzaman</title>
         <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
-        <link href="styles/main.css" type="text/css" rel="stylesheet">
+        
         <!--[if lt IE 9]>
         <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
@@ -210,7 +210,7 @@
     </head>
     <body>
 	<!--https://codepen.io/amwill04/pen/QNPpqx--->
-        <!--<div class="table" id="results">-->
+        
 		<script>
 /*		
 		for (var i = 0; i < degreeinfo.length; i++){
@@ -243,12 +243,12 @@
 */
 
 var result = $('<div/>', {
-'id': 'results',
-'class': 'table'
+	'id': 'results',
+	'class': 'table'
 });
 
 var headers = $('<div/>', {
-'class': 'theader'
+	'class': 'theader'
 });
 
 Object.keys(degreeinfo[0]).forEach(function(key){
@@ -258,9 +258,7 @@ Object.keys(degreeinfo[0]).forEach(function(key){
 	}).html(key);
 
 	//console.log(table_header);
-
 	headers.append(table_header);
-
 })
 
 
@@ -272,30 +270,27 @@ result.append(headers);
 for(let i= 0; i<degreeinfo.length; i++)
 {
 	var table_row = $('<div/>', {
-	'class': 'table_row'
+		'class': 'table_row'
 	});
 	
 	Object.keys(degreeinfo[i]).forEach(function(key){
 		var table_small = $('<div/>', {
-		'class': 'table_small'
+			'class': 'table_small'
 		});
 		
 		var table_cell1= $('<div/>', {
-		'class': 'table_cell'
+			'class': 'table_cell'
 		}).html(key)
 		
 		var table_cell2= $('<div/>', {
-		'class': 'table_cell'
+			'class': 'table_cell'
 		}).html(degreeinfo[i][key]);
 		
 		table_small.append(table_cell1).append(table_cell2);
 		
-		table_row.append(table_small);
-		
+		table_row.append(table_small);	
 	});
-	
-	result.append(table_row);
-	
+	result.append(table_row);	
 }
 
 
@@ -324,6 +319,7 @@ $('body').append(result);
 
 		</script>
 		<!--
+<div class="table" id="results">
   <div class='theader'>
     <div class='table_header'>Degree</div>
     <div class='table_header'>Year</div>
@@ -456,7 +452,8 @@ $('body').append(result);
       <div class='table_cell'>Computer Science</div>
     </div>
   </div>
+</div>
 -->
-<!--</div>-->
+
     </body>
 </html>
