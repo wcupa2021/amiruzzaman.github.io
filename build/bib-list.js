@@ -4424,7 +4424,7 @@ var bibtexify = (function ($) {
                     ", pp. " + entryData.pages +
                     ((entryData.address) ? ", " + entryData.address : "") +
                     ((entryData.publisher) ? ". " + entryData.publisher : "") +
-                    ". [Conference]<\/em>";
+                    ".<em style='color:black;font-weight: bold;'> [Conference]</em><\/em>";
 
             /*
              return this.authors2html(entryData.author) + " " +
@@ -4448,7 +4448,7 @@ var bibtexify = (function ($) {
                     "pp. " + entryData.pages + ". " +
                     ((entryData.address) ? entryData.address + "." : "") +
                     ((entryData.publisher) ? " " + entryData.publisher : "") +
-                    ". [Journal]<\/em>";
+                    ".<em style='color:blue;font-weight: bold;'> [Journal]</em><\/em>";
         },
         misc: function (entryData) {
             return this.authors2html(entryData.author) + " (" + entryData.year + "). " +
@@ -4457,11 +4457,17 @@ var bibtexify = (function ($) {
                     ((entryData.publisher) ? ". " + entryData.publisher : "") +
                     ((entryData.note) ? entryData.note + "." : " [Misc/Preprint]");
         },
-        mastersthesis: function (entryData) {
+        phdthesis: function (entryData) {
             return this.authors2html(entryData.author) + " (" + entryData.year + "). " +
                     entryData.title + ". " + entryData.type + ". " +
-                    entryData.organization + ", " + entryData.school + ". [Ph.D. dissertation/MS thesis]";
+                    entryData.organization + ", " + entryData.school + ".<em style='background-color: coral;font-weight: bold;'>  [Ph.D. dissertation]</em>";
         },
+		mastersthesis: function (entryData) {
+            return this.authors2html(entryData.author) + " (" + entryData.year + "). " +
+                    entryData.title + ". " + entryData.type + ". " +
+                    entryData.organization + ", " + entryData.school + ".<em style='background-color: yellow;font-weight: bold;'>  [MS thesis]</em>";
+        },
+		
         techreport: function (entryData) {
             return this.authors2html(entryData.author) + " (" + entryData.year + "). " +
                     entryData.title + ". " + entryData.institution + ". " +
@@ -4501,6 +4507,7 @@ var bibtexify = (function ($) {
             'manual': 10,
             'techreport': 20,
             'mastersthesis': 30,
+			'phdthesis': 35,
             'inproceedings': 40,
             'incollection': 50,
             'proceedings': 60,
@@ -4522,14 +4529,15 @@ var bibtexify = (function ($) {
             'inproceedings': 'Conference',
             'manual': 'Manual',
             'mastersthesis': 'Thesis',
-            'misc': 'Misc',
+			'misc': 'Misc',
             'phdthesis': 'PhD Thesis',
             'proceedings': 'Conference proceeding',
             'techreport': 'Technical report',
             'unpublished': 'Unpublished'}
     };
     // format a phd thesis similarly to masters thesis
-    bib2html.phdthesis = bib2html.mastersthesis;
+    bib2html.mastersthesis = bib2html.mastersthesis;
+	bib2html.phdthesis = bib2html.phdthesis;
     // conference is the same as inproceedings
     bib2html.conference = bib2html.inproceedings;
     //console.log(bib2html.conference);
