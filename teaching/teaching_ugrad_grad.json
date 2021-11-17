@@ -1,0 +1,202 @@
+[
+  {
+    "Year": 2021,
+    "Semester": "Fall",
+    "University": "Kent State University",
+    "CourseNo": "ENGR46411",
+    "CourseName": "Requirements eng and analysis",
+    "Level": "ugrad"
+  },
+  {
+    "Year": 2021,
+    "Semester": "Summer",
+    "University": "Kent State University",
+    "CourseNo": "EVAL65511",
+    "CourseName": "Research in educ services",
+    "Level": "grad"
+  },
+  {
+    "Year": 2021,
+    "Semester": "Spring",
+    "University": "Kent State University",
+    "CourseNo": "ENGR56411",
+    "CourseName": "Requirements eng analysis tech",
+    "Level": "grad"
+  },
+  {
+    "Year": 2020,
+    "Semester": "Fall",
+    "University": "Kent State University",
+    "CourseNo": "ENGR46411",
+    "CourseName": "Requirements eng and analysis",
+    "Level": "ugrad"
+  },
+  {
+    "Year": 2020,
+    "Semester": "Fall",
+    "University": "Kent State University",
+    "CourseNo": "ENGR46330",
+    "CourseName": "VB programming in engineering",
+    "Level": "ugrad"
+  },
+  {
+    "Year": 2020,
+    "Semester": "Fall",
+    "University": "Kent State University",
+    "CourseNo": "ENGR56330",
+    "CourseName": "VB programming in engineering",
+    "Level": "grad"
+  },
+  {
+    "Year": 2020,
+    "Semester": "Summer",
+    "University": "Kent State University",
+    "CourseNo": "TECH46411",
+    "CourseName": "Requirements eng and analysis",
+    "Level": "ugrad"
+  },
+  {
+    "Year": 2020,
+    "Semester": "Summer",
+    "University": "Kent State University",
+    "CourseNo": "TECH61095",
+    "CourseName": "ST: research in technology",
+    "Level": "grad"
+  },
+  {
+    "Year": 2020,
+    "Semester": "Summer",
+    "University": "Kent State University",
+    "CourseNo": "TECH63496",
+    "CourseName": "Ind inv in energy/power tech",
+    "Level": "grad"
+  },
+  {
+    "Year": 2020,
+    "Semester": "Spring",
+    "University": "Kent State University",
+    "CourseNo": "TECH56411",
+    "CourseName": "Requirements eng analysis tech",
+    "Level": "ugrad"
+  },
+  {
+    "Year": 2020,
+    "Semester": "Spring",
+    "University": "Kent State University",
+    "CourseNo": "TECH46411",
+    "CourseName": "Requirements eng and analysis",
+    "Level": "ugrad"
+  },
+  {
+    "Year": 2020,
+    "Semester": "Spring",
+    "University": "Kent State University",
+    "CourseNo": "TECH60078",
+    "CourseName": "Research methods in tech",
+    "Level": "grad"
+  },
+  {
+    "Year": 2019,
+    "Semester": "Fall",
+    "University": "Kent State University",
+    "CourseNo": "TECH56411",
+    "CourseName": "Requirements eng analysis tech",
+    "Level": "grad"
+  },
+  {
+    "Year": 2019,
+    "Semester": "Fall",
+    "University": "Kent State University",
+    "CourseNo": "TECH46411",
+    "CourseName": "Requirements eng and analysis",
+    "Level": "ugrad"
+  },
+  {
+    "Year": 2019,
+    "Semester": "Fall",
+    "University": "Kent State University",
+    "CourseNo": "TECH60078",
+    "CourseName": "Research methods in tech",
+    "Level": "grad"
+  },
+  {
+    "Year": 2019,
+    "Semester": "Fall",
+    "University": "Kent State University",
+    "CourseNo": "TECH26310",
+    "CourseName": "Web design and development",
+    "Level": "ugrad"
+  },
+  {
+    "Year": 2019,
+    "Semester": "Summer",
+    "University": "Kent State University",
+    "CourseNo": "TECH56411",
+    "CourseName": "Requirements eng analysis tech",
+    "Level": "grad"
+  },
+  {
+    "Year": 2019,
+    "Semester": "Summer",
+    "University": "Kent State University",
+    "CourseNo": "TECH46411",
+    "CourseName": "Requirements eng and analysis",
+    "Level": "ugrad"
+  },
+  {
+    "Year": 2019,
+    "Semester": "Summer",
+    "University": "Kent State University",
+    "CourseNo": "TECH60001",
+    "CourseName": "Quant methods in tech",
+    "Level": "grad"
+  },
+  {
+    "Year": 2019,
+    "Semester": "Summer",
+    "University": "Kent State University",
+    "CourseNo": "TECH63496",
+    "CourseName": "Ind inv in energy/power tech",
+    "Level": "grad"
+  },
+  {
+    "Year": 2019,
+    "Semester": "Spring",
+    "University": "Kent State University",
+    "CourseNo": "TECH60078",
+    "CourseName": "Research methods in tech",
+    "Level": "grad"
+  },
+  {
+    "Year": 2019,
+    "Semester": "Spring",
+    "University": "Kent State University",
+    "CourseNo": "TECH56411",
+    "CourseName": "Requirements eng analysis tech",
+    "Level": "grad"
+  },
+  {
+    "Year": 2019,
+    "Semester": "Spring",
+    "University": "Kent State University",
+    "CourseNo": "TECH46411",
+    "CourseName": "Requirements eng and analysis",
+    "Level": "ugrad"
+  },
+  {
+    "Year": 2019,
+    "Semester": "Spring",
+    "University": "Kent State University",
+    "CourseNo": "TECH26200",
+    "CourseName": "Programming for engineers I",
+    "Level": "ugrad"
+  },
+  {
+    "Year": 2019,
+    "Semester": "Spring",
+    "University": "Kent State University",
+    "CourseNo": "TECH26200",
+    "CourseName": "Programming for engineers I",
+    "Level": "ugrad"
+  }
+]

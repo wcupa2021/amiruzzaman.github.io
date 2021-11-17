@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+        <meta content="utf-8" http-equiv="encoding">
+
+
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <style>
+            body{    background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+                     background: linear-gradient(to right, #25c481, #25b7c4);}
+            .accordionWrapper{padding:30px;background:#fff;float:left;width:80%;box-sizing:border-box;margin:10%;    box-shadow: 0 1.5em 85px 0 rgba(0, 0, 0, 0.2);}
+            .accordionItem{
+                float:left;
+                display:block;
+                width:100%;
+                box-sizing: border-box;
+                font-family:'Open-sans',Arial,sans-serif;
+            }
+            .accordionItemHeading{
+                cursor:pointer;
+                margin:0px 0px 10px 0px;
+                padding:10px;
+                background:#2980b9;
+                color:#fff;
+                width:100%;
+                -webkit-border-radius: 3px;
+                -moz-border-radius: 3px;
+                border-radius: 3px;
+                box-sizing: border-box;
+            }
+            .close .accordionItemContent{
+                height:0px;
+                transition:height 1s ease-out;
+                -webkit-transform: scaleY(0);
+                -o-transform: scaleY(0);
+                -ms-transform: scaleY(0);
+                transform: scaleY(0);
+                float:left;
+                display:block;
+
+
+            }
+            .open .accordionItemContent{
+                padding: 20px;
+                background-color: #fff;
+                border: 1px solid #ddd;
+                width: 100%;
+                margin: 0px 0px 10px 0px;
+                display:block;
+                -webkit-transform: scaleY(1);
+                -o-transform: scaleY(1);
+                -ms-transform: scaleY(1);
+                transform: scaleY(1);
+                -webkit-transform-origin: top;
+                -o-transform-origin: top;
+                -ms-transform-origin: top;
+                transform-origin: top;
+
+                -webkit-transition: -webkit-transform 0.4s ease-out;
+                -o-transition: -o-transform 0.4s ease;
+                -ms-transition: -ms-transform 0.4s ease;
+                transition: transform 0.4s ease;
+                box-sizing: border-box;
+            }
+
+            .open .accordionItemHeading{
+                margin:0px;
+                -webkit-border-top-left-radius: 3px;
+                -webkit-border-top-right-radius: 3px;
+                -moz-border-radius-topleft: 3px;
+                -moz-border-radius-topright: 3px;
+                border-top-left-radius: 3px;
+                border-top-right-radius: 3px;
+                -webkit-border-bottom-right-radius: 0px;
+                -webkit-border-bottom-left-radius: 0px;
+                -moz-border-radius-bottomright: 0px;
+                -moz-border-radius-bottomleft: 0px;
+                border-bottom-right-radius: 0px;
+                border-bottom-left-radius: 0px;
+                background-color: #bdc3c7;
+                color: #7f8c8d;
+            }
+
+
+            /*****************************/    
+
+
+            .container {
+                width:100%;
+                border:1px solid #d3d3d3;
+            }
+            .container div {
+                width:100%;
+            }
+            .container .header {
+                background-color:#d3d3d3;
+                padding: 2px;
+                cursor: pointer;
+                font-weight: bold;
+            }
+            .container .content {
+                display: none;
+                padding : 5px;
+            }
+
+        </style>
+
+
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="header"><span>Expand</span>
+
+            </div>
+            <div class="content">
+                <ul>
+                    <li>This is just some random content.</li>
+                    <li>This is just some random content.</li>
+                    <li>This is just some random content.</li>
+                    <li>This is just some random content.</li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div id= "accordionWrapper" class="accordionWrapper">
+            <div class="accordionItem open">
+                <h2 class="accordionItemHeading">About accordions</h2>
+                <div class="accordionItemContent">
+                    <p>JavaScript accordions let you squeeze a lot of content into a small space in a Web page.</p>
+                    <p>This simple accordion degrades gracefully in browsers that don't support JavaScript or CSS.</p>
+                </div>
+            </div>
+
+            <div class="accordionItem close">
+                <h2 class="accordionItemHeading">Accordion items</h2>
+                <div class="accordionItemContent">
+                    <p>A JavaScript accordion is made up of a number of expandable/collapsible items. Only one item is ever shown at a time.</p>
+                    <p>You can include any content you want inside an accordion item. Here's a bullet list:</p>
+                    <ul>
+                        <li>List item #1</li>
+                        <li>List item #2</li>
+                        <li>List item #3</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordionItem close">
+                <h2 class="accordionItemHeading">How to use a JavaScript accordion</h2>
+                <div class="accordionItemContent">
+                    <p>Click an accordion item's heading to expand it. To collapse the item, click it again, or click another item heading.</p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div id ="somecontainer"></div>
+        <!--https://codepen.io/raubaca/pen/PZzpVe-->
+        <script>
+            var teaching = [
+                {
+                    "Year": "2021",
+                    "Semester": "Fall",
+                    "University": "Kent State University",
+                    "CourseNo": "ENGR46411",
+                    "CourseName": "Requirements eng and analysis"
+                },
+                {
+                    "Year": "2021",
+                    "Semester": "Summer",
+                    "University": "Kent State University",
+                    "CourseNo": "EVAL65511",
+                    "CourseName": "Research in educ services"
+                },
+                {
+                    "Year": "2021",
+                    "Semester": "Spring",
+                    "University": "Kent State University",
+                    "CourseNo": "ENGR56411",
+                    "CourseName": "Requirements eng analysis tech"
+                },
+                {
+                    "Year": "2020",
+                    "Semester": "Fall",
+                    "University": "Kent State University",
+                    "CourseNo": "ENGR46411",
+                    "CourseName": "Requirements eng and analysis"
+                },
+                {
+                    "Year": "2020",
+                    "Semester": "Fall",
+                    "University": "Kent State University",
+                    "CourseNo": "ENGR46330",
+                    "CourseName": "VB programming in engineering"
+                },
+                {
+                    "Year": "2020",
+                    "Semester": "Fall",
+                    "University": "Kent State University",
+                    "CourseNo": "ENGR56330",
+                    "CourseName": "VB programming in engineering"
+                },
+                {
+                    "Year": "2020",
+                    "Semester": "Summer",
+                    "University": "Kent State University",
+                    "CourseNo": "TECH46411",
+                    "CourseName": "Requirements eng and analysis"
+                },
+                {
+                    "Year": "2020",
+                    "Semester": "Summer",
+                    "University": "Kent State University",
+                    "CourseNo": "TECH61095",
+                    "CourseName": "ST: research in technology"
+                },
+                {
+                    "Year": "2020",
+                    "Semester": "Summer",
+                    "University": "Kent State University",
+                    "CourseNo": "TECH63496",
+                    "CourseName": "Ind inv in energy/power tech"
+                },
+                {
+                    "Year": "2020",
+                    "Semester": "Spring",
+                    "University": "Kent State University",
+                    "CourseNo": "TECH56411",
+                    "CourseName": "Requirements eng analysis tech"
+                },
+                {
+                    "Year": "2020",
+                    "Semester": "Spring",
+                    "University": "Kent State University",
+                    "CourseNo": "TECH46411",
+                    "CourseName": "Requirements eng and analysis"
+                },
+                {
+                    "Year": "2020",
+                    "Semester": "Spring",
+                    "University": "Kent State University",
+                    "CourseNo": "TECH60078",
+                    "CourseName": "Research methods in tech"
+                },
+                {
+                    "Year": "2019",
+                    "Semester": "Fall",
+                    "University": "Kent State University",
+                    "CourseNo": "TECH56411",
+                    "CourseName": "Requirements eng analysis tech"
+                },
+                {
+                    "Year": "2019",
+                    "Semester": "Fall",
+                    "University": "Kent State University",
+                    "CourseNo": "TECH46411",
+                    "CourseName": "Requirements eng and analysis"
+                },
+                {
+                    "Year": "2019",
+                    "Semester": "Fall",
+                    "University": "Kent State University",
+                    "CourseNo": "TECH60078",
+                    "CourseName": "Research methods in tech"
+                },
+                {
+                    "Year": "2019",
+                    "Semester": "Fall",
+                    "University": "Kent State University",
+                    "CourseNo": "TECH26310",
+                    "CourseName": "Web design and development"
+                },
+                {
+                    "Year": "2019",
+                    "Semester": "Summer",
+                    "University": "Kent State University",
+                    "CourseNo": "TECH56411",
+                    "CourseName": "Requirements eng analysis tech"
+                },
+                {
+                    "Year": "2019",
+                    "Semester": "Summer",
+                    "University": "Kent State University",
+                    "CourseNo": "TECH46411",
+                    "CourseName": "Requirements eng and analysis"
+                },
+                {
+                    "Year": "2019",
+                    "Semester": "Summer",
+                    "University": "Kent State University",
+                    "CourseNo": "TECH60001",
+                    "CourseName": "Quant methods in tech"
+                },
+                {
+                    "Year": "2019",
+                    "Semester": "Summer",
+                    "University": "Kent State University",
+                    "CourseNo": "TECH63496",
+                    "CourseName": "Ind inv in energy/power tech"
+                },
+                {
+                    "Year": "2019",
+                    "Semester": "Spring",
+                    "University": "Kent State University",
+                    "CourseNo": "TECH60078",
+                    "CourseName": "Research methods in tech"
+                },
+                {
+                    "Year": "2019",
+                    "Semester": "Spring",
+                    "University": "Kent State University",
+                    "CourseNo": "TECH56411",
+                    "CourseName": "Requirements eng analysis tech"
+                },
+                {
+                    "Year": "2019",
+                    "Semester": "Spring",
+                    "University": "Kent State University",
+                    "CourseNo": "TECH46411",
+                    "CourseName": "Requirements eng and analysis"
+                },
+                {
+                    "Year": "2019",
+                    "Semester": "Spring",
+                    "University": "Kent State University",
+                    "CourseNo": "TECH26200",
+                    "CourseName": "Programming for engineers I"
+                },
+                {
+                    "Year": "2019",
+                    "Semester": "Spring",
+                    "University": "Kent State University",
+                    "CourseNo": "TECH26200",
+                    "CourseName": "Programming for engineers I"
+                }
+            ];
+
+
+            var groupBy = function (xs, key) {
+                return xs.reduce(function (rv, x) {
+                    (rv[x[key]] = rv[x[key]] || []).push(x);
+                    return rv;
+                }, {});
+            };
+            var groubedByTeam = groupBy(teaching, 'Year')
+            //console.log(groubedByTeam);
+
+
+            $.each(groubedByTeam, function (year, semester) {
+                //console.log(year, semester);
+
+//                var yearDiv = jQuery('<button>', {
+////                    id: 'some-id',
+//                    class: 'collapsible',
+//                    type: 'button'
+//                }).append(year).append('</button>');
+
+                var yearDiv = $("<button/>")   // creates a div element
+//                            .attr("id", "someID")  // adds the id
+                        .addClass("collapsible")   // add a class
+                        .html("" + year + "");
+
+// get the wrapper div by id
+                var x = document.getElementById('accordionWrapper');
+
+//var x = document.getElementsByClassName("accordionWrapper");
+
+// create a new div for year
+                var new_row = document.createElement('div');
+// add year value to the div
+                new_row.innerHTML += year;
+// add class to the div
+                new_row.className = "accordionItemHeading";
+
+// add the year div to wrapper div
+                x.appendChild(new_row);
+
+
+                for (let i = 0; i < semester.length; i++)
+                {
+                    //$('.collapsible').append(year[i]);
+                    var semDiv = jQuery('<div>', {
+//                        id: 'some-id',
+                        class: 'content',
+                        title: 'now this div has a title!'
+                    }).append(semester[i].Semester);
+
+
+// create a new div for year
+                    var sem = document.createElement('p');
+// add year value to the div
+                    sem.innerHTML += semester[i].Semester + ' : '
+                            + semester[i].CourseNo + ' : '
+                            + semester[i].CourseName + ' : '
+                            + semester[i].University;
+// add class to the div
+                    sem.className = "accordionItemContent close";
+
+// add the year div to wrapper div
+                    new_row.appendChild(sem);
+
+
+
+//                    var $semDiv = $("<div/>")   // creates a div element
+//                            .attr("id", "someID")  // adds the id
+//                            .addClass("content")   // add a class
+//                            .html("" + semester[i].Semester + "");
+                    //yearDiv.appendTo(semDiv);
+                    $(semDiv).appendTo(yearDiv);
+
+                    console.log(semester[i]);
+                }
+                $(yearDiv).appendTo('#somecontainer');
+
+            });
+        </script>
+        <script>
+            var accItem = document.getElementsByClassName('accordionItem');
+            var accHD = document.getElementsByClassName('accordionItemHeading');
+            for (i = 0; i < accHD.length; i++) {
+                accHD[i].addEventListener('click', toggleItem, false);
+            }
+            function toggleItem() {
+                var itemClass = this.parentNode.className;
+                for (i = 0; i < accItem.length; i++) {
+                    accItem[i].className = 'accordionItem close';
+                }
+                if (itemClass == 'accordionItem close') {
+                    this.parentNode.className = 'accordionItem open';
+                }
+            }
+
+
+
+
+
+            /*********************/
+            $(".header").click(function () {
+
+                $header = $(this);
+                //getting the next element
+                $content = $header.next();
+                //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+                $content.slideToggle(500, function () {
+                    //execute this after slideToggle is done
+                    //change text of header based on visibility of content div
+                    $header.text(function () {
+                        //change text based on condition
+                        return $content.is(":visible") ? "Collapse" : "Expand";
+                    });
+                });
+
+            });
+        </script>
+    </body>
+</html>
