@@ -389,3 +389,75 @@ isbn="978-3-642-10619-4"
   url = {https://ieeexplore.ieee.org/document/4743420},
   publisher={IEEE}
   }
+
+
+@article{md2008embedded,
+  title={An Embedded Multi-Agent Based Healthcare Service with Two-way Handshaking Mode},
+  author={Md, Amiruzzaman and Kim, Hyoung-Joong},
+  journal={Journal of the Institute of Electronics Engineers of Korea CI},
+  volume={45},
+  number={5},
+  pages={155--161},
+  year={2008},
+  publisher={The Institute of Electronics and Information Engineers},
+  url = {https://www.koreascience.or.kr/article/JAKO200835054208473.pdf},
+}
+
+
+
+@inproceedings{son2007network,
+  title={The Network Engine Research and Development for Wireless based on Online Game},
+  author={Son, Sung-Ok and Amiruzzaman, Md and No, Jae-Chun},
+  booktitle={Proceedings of the Korean Information Science Society Conference},
+  pages={243--246},
+  year={2007},
+  organization={Korean Institute of Information Scientists and Engineers},
+  url = {https://www.koreascience.or.kr/article/CFKO200724737420271.pdf},
+}
+
+@inproceedings{md2007embedded,
+  title={An Embedded Network-Engine for Video On Demand Service},
+  author={Md Amiruzzaman and Son, Sung-Ok and No, Jae-Chun},
+  booktitle={Proceedings of the Korean Information Science Society Conference},
+  pages={145--148},
+  year={2007},
+  organization={Korean Institute of Information Scientists and Engineers},
+  url = {https://www.koreascience.or.kr/article/CFKO200724737417225.pdf},
+}
+
+
+@article{wadud2008bottom,
+  title={A BOTTOM-UP MERGESORT ELIMINATING RECURSION},
+  author={Wadud, M and Amiruzzaman, Md and Chae, Oksam},
+  year={2008},
+  publisher={Daffodil International University}
+}
+
+@article{amiruzzaman2008embedded,
+  title={AN EMBEDDED NETWORK-ENGINE},
+  author={Amiruzzaman, Md},
+  year={2008},
+  publisher={Daffodil International University}
+}
+
+
+@article{zhang2008new,
+  title={A New Steganographic Method with Minimum Distortion},
+  author={Zhang, Rongyue and Md, Amiruzzaman and Kim, Hyoung-Joong},
+  journal={한국정보통신설비학회: 학술대회논문집},
+  pages={201--204},
+  year={2008},
+  publisher={Korea Institute of Information and Telecommunication Facilities Engineering},
+  url = {https://www.koreascience.or.kr/article/CFKO200831559920814.pdf},
+}
+
+
+@article{md2008study,
+  title={A Study on Steganographic Methods and Its Applications},
+  author={Md, Amiruzzaman and Kim, Hyoung-Joong},
+  journal={한국정보통신설비학회: 학술대회논문집},
+  pages={193--196},
+  year={2008},
+  publisher={Korea Institute of Information and Telecommunication Facilities Engineering},
+  url = {https://www.koreascience.or.kr/article/CFKO200831559920811.pdf},
+}
