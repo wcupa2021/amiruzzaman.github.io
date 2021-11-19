@@ -12,6 +12,13 @@
         <script type='text/javascript' src='scripts/respond.min.js'></script>
         <link rel="stylesheet" href="styles/bib-publication-list.css"/>
 
+
+        <script src="https://unpkg.com/papaparse@5.3.1/papaparse.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/teaching.css">
+        <script src="js/teaching.js"></script> 
+
         <style>
             .container1 {
                 width:100%;
@@ -723,6 +730,58 @@ isbn="978-3-642-10619-4"
 
                 </pre>
             </div> <!--END experience-->
+
+            <!--Teaching section-->
+            <div id="teaching">
+                <h1>Teaching</h1>
+                <button type="button" class="collapsible collapsible-button">Undergraduate</button>
+                <div class="content">
+                    <div class="ugrad-table">
+                        <div class="ugrad-header row">
+                            <div class="col-md-2">YEAR</div>
+                            <div class="col-md-2">COURSE #</div>
+                            <div class="col-md-3">NAME</div>
+                            <div class="col-md-3">UNIVERSITY</div>
+                            <div class="col-md-2">TIMES</div>
+                        </div>
+                        <div class="ugrad-details">
+                            <div id="add-ugrad-details"></div>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="collapsible collapsible-button">Graduate</button>
+                <div class="content">
+                    <div class="grad-table">
+                        <div class="grad-header row">
+                            <div class="col-md-2">YEAR</div>
+                            <div class="col-md-2">COURSE #</div>
+                            <div class="col-md-3">NAME</div>
+                            <div class="col-md-3">UNIVERSITY</div>
+                            <div class="col-md-2">TIMES</div>
+                        </div>
+                        <div class="grad-details">
+                            <div id="add-grad-details"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                var coll = document.getElementsByClassName("collapsible");
+                var i;
+
+                for (i = 0; i < coll.length; i++) {
+                    coll[i].addEventListener("click", function () {
+                        this.classList.toggle("active");
+                        var content = this.nextElementSibling;
+                        if (content.style.maxHeight) {
+                            content.style.maxHeight = null;
+                        } else {
+                            content.style.maxHeight = content.scrollHeight + "px";
+                        }
+                    });
+                }
+            </script>
+
         </div>
         <script>
             $(".header").click(function (e) {
@@ -778,26 +837,26 @@ isbn="978-3-642-10619-4"
         </script>
 
         <script>
-/*
-            function readTextFile(file, callback) {
-                var rawFile = new XMLHttpRequest();
-                rawFile.overrideMimeType("application/json");
-                rawFile.open("GET", file, true);
-                rawFile.onreadystatechange = function () {
-                    if (rawFile.readyState === 4 && rawFile.status == "200") {
-                        callback(rawFile.responseText);
-                    }
-                }
-                rawFile.send(null);
-            }
-
-//usage:
-            readTextFile("degree.json", function (text) {
-                var data = JSON.parse(text);
-                console.log(data);
-            });
-
-*/
+            /*
+             function readTextFile(file, callback) {
+             var rawFile = new XMLHttpRequest();
+             rawFile.overrideMimeType("application/json");
+             rawFile.open("GET", file, true);
+             rawFile.onreadystatechange = function () {
+             if (rawFile.readyState === 4 && rawFile.status == "200") {
+             callback(rawFile.responseText);
+             }
+             }
+             rawFile.send(null);
+             }
+             
+             //usage:
+             readTextFile("degree.json", function (text) {
+             var data = JSON.parse(text);
+             console.log(data);
+             });
+             
+             */
 
             var result = $('<div/>', {
                 'id': 'results',
