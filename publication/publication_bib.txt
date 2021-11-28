@@ -390,6 +390,7 @@ isbn="978-3-642-10619-4"
   publisher={IEEE}
   }
 
+%%%%%%%%%%%%%%%%%%%
 
 @article{md2008embedded,
   title={An Embedded Multi-Agent Based Healthcare Service with Two-way Handshaking Mode},
@@ -460,4 +461,17 @@ isbn="978-3-642-10619-4"
   year={2008},
   publisher={Korea Institute of Information and Telecommunication Facilities Engineering},
   url = {https://www.koreascience.or.kr/article/CFKO200831559920811.pdf},
+}
+
+
+@inproceedings{sohel2003fingerprint,
+  title={Fingerprint authentication system using back-propagation},
+  author={Sohel, Ferdous Ahmed and Amiruzzaman, M},
+  year={2003},
+  booktitle={Proceedings of International Conference on Computers and Information technology, ICCIT-03},
+  pages={722--725},
+  organization={ICCIT},
+  url = {https://researchrepository.murdoch.edu.au/id/eprint/28572/1/fingerprint_authentication.pdf},
+  
+  
 }

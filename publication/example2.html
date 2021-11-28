@@ -138,6 +138,16 @@
             }
 
             console.log(parseBibTex(txt));
+			
+			
+			
+			var bibjson = bibtex.replace(/(\w+)\s*=\s*\{/g,"\"$1\": \"")
+          .replace(/\}(?=\s*[,\}])/g,"\"")
+          .replace(/@(\w+)\s*\{([^,]*)/,"{\"$1\": \"$2\"");
+var bibobj = JSON.parse(bibjson);
+
+			console.log(bibobj);
+			
 
         </script>
 
