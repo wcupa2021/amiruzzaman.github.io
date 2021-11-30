@@ -175,7 +175,7 @@
   }
         </style>
 
-
+<script type="text/javascript" src="csvjson.js" ></script>
 
     </head>
     <body>
@@ -213,10 +213,69 @@
 */
 
 
-$.ajax("http://my.domain.com/mycsvfile.csv", {
+
+$.ajax("degree.csv", {
     success: function(data) {
         var jsonobject = csvjson.csv2json(data);
         // Now use jsonobject to do some charting...
+		console.log('Reading from csv');
+		var data = jsonobject.rows;
+		console.log(jsonobject);
+		var degreeinfo = data; 
+var result = $('<div/>', {
+	'id': 'results',
+	'class': 'table'
+});
+
+var headers = $('<div/>', {
+	'class': 'theader'
+});
+
+Object.keys(degreeinfo[0]).forEach(function(key){
+	//console.log(key);
+	var table_header = $('<div/>', {
+	'class': 'table_header'
+	}).html(key);
+
+	//console.log(table_header);
+	headers.append(table_header);
+})
+
+
+result.append(headers);
+
+
+
+
+for(let i= 0; i<degreeinfo.length; i++)
+{
+	var table_row = $('<div/>', {
+		'class': 'table_row'
+	});
+	
+	Object.keys(degreeinfo[i]).forEach(function(key){
+		var table_small = $('<div/>', {
+			'class': 'table_small'
+		});
+		
+		var table_cell1= $('<div/>', {
+			'class': 'table_cell'
+		}).html(key)
+		
+		var table_cell2= $('<div/>', {
+			'class': 'table_cell'
+		}).html(degreeinfo[i][key]);
+		
+		table_small.append(table_cell1).append(table_cell2);
+		
+		table_row.append(table_small);	
+	});
+	result.append(table_row);	
+}
+
+
+$('body').append(result);
+		
     },
     error: function() {
         // Show some error message, couldn't get the CSV file
