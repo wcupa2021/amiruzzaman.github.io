@@ -9,52 +9,22 @@
         <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script type="text/javascript" src="degree.json"></script>
         
 		<script>
-		var degreeinfo = [
-  {
-    "Degree": "Ph.D.",
-    "Year": 2021,
-    "University": "Kent State University",
-    "Major": "Computer Science"
-  },
-  {
-    "Degree": "Ph.D.",
-    "Year": 2019,
-    "University": "Kent State University",
-    "Major": "Evaluation and Measurement"
-  },
-  {
-    "Degree": "Ph.D.",
-    "Year": 2016,
-    "University": "Kent State University",
-    "Major": "Mathematics Education"
-  },
-  {
-    "Degree": "M.Tech",
-    "Year": 2015,
-    "University": "Kent State University",
-    "Major": "Technology"
-  },
-  {
-    "Degree": "M.S.",
-    "Year": 2011,
-    "University": "Kent State University",
-    "Major": "Computer Science"
-  },
-  {
-    "Degree": "M.S.",
-    "Year": 2008,
-    "University": "Sejong University",
-    "Major": "Computer Science and Engineering"
-  },
-  {
-    "Degree": "B.S.",
-    "Year": 2005,
-    "University": "National University",
-    "Major": "Computer Science"
-  }
-];
+		function readTextFile(file, callback) {
+    var rawFile = new XMLHttpRequest();
+    rawFile.overrideMimeType("application/json");
+    rawFile.open("GET", file, true);
+    rawFile.onreadystatechange = function() {
+        if (rawFile.readyState === 4 && rawFile.status == "200") {
+            callback(rawFile.responseText);
+        }
+    }
+    rawFile.send(null);
+}
+
+
 		</script>
         <style>
   .table {
@@ -242,26 +212,14 @@
 }
 */
 
-function readTextFile(file, callback) {
-    var rawFile = new XMLHttpRequest();
-    rawFile.overrideMimeType("application/json");
-    rawFile.open("GET", file, true);
-    rawFile.onreadystatechange = function() {
-        if (rawFile.readyState === 4 && rawFile.status == "200") {
-            callback(rawFile.responseText);
-        }
-    }
-    rawFile.send(null);
-}
 
 //usage:
 readTextFile("degree.json", function(text){
     var data = JSON.parse(text);
     console.log(data);
-});
 
 
-
+var degreeinfo = data; 
 var result = $('<div/>', {
 	'id': 'results',
 	'class': 'table'
@@ -317,7 +275,7 @@ for(let i= 0; i<degreeinfo.length; i++)
 $('body').append(result);
 
 	
-
+});
 
 
 	/*
