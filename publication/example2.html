@@ -149,6 +149,18 @@ var bibobj = JSON.parse(bibjson);
 
 			console.log(bibobj);
 			
+			
+			//https://stackoverflow.com/questions/3603242/convert-csv-file-to-json-object-datatable/6991791
+			
+			$.ajax("http://my.domain.com/mycsvfile.csv", {
+    success: function(data) {
+        var jsonobject = csvjson.csv2json(data);
+        // Now use jsonobject to do some charting...
+    },
+    error: function() {
+        // Show some error message, couldn't get the CSV file
+    }
+});
 
         </script>
 
