@@ -1,0 +1,129 @@
+.row {
+    --bs-gutter-x: 0 !important;
+    margin-left: 0 !important; 
+    margin-right: 0 !important;
+}
+.sticky {
+    position: fixed !important;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+.navbar-brand {
+    padding-left: 13vw !important;
+    width: 65vw;
+}
+.navbar {
+    border-radius: 0 !important;
+    border: 0 !important;
+    margin-bottom: 0 !important;
+}
+.about-me-section {
+    padding-top: 8vh;
+}
+.profile-pic {
+    width: 100% !important;
+    padding-top: 2vh;
+}
+.about-me {
+    padding-top: 4vh;
+    text-align: justify;
+}
+.toggle-button {
+    border-bottom: 1px solid #000;
+    background-color: transparent;
+    color: #000;
+    border-right: none;
+    border-left: none;
+    border-top: none;
+    border-radius: 0px;
+}    
+.btn-primary:focus {
+    /* border: 1px solid #000 !important; */
+    border-color: transparent;
+    background-color: transparent !important;
+    box-shadow: 0 0 0 0.1rem rgb(0 0 0 / 50%);
+    color: #000;
+}
+.btn-primary:hover {
+    border-color: transparent;
+    background-color: transparent !important;
+    box-shadow: 0 0 0 0.1rem rgb(0 0 0 / 50%);
+    color: #000;
+}
+.nav-tabs > li, .nav-tabs > li > a {
+    color: #000 !important;
+}
+.nav-tabs-container {
+    margin-top: 2vh !important;
+    padding-left: 1vw !important;
+}
+#pub>.card , #edu>.card, #teach>.row{
+   border-top: 0 !important;
+}
+#pub>.card-body > .row {
+    padding-top: 1h;
+    padding-bottom: 1vh;
+}
+#pub>.card-body > .row > div {
+    padding-top: 1vh;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+#pub > .card-body > .row:nth-of-type(odd) {
+    background-color: #b5bfe770;
+}
+#pub > .card-body > .row:hover {
+    border: 1px solid gray;
+}
+
+.education-header {
+    background-color: #6471a3 !important;
+    padding: 2vh 3vw;
+    color: #FFF;
+    font-weight: bold;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    text-align: center;
+}
+#edu > .card-body > .row:last-of-type {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom: 1px solid gray;
+}
+#edu > .card-body > .row {
+    padding: 1vh 3vw;
+    border: 1px solid gray;
+    border-bottom: none;
+    text-align: center;
+}
+#edu > .card-body > .row:nth-of-type(odd) {
+    background-color: #b5bfe770;
+}
+
+.meet-me-container > div{
+    text-align: center !important;
+}
+
+.meet-me-container > div > h5{
+    font-weight: bold;
+}
+.footer-class {
+    background-color: #000;
+    color: #FFF;
+    padding-bottom: 1vh;
+    padding-top: 1vh;
+    margin-top: 1.5vh;
+}
+footer > div > div {
+    text-align: center !important;
+    padding-bottom: 0.5vh;
+}
+footer > div > div > a {
+    text-decoration: none;
+    color: #FFF;
+}
+footer > div > div > a:hover {
+    text-decoration: underline;
+    color: #FFF;
+}
