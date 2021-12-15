@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+    <script type='text/javascript' src='scripts/respond.min.js'></script>
+    <link rel="stylesheet" href="styles/bib-publication-list.css"/>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky">
@@ -79,28 +82,24 @@
         
           <div class="tab-content">
             <div id="pub" class="tab-pane fade in active">
+              <!-- <h1>List of publications</h1> -->
               <div class="card card-body">
-                <div class="row">
-                  <div class="col-md-12"> Md Amiruzzaman (2021). Studying geospatial urban visual appearance and diversity to understand social phenomena. Kent State University.</div>
-                </div>
-                <div class="row">
-                  <div class="col-md-12"> Md Amiruzzaman, Andrew Curtis, Ye Zhao, Suphanut Jamonnak, Xinyue Ye (2021). Classifying crime places by neighborhood visual appearance and police geonarratives: a machine learning approach. Journal of computational social science, pp. 1–25. Springer.</div>
-                </div>
-                <div class="row">
-                  <div class="col-md-12"> Md. Mashfiq Rizvee, Md Amiruzzaman, Md. Rajibul Islam (2021). Data Mining and Visualization to Understand Accident-Prone Areas. In Proceedings of International Joint Conference on Advances in Computational Intelligence, pp. 143–154, Singapore. Springer Singapore.</div>
-                </div>
-                <div class="row">
-                  <div class="col-md-12">Hassnain ul hassan, Rizal Mohd Nor, Md Amiruzzaman, Sharyar Wani (2021). DNS attack mitigation Using OpenStack Isolation. </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-12">Chao Ma, Ye Zhao, Shamal AL-Dohuki, Jing Yang, Xinyue Ye, Farah Kamw, Md Amiruzzaman (2020). GTMapLens: Interactive Lens for Geo-Text Data Browsing on Map. Computer Graphics Forum, 39(3), pp. 469-481. Wiley.</div>
-                </div>
-                <div class="row">
-                  <div class="col-md-12">Rasel Ahmed Bhuiyan, Nadeem Ahmed, Md Amiruzzaman, Md Rashedul Islam (2020). A Robust Feature Extraction Model for Human Activity Characterization Using 3-Axis Accelerometer and Gyroscope Data. Sensors, 20(23), pp. MDPI.</div>
-                </div>
-                <div class="row">
-                  <div class="col-md-12">Md Rashedul Islam, Md Amiruzzaman, Shahriar Nasim, Jungpil Shin (2020). Smoke Object Segmentation and the Dynamic Growth Feature Model for Video-Based Smoke Detection Systems. Symmetry, 12(7), pp. MDPI</div>
-                </div>
+                <noscript>
+                <!-- bibtex source hidden by default, show it if JS disabled -->
+                <style>
+                    #bibtex { display: block;}
+                </style>
+                </noscript>
+                <table id="pubTable" class="display"></table>
+                <script type="text/javascript">
+                    //https://stackoverflow.com/questions/23175287/how-to-include-a-file-and-wrap-its-contents-in-a-pre-tag
+                    document.write('<pre id="bibtex" style="display:none;">');
+                    var ajaxRq = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Msxml2.XMLHTTP");
+                    ajaxRq.open("GET", "publication/publication_bib.txt", false);
+                    ajaxRq.send(null);
+                    document.write(ajaxRq.responseText);
+                    document.write('</pre>');
+                </script>
               </div>
             </div>
             <div id="edu" class="tab-pane fade">
@@ -294,5 +293,85 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.4/js/tether.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="build/bib-list.js"></script>
+<script>
+  // https://stackoverflow.com/questions/3603242/convert-csv-file-to-json-object-datatable/6991791
+              $.ajax("education/degree.csv", {
+                  success: function (data) {
+                      var jsonobject = csvjson.csv2json(data);
+                      // Now use jsonobject to do some charting...
+                      console.log('Reading from csv');
+                      var data = jsonobject.rows;
+                      console.log(jsonobject);
+  
+  
+                      showDegreeInfo(data);
+  
+                  },
+                  error: function () {
+                      // Show some error message, couldn't get the CSV file
+                      console.log("Canot not read the file");
+                  }
+              });
+  
+  
+          </script>
+<script type="text/javascript">
+  $(document).ready(function () {
+                //bibtexify("#bibtex", "pubTable", {'tweet': 'vkaravir'});
+                bibtexify("#bibtex", "pubTable");
+
+                // hide the year
+                $('.sorting_1').hide();
+                // hide the type
+                $('.sorting_2').hide();
+                // remove the th tag texts
+                $('.sorting_desc').hide();
+
+                // adjust the table width to leave some spaces both side
+                // $('#pubTable').css({
+                //     'width': '96%'
+                // });
+                // $('#pubTable').css({
+                //     'max-width': '920px'
+                // });
+
+                // this is to have the 1 of 10 in the middle of the browser
+                $('#pubTable_info').css({
+                    'text-align': 'center'
+                });
+
+                // move the filter close to the publication table
+                $('#pubTable_filter').css({
+                    // 'width': '96%',
+                    // 'margin': '0 auto',
+                    // 'max-width': '920px'
+                    'margin-left': '17vw',
+                    //'margin-top': '2vh'
+
+                });
+                $('#pubTable_filter > input').css({
+                    'border': '1px solid #0000007a',
+                    'padding': '1vh 1vw',
+                    'width': '55%'
+                });
+                $('#pubTable > thead').css({
+                    'display': 'none'
+                });
+                // $('#pubTable > tbody > tr').css({
+                //     'padding': '1vh 0.5vw'
+                // });
+                $('#pubTable > tbody > .odd').css({
+                    'background-color': '#b5bfe770'
+                });
+                $('#pubTable > tbody > .even').css({
+                    'background-color': '#FFF'
+                });
+                // remove the bar chart div
+                $("#pubTablepubchart").remove();
+            });
+
+
+</script>
   </body>
 </html>
