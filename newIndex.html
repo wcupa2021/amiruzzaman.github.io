@@ -328,14 +328,6 @@
                 // remove the th tag texts
                 $('.sorting_desc').hide();
 
-                // adjust the table width to leave some spaces both side
-                // $('#pubTable').css({
-                //     'width': '96%'
-                // });
-                // $('#pubTable').css({
-                //     'max-width': '920px'
-                // });
-
                 // this is to have the 1 of 10 in the middle of the browser
                 $('#pubTable_info').css({
                     'text-align': 'center'
@@ -343,11 +335,7 @@
 
                 // move the filter close to the publication table
                 $('#pubTable_filter').css({
-                    // 'width': '96%',
-                    // 'margin': '0 auto',
-                    // 'max-width': '920px'
-                    'margin-left': '17vw',
-                    //'margin-top': '2vh'
+                    'margin-left': '17vw'
 
                 });
                 $('#pubTable_filter > input').css({
@@ -358,9 +346,12 @@
                 $('#pubTable > thead').css({
                     'display': 'none'
                 });
-                // $('#pubTable > tbody > tr').css({
-                //     'padding': '1vh 0.5vw'
-                // });
+                $('#pubTable > tbody > tr> td:nth-child(3)').css({
+                    'padding': '2vh 1vw'
+                });
+                $('#pubTable > tbody > tr:last-child').css({
+                    'border-bottom': '1px solid #0000007a'
+                });
                 $('#pubTable > tbody > .odd').css({
                     'background-color': '#b5bfe770'
                 });
