@@ -3,7 +3,7 @@
 		var gradUgradJSON ={grad:[], ugrad:[]};
 		
 			// Parse the CSV file using PapaParse library all the dynamic functions are written inside complete callback method
-			Papa.parse("\teaching/teaching_ugrad_grad.csv", {
+			Papa.parse("teaching/teaching_ugrad_grad.csv", {
 				download: true,
 				header: true,
 				skipEmptyLines: true,
