@@ -274,13 +274,8 @@ url ={https://gvpress.com/journals/IJMUE/vol5_no3/1.pdf}
 
 
 @InProceedings{10.1007/978-3-642-13365-7_5,
-author="Amiruzzaman, Md
-and Abdullah-Al-Wadud, M.
-and Chung, Yoojin",
-editor="Bandyopadhyay, Samir Kumar
-and Adi, Wael
-and Kim, Tai-hoon
-and Xiao, Yang",
+author="Amiruzzaman, Md and Abdullah-Al-Wadud, M. and Chung, Yoojin",
+editor="Bandyopadhyay, Samir Kumar and Adi, Wael and Kim, Tai-hoon and Xiao, Yang",
 title="An Analysis of Syndrome Coding",
 booktitle="Information Security and Assurance",
 year="2010",
@@ -308,16 +303,8 @@ isbn="978-3-642-13365-7"
 
 
 @InProceedings{10.1007/978-3-642-10619-4_22,
-author="Amiruzzaman, Md
-and Peyravi, Hassan
-and Abdullah-Al-Wadud, M.
-and Chung, Yoojin",
-editor="{\'{S}}l{\k{e}}zak, Dominik
-and Kim, Tai-hoon
-and Kiumi, Akingbehin
-and Jiang, Tao
-and Verner, June
-and Abrah{\~a}o, Silvia",
+author="Amiruzzaman, Md and Peyravi, Hassan and Abdullah-Al-Wadud, M. and Chung, Yoojin",
+editor="{\'{S}}l{\k{e}}zak, Dominik and Kim, Tai-hoon and Kiumi, Akingbehin and Jiang, Tao and Verner, June and Abrah{\~a}o, Silvia",
 title="An Improved Steganography Covert Channel",
 booktitle="Advances in Software Engineering",
 year="2009",
@@ -500,7 +487,7 @@ isbn="978-3-642-10619-4"
 
 @article{bhatblockchain,
   title={Blockchain letter of credit: A transaction-level analysis},
-  author={Bhat, asif and Nor, Rizal MOhd and Amiruzzaman, Md},
+  author={Bhat, Asif and Nor, Rizal MOhd and Amiruzzaman, Md},
   journal={Journal of Engineering Science and Technology},
   pages={120--136},
   year={2008},
