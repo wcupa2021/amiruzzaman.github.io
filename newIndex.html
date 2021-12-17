@@ -17,32 +17,35 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="education/csvjson.js" ></script>
+    <script src="https://unpkg.com/papaparse@5.3.1/papaparse.min.js"></script>
     <script type='text/javascript' src='scripts/respond.min.js'></script>
+    <script src="js/teaching.js"></script> 
     <link rel="stylesheet" href="css/newEducation.css">
+    <link rel="stylesheet" href="css/teaching.css">
     <link rel="stylesheet" href="styles/bib-publication-list.css"/>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky">
-        <a class="navbar-brand" href="#">Md Amiruzzaman</a>
+        <a class="navbar-brand" href="../amiruzzaman.github.io/newIndex.html">Md Amiruzzaman</a>
         <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button> -->
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Education</a>
+            <li class="nav-item">
+                <a class="nav-link" href="#pub">Publication</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Publication</a>
+                <a class="nav-link" href="#education">Education</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Teaching</a>
+                <a class="nav-link" href="#teach">Teaching</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Office</a>
+                <a class="nav-link" href="#contact">Office</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Contact</a>
+                <a class="nav-link" href="#contact">Contact</a>
             </li>
             </ul>
         </div>
@@ -107,71 +110,48 @@
               <div class="card card-body" id="education-table"></div>
             </div>
             <div id="teach" class="tab-pane fade">
-              <div class="card card-body ">
-                <div class="row education-header">
-                  <div class="col-md-1">Degree</div>
-                  <div class="col-md-1">Year</div>
-                  <div class="col-md-2">University</div>
-                  <div class="col-md-2">Major</div>
-                  <div class="col-md-4">Title</div>
-                  <div class="col-md-2">Advisor</div>
-                </div>
-                <div class="row">
-                  <div class="col-md-1">Ph.D</div>
-                  <div class="col-md-1">2021</div>
-                  <div class="col-md-2">Kent State University</div>
-                  <div class="col-md-2">Computer Science</div>
-                  <div class="col-md-4">Studying geospatial urban visual appearance and diversity to understand social phenomena</div>
-                  <div class="col-md-2">Ye Zhao</div>
-                </div>
-                <div class="row">
-                  <div class="col-md-1">Ph.D</div>
-                  <div class="col-md-1">2019</div>
-                  <div class="col-md-2">Kent State University</div>
-                  <div class="col-md-2">Evaluation and Measurement</div>
-                  <div class="col-md-4">Assessing the psychometric properties of newly developed behavior and attitude twitter scales: a validity and reliability study</div>
-                  <div class="col-md-2">Tricia Niesz, Karl Kosko</div>
-                </div>
-                <div class="row">
-                  <div class="col-md-1">Ph.D</div>
-                  <div class="col-md-1">2016</div>
-                  <div class="col-md-2">Kent State University</div>
-                  <div class="col-md-2">Mathematics Education</div>
-                  <div class="col-md-4">Exploring preservice teachers' understanding of measures of central tendency</div>
-                  <div class="col-md-2">Karl Kosko, Joanne Caniglia</div>
-                </div>
-                <div class="row">
-                  <div class="col-md-1">Ph.D</div>
-                  <div class="col-md-1">2021</div>
-                  <div class="col-md-2">Kent State University</div>
-                  <div class="col-md-2">Computer Science</div>
-                  <div class="col-md-4">Studying geospatial urban visual appearance and diversity to understand social phenomena</div>
-                  <div class="col-md-2">Ye Zhao</div>
-                </div>
-                <div class="row">
-                  <div class="col-md-1">Ph.D</div>
-                  <div class="col-md-1">2021</div>
-                  <div class="col-md-2">Kent State University</div>
-                  <div class="col-md-2">Computer Science</div>
-                  <div class="col-md-4">Studying geospatial urban visual appearance and diversity to understand social phenomena</div>
-                  <div class="col-md-2">Ye Zhao</div>
-                </div>
-                <div class="row">
-                  <div class="col-md-1">Ph.D</div>
-                  <div class="col-md-1">2021</div>
-                  <div class="col-md-2">Kent State University</div>
-                  <div class="col-md-2">Computer Science</div>
-                  <div class="col-md-4">Studying geospatial urban visual appearance and diversity to understand social phenomena</div>
-                  <div class="col-md-2">Ye Zhao</div>
-                </div>
-                <div class="row">
-                  <div class="col-md-1">Ph.D</div>
-                  <div class="col-md-1">2021</div>
-                  <div class="col-md-2">Kent State University</div>
-                  <div class="col-md-2">Computer Science</div>
-                  <div class="col-md-4">Studying geospatial urban visual appearance and diversity to understand social phenomena</div>
-                  <div class="col-md-2">Ye Zhao</div>
-                </div>
+              <div class="card card-body">
+                <ul class="nav nav-tabs">
+                  <li class="active"><a data-toggle="tab" href="#ugrad">Undergraduate Courses</a></li>
+                  <li><a data-toggle="tab" href="#grad">Graduate Courses</a></li>
+                </ul>
+
+                <div class="tab-content">
+                  <div id="ugrad" class="tab-pane fade in active"> 
+                    <div class="card card-body">
+                      <div class="ugrad-details-1">
+                        <div class="ugrad-table">
+                          <div class="ugrad-header row">
+                              <div class="col-md-2">YEAR</div>
+                              <div class="col-md-2">COURSE #</div>
+                              <div class="col-md-3">NAME</div>
+                              <div class="col-md-3">UNIVERSITY</div>
+                              <div class="col-md-2">TIMES</div>
+                          </div>
+                          <div class="ugrad-details">
+                              <div id="add-ugrad-details"></div>
+                          </div>
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="grad" class="tab-pane fade"> <div class="card card-body">
+                    <div class="grad-details-1">
+                      <div class="grad-table">
+                        <div class="grad-header row">
+                            <div class="col-md-2">YEAR</div>
+                            <div class="col-md-2">COURSE #</div>
+                            <div class="col-md-3">NAME</div>
+                            <div class="col-md-3">UNIVERSITY</div>
+                            <div class="col-md-2">TIMES</div>
+                        </div>
+                        <div class="grad-details">
+                            <div id="add-grad-details"></div>
+                        </div>
+                    </div>
+                    </div>
+                  </div></div>
+                  </div>
               </div>
             </div>
             </div>
@@ -184,18 +164,20 @@
 
     
     <!-- Office hour Starts here -->
-    <div class="meet-me-container row">
+    <div class="meet-me-container row" id="contact"> 
       <div class="col-md-6">
-        <h5>Office Hours</h5>
-        <div>Mon -Wed 8am - 10am</div>
+        <h5>Office Hours (Spring 2022)</h5>
+        <div>Mon -Wed 8am - 10am (Virtual Only)</div>
         <div>Mon -Wed 8am - 10am</div>
         <div>Mon -Wed 8am - 10am</div>
       </div>
       <div class="col-md-6">
         <h5>Contact Details</h5>
         <div>Room # 134</div>
-        <div>25, University Avenue</div>
-        <div>WEST CHESTER UNIVERSITY</div>
+        <div><a href="https://goo.gl/maps/8b7d8D47pK622g21A" target="blank">25, University Avenue </a></div>
+        <div>West Chester University</div>
+        <div> PA, 19383</div>
+        <div>Email : <b>mamiruzzaman [AT] wcupa [DOT] edu</b></div>
       </div>
     </div>
 
@@ -236,9 +218,9 @@
       success: function (data) {
           var jsonobject = csvjson.csv2json(data);
           // Now use jsonobject to do some charting...
-          console.log('Reading from csv');
+          //console.log('Reading from csv');
           var data = jsonobject.rows;
-          console.log(jsonobject);
+          //console.log(jsonobject);
 
 
           //showDegreeInfo(data);

@@ -1,48 +1,47 @@
 .collapsible {
-				background-color: #2b365e;
-				color: white;
-				cursor: pointer;
-				padding: 18px;
-				width: 100%;
-				border: none;
-				text-align: left;
-				outline: none;
-				font-size: 12px;
-				border: 1px solid #FFF;
-				border-radius: 6px;
-			}
+	background-color: #2b365e;
+	color: white;
+	cursor: pointer;
+	padding: 18px;
+	width: 100%;
+	border: none;
+	text-align: left;
+	outline: none;
+	font-size: 12px;
+	border: 1px solid #FFF;
+	border-radius: 6px;
+}
 
-			.active, .collapsible:hover {
-				background-color: #414a6a;
-				border-radius: 6px;
-			}
-
-			.content {
-			  padding: 0 18px;
-			  max-height: 0;
-			  overflow: hidden;
-			  transition: max-height 0.2s ease-out;
-			  background-color: #FFF;
-			  margin-bottom:0.15%;
-			}
-			.collapsible-button {
-				font-size: 12px;
-				text-transform: uppercase;
-				text-align: center;
-			}
-			.ugrad-header > div,.grad-header > div, #add-ugrad-details > div >div, #add-grad-details > div >div{
-				text-transform: uppercase;
-				text-align: center;
-				padding-top: 0.5%;
-				padding-bottom : 0.5%;
-			}
-			.ugrad-header, .grad-header {
-				border: 1px solid #6471a3;
-				background-color: #6471a3;
-				border-radius: 6px;
-				color: #FFF;
-			}
-			#add-ugrad-details > div:nth-of-type(even), #add-grad-details > div:nth-of-type(even) {
-				background-color: #b5bfe770;
-				border-radius: 6px;
-			}
+.content {
+	padding: 0 18px;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.2s ease-out;
+	background-color: #FFF;
+	margin-bottom:0.15%;
+}
+.collapsible-button {
+	font-size: 12px;
+	text-transform: uppercase;
+	text-align: center;
+}
+.ugrad-header > div,.grad-header > div {
+	text-transform: uppercase;
+	text-align: center;
+}
+#add-ugrad-details > .row, #add-grad-details > .row{
+	padding-top: 2vh;
+	padding-bottom : 2vh;
+	text-align: center;
+}
+.ugrad-header, .grad-header {
+	border: 1px solid #6471a3c2;
+	background-color: #6471a3c2;
+	border-radius: 6px;
+	color: #FFF;
+	padding: 2vh 1vh;
+}
+#add-ugrad-details > div:nth-of-type(even), #add-grad-details > div:nth-of-type(even) {
+	background-color: #b5bfe770;
+	border-radius: 6px;
+}

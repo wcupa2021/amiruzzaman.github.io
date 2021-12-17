@@ -58,7 +58,7 @@
     margin-top: 2vh !important;
     padding-left: 1vw !important;
 }
-#pub>.card , #edu>.card, #teach>.row{
+#pub>.card , #edu>.card, #teach>.card, #ugrad>.card, #grad>.card{
    border-top: 0 !important;
 }
 #pub>.card-body > .row {
@@ -85,20 +85,6 @@
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     text-align: center;
-}
-#edu > .card-body > .row:last-of-type {
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    border-bottom: 1px solid gray;
-}
-#edu > .card-body > .row {
-    padding: 1vh 3vw;
-    border: 1px solid gray;
-    border-bottom: none;
-    text-align: center;
-}
-#edu > .card-body > .row:nth-of-type(odd) {
-    background-color: #b5bfe770;
 }
 
 .meet-me-container > div{

@@ -36,7 +36,7 @@
 							$.each(value, function(i, year) {
 								yearArray[i] = year.Year;
 							})
-							yearArray = [...new Set(yearArray)];
+							yearArray = [...new Set(yearArray)].sort();
 							var gradDetail = '<div class="row">'+
 												'<div class="col-md-2">'+yearArray+'</div>'+
 												'<div class="col-md-2">'+value[0].CourseNo+'</div>'+
@@ -61,7 +61,7 @@
 							$.each(value, function(i, year) {
 								yearArray[i] = year.Year;
 							})
-							yearArray = [...new Set(yearArray)];
+							yearArray = [...new Set(yearArray)].sort();
 							var ugradDetail = '<div class="row">'+
 												'<div class="col-md-2">'+yearArray+'</div>'+
 												'<div class="col-md-2">'+value[0].CourseNo+'</div>'+
