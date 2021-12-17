@@ -475,3 +475,45 @@ isbn="978-3-642-10619-4"
   
   
 }
+
+
+@misc{rafia2021clustering,
+  title={Clustering Algorithms to Analyze the Road Traffic Crashes},
+  author={Rafia Islam, Mahnaz and Jahan Jenny, Israt and Nayon, Moniruzzaman and Rajibul Islam, Md and Amiruzzaman, Md and Abdullah-Al-Wadud, M},
+  journal={arXiv e-prints},
+  pages={arXiv--2108},
+  year={2021},
+  url = {https://arxiv.org/abs/2108.03490},
+  publisher = {ArXiv}
+}
+
+
+@misc{bhat2021methodology,
+  title={Methodology and Analysis of Smart Contracts in Blockchain-Based International Trade Application},
+  author={Bhat, Asif and Nor, Rizal Mohd and Amiruzzaman, Md and Islam, Md and others},
+  journal={arXiv preprint arXiv:2107.14140},
+  year={2021},
+  url = {https://arxiv.org/abs/2107.14140},
+  publisher = {ArXiv}
+}
+
+@misc{rafia2021clustering,
+  title={Clustering Algorithms to Analyze the Road Traffic Crashes},
+  author={Rafia Islam, Mahnaz and Jahan Jenny, Israt and Nayon, Moniruzzaman and Rajibul Islam, Md and Amiruzzaman, Md and Abdullah-Al-Wadud, M},
+  journal={arXiv e-prints},
+  pages={arXiv--2108},
+  year={2021},
+  url = {https://arxiv.org/abs/2108.03490},
+  publisher = {ArXiv}
+}
+
+@article{bhatblockchain,
+  title={Blockchain letter of credit: A transaction-level analysis},
+  author={Bhat, asif and Nor, Rizal MOhd and Amiruzzaman, Md},
+  journal={Journal of Engineering Science and Technology},
+  pages={120--136},
+  year={2008},
+  publisher={School of Engineering, Taylor's University},
+  url = {http://jestec.taylors.edu.my/Special%20Issue%20I%20ACSAT%202021.htm},
+  
+}
