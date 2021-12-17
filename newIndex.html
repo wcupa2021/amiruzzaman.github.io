@@ -16,8 +16,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    
+    <script type="text/javascript" src="education/csvjson.js" ></script>
     <script type='text/javascript' src='scripts/respond.min.js'></script>
+    <link rel="stylesheet" href="css/newEducation.css">
     <link rel="stylesheet" href="styles/bib-publication-list.css"/>
   </head>
   <body>
@@ -76,7 +77,7 @@
         <div class="col-md-10">
           <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#pub">Publications</a></li>
-            <li><a data-toggle="tab" href="#edu">Education</a></li>
+            <li><a data-toggle="tab" href="#education">Education</a></li>
             <li><a data-toggle="tab" href="#teach">Teaching</a></li>
           </ul>
         
@@ -102,73 +103,8 @@
                 </script>
               </div>
             </div>
-            <div id="edu" class="tab-pane fade">
-              <div class="card card-body ">
-                <div class="row education-header">
-                  <div class="col-md-1">Degree</div>
-                  <div class="col-md-1">Year</div>
-                  <div class="col-md-2">University</div>
-                  <div class="col-md-2">Major</div>
-                  <div class="col-md-4">Title</div>
-                  <div class="col-md-2">Advisor</div>
-                </div>
-                <div class="row">
-                  <div class="col-md-1">Ph.D</div>
-                  <div class="col-md-1">2021</div>
-                  <div class="col-md-2">Kent State University</div>
-                  <div class="col-md-2">Computer Science</div>
-                  <div class="col-md-4">Studying geospatial urban visual appearance and diversity to understand social phenomena</div>
-                  <div class="col-md-2">Ye Zhao</div>
-                </div>
-                <div class="row">
-                  <div class="col-md-1">Ph.D</div>
-                  <div class="col-md-1">2019</div>
-                  <div class="col-md-2">Kent State University</div>
-                  <div class="col-md-2">Evaluation and Measurement</div>
-                  <div class="col-md-4">Assessing the psychometric properties of newly developed behavior and attitude twitter scales: a validity and reliability study</div>
-                  <div class="col-md-2">Tricia Niesz, Karl Kosko</div>
-                </div>
-                <div class="row">
-                  <div class="col-md-1">Ph.D</div>
-                  <div class="col-md-1">2016</div>
-                  <div class="col-md-2">Kent State University</div>
-                  <div class="col-md-2">Mathematics Education</div>
-                  <div class="col-md-4">Exploring preservice teachers' understanding of measures of central tendency</div>
-                  <div class="col-md-2">Karl Kosko, Joanne Caniglia</div>
-                </div>
-                <div class="row">
-                  <div class="col-md-1">Ph.D</div>
-                  <div class="col-md-1">2021</div>
-                  <div class="col-md-2">Kent State University</div>
-                  <div class="col-md-2">Computer Science</div>
-                  <div class="col-md-4">Studying geospatial urban visual appearance and diversity to understand social phenomena</div>
-                  <div class="col-md-2">Ye Zhao</div>
-                </div>
-                <div class="row">
-                  <div class="col-md-1">Ph.D</div>
-                  <div class="col-md-1">2021</div>
-                  <div class="col-md-2">Kent State University</div>
-                  <div class="col-md-2">Computer Science</div>
-                  <div class="col-md-4">Studying geospatial urban visual appearance and diversity to understand social phenomena</div>
-                  <div class="col-md-2">Ye Zhao</div>
-                </div>
-                <div class="row">
-                  <div class="col-md-1">Ph.D</div>
-                  <div class="col-md-1">2021</div>
-                  <div class="col-md-2">Kent State University</div>
-                  <div class="col-md-2">Computer Science</div>
-                  <div class="col-md-4">Studying geospatial urban visual appearance and diversity to understand social phenomena</div>
-                  <div class="col-md-2">Ye Zhao</div>
-                </div>
-                <div class="row">
-                  <div class="col-md-1">Ph.D</div>
-                  <div class="col-md-1">2021</div>
-                  <div class="col-md-2">Kent State University</div>
-                  <div class="col-md-2">Computer Science</div>
-                  <div class="col-md-4">Studying geospatial urban visual appearance and diversity to understand social phenomena</div>
-                  <div class="col-md-2">Ye Zhao</div>
-                </div>
-              </div>
+            <div id="education" class="tab-pane fade">
+              <div class="card card-body" id="education-table"></div>
             </div>
             <div id="teach" class="tab-pane fade">
               <div class="card card-body ">
@@ -296,73 +232,124 @@
 <script type="text/javascript" src="build/bib-list.js"></script>
 <script>
   // https://stackoverflow.com/questions/3603242/convert-csv-file-to-json-object-datatable/6991791
-              $.ajax("education/degree.csv", {
-                  success: function (data) {
-                      var jsonobject = csvjson.csv2json(data);
-                      // Now use jsonobject to do some charting...
-                      console.log('Reading from csv');
-                      var data = jsonobject.rows;
-                      console.log(jsonobject);
-  
-  
-                      showDegreeInfo(data);
-  
-                  },
-                  error: function () {
-                      // Show some error message, couldn't get the CSV file
-                      console.log("Canot not read the file");
-                  }
-              });
-  
-  
-          </script>
-<script type="text/javascript">
-  $(document).ready(function () {
-                //bibtexify("#bibtex", "pubTable", {'tweet': 'vkaravir'});
-                bibtexify("#bibtex", "pubTable");
+  $.ajax("education/degree.csv", {
+      success: function (data) {
+          var jsonobject = csvjson.csv2json(data);
+          // Now use jsonobject to do some charting...
+          console.log('Reading from csv');
+          var data = jsonobject.rows;
+          console.log(jsonobject);
 
-                // hide the year
-                $('.sorting_1').hide();
-                // hide the type
-                $('.sorting_2').hide();
-                // remove the th tag texts
-                $('.sorting_desc').hide();
 
-                // this is to have the 1 of 10 in the middle of the browser
-                $('#pubTable_info').css({
-                    'text-align': 'center'
-                });
+          //showDegreeInfo(data);
 
-                // move the filter close to the publication table
-                $('#pubTable_filter').css({
-                    'margin-left': '17vw'
+          var degreeinfo = data;
+      var result = $('<div/>', {
+          'id': 'results',
+          'class': 'table'
+      });
 
-                });
-                $('#pubTable_filter > input').css({
-                    'border': '1px solid #0000007a',
-                    'padding': '1vh 1vw',
-                    'width': '55%'
-                });
-                $('#pubTable > thead').css({
-                    'display': 'none'
-                });
-                $('#pubTable > tbody > tr> td:nth-child(3)').css({
-                    'padding': '2vh 1vw'
-                });
-                $('#pubTable > tbody > tr:last-child').css({
-                    'border-bottom': '1px solid #0000007a'
-                });
-                $('#pubTable > tbody > .odd').css({
-                    'background-color': '#b5bfe770'
-                });
-                $('#pubTable > tbody > .even').css({
-                    'background-color': '#FFF'
-                });
-                // remove the bar chart div
-                $("#pubTablepubchart").remove();
+      var headers = $('<div/>', {
+          'class': 'theader'
+      });
+
+      Object.keys(degreeinfo[0]).forEach(function (key) {
+          //console.log(key);
+          var table_header = $('<div/>', {
+              'class': 'table_header'
+          }).html(key);
+
+          //console.log(table_header);
+          headers.append(table_header);
+      })
+
+
+      result.append(headers);
+
+
+
+
+      for (let i = 0; i < degreeinfo.length; i++) {
+        var table_row = $('<div/>', {
+            'class': 'table_row'
+        });
+
+        Object.keys(degreeinfo[i]).forEach(function (key) {
+            var table_small = $('<div/>', {
+                'class': 'table_small'
             });
 
+            var table_cell1 = $('<div/>', {
+                'class': 'table_cell'
+            }).html(key)
 
+            var table_cell2 = $('<div/>', {
+                'class': 'table_cell'
+            }).html(degreeinfo[i][key]);
+
+            table_small.append(table_cell1).append(table_cell2);
+
+            table_row.append(table_small);
+        });
+        result.append(table_row);
+      }
+      //$('body').append(result);
+      $('#education-table').append(result);
+
+      },
+      error: function () {
+          // Show some error message, couldn't get the CSV file
+          console.log("Canot not read the file");
+      }
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    //bibtexify("#bibtex", "pubTable", {'tweet': 'vkaravir'});
+    bibtexify("#bibtex", "pubTable");
+
+    // hide the year
+    $('.sorting_1').hide();
+    // hide the type
+    $('.sorting_2').hide();
+    // remove the th tag texts
+    $('.sorting_desc').hide();
+
+    // this is to have the 1 of 10 in the middle of the browser
+    $('#pubTable_info').css({
+        'text-align': 'center'
+    });
+
+    // move the filter close to the publication table
+    $('#pubTable_filter').css({
+        'margin-left': '17vw'
+
+    });
+    $('#pubTable_filter > input').css({
+        'border': '1px solid #0000007a',
+        'padding': '1vh 1vw',
+        'width': '55%'
+    });
+    $('#pubTable > thead').css({
+        'display': 'none'
+    });
+    $('#pubTable > tbody > tr> td:nth-child(3)').css({
+        'padding': '2vh 1vw'
+    });
+    $('#pubTable > tbody > tr:last-child').css({
+        'border-bottom': '1px solid #0000007a'
+    });
+    $('#pubTable > tbody > .odd').css({
+        'background-color': '#b5bfe770'
+    });
+    $('#pubTable > tbody > .even').css({
+        'background-color': '#FFF'
+    });
+    // remove the bar chart div
+    $("#pubTablepubchart").remove();
+ 
+});
 </script>
   </body>
 </html>
