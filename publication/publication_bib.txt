@@ -10,7 +10,8 @@
   title={Classifying crime places by neighborhood visual appearance and police geonarratives: a machine learning approach},
   author={Amiruzzaman, Md and Curtis, Andrew and Zhao, Ye and Jamonnak, Suphanut and Ye, Xinyue},
   journal={Journal of computational social science},
-  pages={1--25},
+  volume    = {4},
+  pages={813–-837},
   year={2021},
   doi = {https://doi.org/10.1007/s42001-021-00107-x},
   url = {https://link.springer.com/article/10.1007/s42001-021-00107-x},
@@ -171,7 +172,7 @@ publisher ={MDPI}
     publisher="Wiley"
 }
 
-@inproceedings {10.2312:eurova.20201091,
+@inproceedings{wu2020interactive,
 booktitle = {EuroVis Workshop on Visual Analytics (EuroVA)},
 editor = {Turkay, Cagatay and Vrotsou, Katerina},
 title = {{Interactive Visualization of AI-based Speech Recognition Texts}},
@@ -415,14 +416,14 @@ isbn="978-3-642-10619-4"
 
 
 @article{wadud2008bottom,
-  title={A BOTTOM-UP MERGESORT ELIMINATING RECURSION},
+  title={A bottom-up mergesort eliminating recursion},
   author={Wadud, M and Amiruzzaman, Md and Chae, Oksam},
   year={2008},
   publisher={Daffodil International University}
 }
 
 @article{amiruzzaman2008embedded,
-  title={AN EMBEDDED NETWORK-ENGINE},
+  title={An embedded network-engine},
   author={Amiruzzaman, Md},
   year={2008},
   publisher={Daffodil International University}
@@ -494,4 +495,25 @@ isbn="978-3-642-10619-4"
   publisher={School of Engineering, Taylor's University},
   url = {http://jestec.taylors.edu.my/Special%20Issue%20I%20ACSAT%202021.htm},
   
+}
+
+
+@incollection{kosko2018grow,
+  title={Growing in number: Research on mathematical teaching and learning in the online setting},
+  author={Kosko, Karl W and Sobolewski-McMahon, Lauren and Amiruzzaman, Md},
+  booktitle={Handbook of research on K-12 online and blended learning},
+  pages={289--302},
+  year={2018},
+  publisher={Pittsburgh, PA: ETC Press},
+  editor = {Kennedy and Ferdig}
+}
+
+@incollection{kosko2014few,
+  title={Few in number: Research on mathematical teaching and learning in the online setting},
+  author={Kosko, Karl W and Sobolewski-McMahon, Lauren and Amiruzzaman, Md},
+  booktitle={Handbook of research on K-12 online and blended learning},
+  pages={163--177},
+  year={2014},
+  publisher={Pittsburgh, PA: ETC Press},
+  editor = {Ferdig and Kennedy}
 }
