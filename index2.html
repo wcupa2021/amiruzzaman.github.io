@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title> Amir | Md Amiruzzaman</title>
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+        <link href="styles/main.css" type="text/css" rel="stylesheet">
+        <!--[if lt IE 9]>
+        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type='text/javascript' src='scripts/respond.min.js'></script>
+        <link rel="stylesheet" href="styles/bib-publication-list.css"/>
+
+
+        <script src="https://unpkg.com/papaparse@5.3.1/papaparse.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/teaching.css">
+        <link rel="stylesheet" href="css/education.css">
+        <script type="text/javascript" src="education/csvjson.js" ></script>
+        <script src="js/teaching.js"></script> 
+
+
+        <style>
+            /*            .container1 {
+                            width:100%;
+                            border:1px solid #d3d3d3;
+                            border:solid #d3d3d3;
+                        }
+                        .container1 div {
+                            width:100%;
+                        }
+                        .container1 .header {
+                            background-color:#d3d3d3;
+                            padding: 2px;
+                            cursor: pointer;
+                            font-weight: bold;
+                        }
+                        .container1 .content {
+                            display: none;
+                                            padding : 5px;
+                        }*/
+            img {max-width:150px; height:auto}
+        </style>
+
+
+
+        <script>
+            
+        </script>
+        <style>
+
+        </style>
+
+
+    </head>
+    <body>
+        <a name="top"></a>
+        <a name="home"></a>
+        <div id="wrapper">
+
+            <header>
+
+                <nav id="skipTo" class="HideH1">
+                    <ul>
+                        <li>
+                            <a href="#home" title="Welcome to Amir">Welcome to Amir's Home Page</a>			
+                        </li>
+                    </ul>
+                </nav>
+
+                <h1>Md Amiruzzaman</h1>
+
+                <nav>
+                    <ul>
+                        <li><a href="#education" title="Education">Education</a></li>
+                        <li><a href="#publications" title="Publication">Publication</a></li>
+                        <li><a href="#teaching" title="teaching">Teaching</a></li>
+                        <li><a href="#" title="Other">Other</a></li>
+                    </ul>
+                </nav>
+
+                <div id="banner">
+                    <p style="float: left;padding: 0px 5px 0px 0px;"><img src="images/amiruzzaman.jpg" alt="banner" /></p>
+                    <p style="padding-top: 2px;padding-left: 5px;padding-bottom: 2px;">Dr. Md Amiruzzaman is an assistant professor at West Chester University. Prior to coming to West Chester University, he worked as a computer programmer for almost 10 years for several companies (both nationally and internationally), also he was an assistant professor at Kent State University. Dr. Amiruzzaman completed his Bachelor’s degree in Computer Science from National University, and has completed three Master’s degree in Computer Engineering, Computer Science, and Technology. He worked as a research assistant at both Sejong University and Korea University and taught at both National University and Korea University. His research interests include visual analytics of urban data, data mining, deep learning, and data hiding. He received his Ph.D. degrees from Kent State University in 2016, 2019, and in 2021 respectively.</p>
+                </div>
+
+            </header>	
+
+
+            <!--BEGIN education-->
+            <div id="education">
+                <h1>Education</h1>
+
+            </div> 
+            <!--END education-->
+            <!--BEGIN publication-->
+            <div id="publications">
+                <h1>List of publications</h1>
+                <noscript>
+                <!-- bibtex source hidden by default, show it if JS disabled -->
+                <style>
+                    #bibtex { display: block;}
+                </style>
+                </noscript>
+                <table id="pubTable" class="display"></table>
+                <script type="text/javascript">
+                    //https://stackoverflow.com/questions/23175287/how-to-include-a-file-and-wrap-its-contents-in-a-pre-tag
+                    document.write('<pre id="bibtex" style="display:none;">');
+                    var ajaxRq = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Msxml2.XMLHTTP");
+                    ajaxRq.open("GET", "publication/publication_bib.txt", false);
+                    ajaxRq.send(null);
+                    document.write(ajaxRq.responseText);
+                    document.write('</pre>');
+                </script>
+
+
+            </div> <!--END publication-->
+            <a href="#top">Back to top of page</a>
+
+            <!--BEGIN Teaching section-->
+            <div id="teaching">
+                <h1>Teaching</h1>
+                <button type="button" class="collapsible collapsible-button">Undergraduate</button>
+                <div class="content">
+                    <div class="ugrad-table">
+                        <div class="ugrad-header row">
+                            <div class="col-md-2">YEAR</div>
+                            <div class="col-md-2">COURSE #</div>
+                            <div class="col-md-3">NAME</div>
+                            <div class="col-md-3">UNIVERSITY</div>
+                            <div class="col-md-2">TIMES</div>
+                        </div>
+                        <div class="ugrad-details">
+                            <div id="add-ugrad-details"></div>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="collapsible collapsible-button">Graduate</button>
+                <div class="content">
+                    <div class="grad-table">
+                        <div class="grad-header row">
+                            <div class="col-md-2">YEAR</div>
+                            <div class="col-md-2">COURSE #</div>
+                            <div class="col-md-3">NAME</div>
+                            <div class="col-md-3">UNIVERSITY</div>
+                            <div class="col-md-2">TIMES</div>
+                        </div>
+                        <div class="grad-details">
+                            <div id="add-grad-details"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--END Teaching section-->
+            <script>
+                var coll = document.getElementsByClassName("collapsible");
+                var i;
+
+                for (i = 0; i < coll.length; i++) {
+                    coll[i].addEventListener("click", function () {
+                        this.classList.toggle("active");
+                        var content = this.nextElementSibling;
+                        if (content.style.maxHeight) {
+                            content.style.maxHeight = null;
+                        } else {
+                            content.style.maxHeight = content.scrollHeight + "px";
+                        }
+                    });
+                }
+            </script>
+
+        </div>
+        <script>
+
+        </script>
+
+        <script>
+// https://stackoverflow.com/questions/3603242/convert-csv-file-to-json-object-datatable/6991791
+            $.ajax("education/degree.csv", {
+                success: function (data) {
+                    var jsonobject = csvjson.csv2json(data);
+                    // Now use jsonobject to do some charting...
+                    console.log('Reading from csv');
+                    var data = jsonobject.rows;
+                    console.log(jsonobject);
+
+
+                    showDegreeInfo(data);
+
+                },
+                error: function () {
+                    // Show some error message, couldn't get the CSV file
+                    console.log("Canot not read the file");
+                }
+            });
+
+
+        </script>
+
+        <script type="text/javascript" src="build/bib-list.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                //bibtexify("#bibtex", "pubTable", {'tweet': 'vkaravir'});
+                bibtexify("#bibtex", "pubTable");
+
+                // hide the year
+                $('.sorting_1').hide();
+                // hide the type
+                $('.sorting_2').hide();
+                // remove the th tag texts
+                $('.sorting_desc').hide();
+
+                // adjust the table width to leave some spaces both side
+                $('#pubTable').css({
+                    'width': '96%'
+                });
+                $('#pubTable').css({
+                    'max-width': '920px'
+                });
+
+                // this is to have the 1 of 10 in the middle of the browser
+                $('#pubTable_info').css({
+                    'text-align': 'center'
+                });
+
+                // move the filter close to the publication table
+                $('#pubTable_filter').css({
+                    'width': '96%',
+                    'margin': '0 auto',
+                    'max-width': '920px'
+                });
+                // remove the bar chart div
+                $("#pubTablepubchart").remove();
+            });
+
+
+            function showDegreeInfo(data)
+            {
+                var degreeinfo = data;
+                var result = $('<div/>', {
+                    'id': 'results',
+                    'class': 'table'
+                });
+
+                var headers = $('<div/>', {
+                    'class': 'theader'
+                });
+
+                Object.keys(degreeinfo[0]).forEach(function (key) {
+                    //console.log(key);
+                    var table_header = $('<div/>', {
+                        'class': 'table_header'
+                    }).html(key);
+
+                    //console.log(table_header);
+                    headers.append(table_header);
+                })
+
+
+                result.append(headers);
+
+
+
+
+                for (let i = 0; i < degreeinfo.length; i++)
+                {
+                    var table_row = $('<div/>', {
+                        'class': 'table_row'
+                    });
+
+                    Object.keys(degreeinfo[i]).forEach(function (key) {
+                        var table_small = $('<div/>', {
+                            'class': 'table_small'
+                        });
+
+                        var table_cell1 = $('<div/>', {
+                            'class': 'table_cell'
+                        }).html(key)
+
+                        var table_cell2 = $('<div/>', {
+                            'class': 'table_cell'
+                        }).html(degreeinfo[i][key]);
+
+                        table_small.append(table_cell1).append(table_cell2);
+
+                        table_row.append(table_small);
+                    });
+                    result.append(table_row);
+                }
+
+
+                //$('body').append(result);
+                $('#education').append(result);
+            }
+
+        </script>
+
+    </body>
+</html>
