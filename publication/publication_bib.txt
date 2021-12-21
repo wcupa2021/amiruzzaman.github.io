@@ -465,15 +465,26 @@ isbn="978-3-642-10619-4"
 }
 
 
-@misc{rafia2021clustering,
-  title={Clustering Algorithms to Analyze the Road Traffic Crashes},
-  author={Rafia Islam, Mahnaz and Jahan Jenny, Israt and Nayon, Moniruzzaman and Rajibul Islam, Md and Amiruzzaman, Md and Abdullah-Al-Wadud, M},
-  journal={arXiv e-prints},
-  pages={arXiv--2108},
+
+@INPROCEEDINGS{9642542,
+  author={Islam, Mahnaz Rafia and Jenny, Israt Jahan and Nayon, Moniruzzaman and Islam, Md. Rajibul and Amiruzzaman, Md and Abdullah-Al-Wadud, M.},
+  booktitle={2021 International Conference on Science   Contemporary Technologies (ICSCT)}, 
+  title={Clustering Algorithms to Analyze the Road Traffic Crashes}, 
   year={2021},
-  url = {https://arxiv.org/abs/2108.03490},
-  publisher = {ArXiv}
+  volume={},
+  number={},
+  pages={1--6},
+  abstract={Selecting an appropriate clustering method as well as an optimal number of clusters in road accident data is at times confusing and difficult. This paper analyzes shortcomings of different existing techniques applied to cluster accident-prone areas and recommends using Density-Based Spatial Clustering of Applications with Noise (DBSCAN) and Ordering Points To Identify the Clustering Structure (OPTICS) to overcome them. Comparative performance analysis based on real-life data on the recorded cases of road accidents in North Carolina also show more effectiveness and efficiency achieved by these algorithms.},
+  keywords={},
+  doi={10.1109/ICSCT53883.2021.9642542},
+  url = {https://ieeexplore.ieee.org/document/9642542},
+  publisher={IEEE},
+  ISSN={},
+  month={Aug},
 }
+
+
+
 
 
 @misc{bhat2021methodology,
