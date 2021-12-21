@@ -41,7 +41,7 @@
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#teach">Teaching</a>
                     </li>
-                     <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#interest">Research</a>
                     </li>
                     <li class="nav-item">
@@ -225,6 +225,21 @@
         </script>
 
         <script>
+            // https://stackoverflow.com/questions/24482814/json-object-array-inside-array-find-and-replace-in-javascript
+            function findAndReplace(object, value, replacevalue) {
+                for (var x in object) {
+                    if (object.hasOwnProperty(x)) {
+                        if (typeof object[x] == 'object') {
+                            findAndReplace(object[x], value, replacevalue);
+                        }
+                        if (object[x] == value) {
+                            object["name"] = replacevalue;
+                            // break; // uncomment to stop after first replacement
+                        }
+                    }
+                }
+            }
+
             // https://stackoverflow.com/questions/3603242/convert-csv-file-to-json-object-datatable/6991791
             function generateDivTable(filePath, divId, textAlign)
             {
@@ -235,11 +250,23 @@
                         //console.log('Reading from csv');
                         var data = jsonobject.rows;
                         //console.log(jsonobject);
+                        //findAndReplace(jsonobject.rows, 0, '--')
 
-
+                        console.log(data);
                         //showDegreeInfo(data);
 
                         var degreeinfo = data;
+                        for (let i = 0; i < degreeinfo.length; i++) {
+                            Object.keys(degreeinfo[i]).forEach(function (key) {
+                                //console.log(key);
+                                if (degreeinfo[i][key] == 0)
+                                {
+                                    //console.log(key);
+                                    //console.log(degreeinfo[i][key]);
+                                    degreeinfo[i][key]='--';
+                                }
+                            });
+                        }
                         var result = $('<div/>', {
                             'id': 'results',
                             'class': 'table'
@@ -254,7 +281,7 @@
                             var table_header = $('<div/>', {
                                 'class': 'table_header'
                             }).html(key).css('text-align', textAlign);
-                            ;
+
 
                             //console.log(table_header);
                             headers.append(table_header);
@@ -272,6 +299,7 @@
                             });
 
                             Object.keys(degreeinfo[i]).forEach(function (key) {
+                                //console.log(key);
                                 var table_small = $('<div/>', {
                                     'class': 'table_small'
                                 });
@@ -283,7 +311,7 @@
                                 var table_cell2 = $('<div/>', {
                                     'class': 'table_cell'
                                 }).html(degreeinfo[i][key]).css('text-align', textAlign);
-                                ;
+
 
                                 table_small.append(table_cell1).append(table_cell2);
 
