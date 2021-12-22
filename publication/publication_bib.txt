@@ -28,12 +28,13 @@
     publisher={Springer Singapore},
     address="Singapore",
     pages="143--154",
+	doi ="10.1007/978-981-16-0586-4_12",
     abstract="In this study, we present both data mining and information visualization techniques to identify accident-prone areas, most accident-prone time, day, and month. Also, we surveyed among volunteers to understand which visualization techniques help non-expert users to understand the findings better. Findings of this study suggest that most accidents occur in the dusk (i.e., between 6 and 7 pm), and on Fridays. Results also suggest that most accidents occurred in October, which is a popular month for tourism. These findings are consistent with social information and can help policymakers, residents, tourists, and other law enforcement agencies. This study can be extended to draw broader implications.",
     isbn="978-981-16-0586-4"
 }
 
 @misc{DBLP:journals/corr/abs-2106-04575,
-  author    = {Hassnain ul hassan and Rizal Mohd Nor and Md Amiruzzaman and Sharyar Wani},
+  author    = {Hassnain ul hassan and Rizal Mohd Nor and Md Amiruzzaman and Sharyar Wani and Md. Rajibul Islam},
   title     = {{DNS} attack mitigation Using OpenStack Isolation},
   journal   = {CoRR},
   volume    = {abs/2106.04575},
@@ -213,7 +214,8 @@ url = {http://rave.ohiolink.edu/etdc/view?acc_num=kent1618904789316283},
     address="Cham",
     pages="283--297",
     abstract="This paper presents the prediction of traffic-violations using data mining techniques, more specifically, when most likely a traffic-violation may happen. Also, the contributing factors that may cause more damages (e.g., personal injury, property damage, etc.) are discussed in this paper. The national database for traffic-violation was considered for the mining and analyzed results indicated that a few specific times are probable for traffic-violations. Moreover, most accidents happened on specific days and times. The findings of this work could help prevent some traffic-violations or reduce the chance of occurrence. These results can be used to increase cautions and traffic-safety tips.",
-    isbn="978-3-030-02686-8"
+    isbn="978-3-030-02686-8",
+	doi = "10.1007/978-3-030-02686-8_23"
 }
 
 @mastersthesis{amiruzzaman2011steganographic,
@@ -222,6 +224,22 @@ url = {http://rave.ohiolink.edu/etdc/view?acc_num=kent1618904789316283},
   year={2011},
   school={Kent State University},
   url = {http://rave.ohiolink.edu/etdc/view?acc_num=kent1310505218}
+}
+
+@thesis{amiruzzaman2005fingerprintnational,
+  title={Fingerprint authentication system using neural networks},
+  author={Amiruzzaman, Md},
+  year={2005},
+  school={National University},
+  url = {}
+}
+
+@mastersthesis{amiruzzaman2008embeddedsejong,
+  title={The design and implementation of the embedded network-engine for Video on Demand (VoD)},
+  author={Amiruzzaman, Md},
+  year={2008},
+  school={Sejong University},
+  url = {}
 }
 
 @InProceedings{10.1007/978-3-642-17578-7_16,
@@ -239,7 +257,8 @@ publisher="Springer Berlin Heidelberg",
 address="Berlin, Heidelberg",
 pages="151--163",
 abstract="In this paper a new steganographic method is presented with minimum distortion, and better resistance against steganalysis. There are two ways to control detectability of stego message: one is less distortion, and another is less modification. Concerning the less distortion, this paper focuses on DCT rounding error, and optimizes the rounding error in a very easy way, resulting stego image has less distortion than other existing methods. The proposed method compared with other existing popular steganographic algorithms, and the proposed method achieved better performance. This paper considered the DCT rounding error for lower distortion with possibly higher embedding capacity.",
-isbn="978-3-642-17578-7"
+isbn="978-3-642-17578-7",
+doi = "10.1007/978-3-642-17578-7_16"
 }
 
 
@@ -284,7 +303,8 @@ publisher="Springer Berlin Heidelberg",
 address="Berlin, Heidelberg",
 pages="37--50",
 abstract="In this paper a detail analysis is presented based on BCH syndrome coding for covert channel data hiding methods. The experimented technique is nothing but a syndrome coding algorithm with a coset based approach, analyzed results are showing that the examined method has more flexibility to choose coset, also providing less modification distortion caused by data hiding. Analyzed method presented by clear mathematical way. As it is mathematical equation dependent, hence analyzed results are showing that the analyzed method has fast computation ability and find perfect roots for modification.",
-isbn="978-3-642-13365-7"
+isbn="978-3-642-13365-7",
+doi = "10.1007/978-3-642-13365-7_5"
 }
 
 
@@ -299,7 +319,8 @@ isbn="978-3-642-13365-7"
     address="Berlin, Heidelberg",
     pages={203--213},
     abstract={This paper introduces a new steganographic technique in which a set of concurrent hidden channels are established between a sender and multiple receivers. Each channel is protected by a separate key. The method can work with JPEG blocks in which an 8{\texttimes}8 block is divided into four non-overlapping sets, each consisting a covert channel that hides a single bit of information. A receiver can decode its independent hidden data using its dedicated key. The distortion of the covert channel data is controlled by minimizing the round-off error of the JPEG image. The method tries to keep the coefficients of the original histogram intact while carrying hidden bits. The method is immune against first order statistical detection.},
-    isbn={978-3-642-13577-4}
+    isbn={978-3-642-13577-4},
+	doi = "10.1007/978-3-642-13577-4_18"
 }
 
 
@@ -313,13 +334,21 @@ publisher="Springer Berlin Heidelberg",
 address="Berlin, Heidelberg",
 pages="176--187",
 abstract="An improved steganographic method is proposed in this paper. Two distinct methods are combined to achieve possibly high data hiding capability with high visual quality. The proposed method shifts the last n nonzero AC coefficients from S JPEG block, and changes the magnitude values of the first n nonzero AC coefficients from T JPEG blocks. S and T blocks are determined by the number of nonzero JPEG coefficients in the block. Zero run-length modification method improves the robustness against statistical attack based on magnitude histogram. Magnitude modification method improves the visual quality. This combination complements each other.",
-isbn="978-3-642-10619-4"
+isbn="978-3-642-10619-4",
+doi = "10.1007/978-3-642-10619-4_22"
 }
 
 
 
 
-
+@inproceedings{kim2008improved,
+  title={An Improved Steganographic Method.},
+  author={Kim, Hyoung-Joong and Amiruzzaman, Md},
+  booktitle={SIGMAP},
+  pages={145--150},
+  year={2008},
+  doi = {10.5220/0001938901450150}
+}
 
 
 

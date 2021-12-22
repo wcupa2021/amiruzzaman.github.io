@@ -4268,6 +4268,51 @@ BibTex.prototype = {
         })
     }
 })(jQuery);
+
+// https://dmitripavlutin.com/replace-all-string-occurrences-javascript/
+function replaceAll(string, search, replace) {
+    return string.split(search).join(replace);
+}
+
+
+function getAuthors(authors)
+{
+    //authors = replaceAll(authors, "Md Amiruzzaman", "<b>Md Amiruzzaman</b>");
+    for (let i = 0; i < authors.length; i++) {
+        authors[i].last = replaceAll(authors[i].last, "Md Amiruzzaman", "<b>Md Amiruzzaman</b>");
+        //console.log(authors[i].last); 
+        if (authors[i].first == "Md" && authors[i].last == "Amiruzzaman")
+        {
+            authors[i].first = replaceAll(authors[i].first, "Md", "<b>Md</b>");
+            authors[i].last = replaceAll(authors[i].last, "Amiruzzaman", "<b>Amiruzzaman</b>");
+            //console.log(authors[i]);
+        }
+
+        if (authors[i].first == "M" && authors[i].last == "Amiruzzaman")
+        {
+            authors[i].first = replaceAll(authors[i].first, "M", "<b>M</b>");
+            authors[i].last = replaceAll(authors[i].last, "Amiruzzaman", "<b>Amiruzzaman</b>");
+            //console.log(authors[i]);
+        }
+
+        if (authors[i].first == "M." && authors[i].last == "Amiruzzaman")
+        {
+            authors[i].first = replaceAll(authors[i].first, "M.", "<b>M.</b>");
+            authors[i].last = replaceAll(authors[i].last, "Amiruzzaman", "<b>Amiruzzaman</b>");
+            //console.log(authors[i]);
+        }
+
+        if (authors[i].last == "Md" && authors[i].first == "Amiruzzaman")
+        {
+            authors[i].last = replaceAll(authors[i].last, "Md", "<b>Md</b>");
+            authors[i].first = replaceAll(authors[i].first, "Amiruzzaman", "<b>Amiruzzaman</b>");
+            //console.log(authors[i]);
+        }
+
+        //console.log(authors[i]);
+    }
+    return authors;
+}
 var bibtexify = (function ($) {
     // helper function to "compile" LaTeX special characters to HTML
     var htmlify = function (str) {
@@ -4418,12 +4463,14 @@ var bibtexify = (function ($) {
         },
         // helper functions for formatting different types of bibtex entries
         inproceedings: function (entryData) {
+            var authors = getAuthors(entryData.author);
 
-            return this.authors2html(entryData.author) + " (" + entryData.year + "). " +
+            return this.authors2html(authors) + " (" + entryData.year + "). " +
                     entryData.title + ". In <em>" + entryData.booktitle +
                     ", pp. " + entryData.pages +
                     ((entryData.address) ? ", " + entryData.address : "") +
                     ((entryData.publisher) ? ". " + entryData.publisher : "") +
+                    ((entryData.doi) ? ". <a href=\"https://doi.org/" + entryData.doi +"\">[doi]</a>": "") +
                     ".<em style='color:black;font-weight: bold;'> [Conference]</em><\/em>";
 
             /*
@@ -4434,41 +4481,54 @@ var bibtexify = (function ($) {
              */
         },
         incollection: function (entryData) {
-            return this.authors2html(entryData.author) + " (" + entryData.year + "). " +
+            var authors = getAuthors(entryData.author);
+            return this.authors2html(authors) + " (" + entryData.year + "). " +
                     entryData.title + ". In <em>" +
                     ((entryData.editor) ? "" + this.authors2html(entryData.editor) + ", editor, " : "") +
                     "<em>" + entryData.booktitle +
                     ", pp. " + entryData.pages +
-                    ((entryData.address) ? ", " + entryData.address : "") + 
-					".<em style='color:brown;font-weight: bold;'> [Book chapter]</em><\/em>";
+                    ((entryData.address) ? ", " + entryData.address : "") +
+                    ".<em style='color:brown;font-weight: bold;'> [Book chapter]</em><\/em>";
         },
         article: function (entryData) {
-            return this.authors2html(entryData.author) + " (" + entryData.year + "). " +
+            var authors = getAuthors(entryData.author);
+            return this.authors2html(authors) + " (" + entryData.year + "). " +
                     entryData.title + ". <em>" + entryData.journal + ", " + entryData.volume +
                     ((entryData.number) ? "(" + entryData.number + ")" : "") + ", " +
                     "pp. " + entryData.pages + ". " +
                     ((entryData.address) ? entryData.address + "." : "") +
                     ((entryData.publisher) ? " " + entryData.publisher : "") +
+                    ((entryData.doi) ? ". <a href=\"https://doi.org/" + entryData.doi +"\">[doi]</a>": "") +
                     ".<em style='color:blue;font-weight: bold;'> [Journal]</em><\/em>";
         },
         misc: function (entryData) {
-            return this.authors2html(entryData.author) + " (" + entryData.year + "). " +
+            var authors = getAuthors(entryData.author);
+            return this.authors2html(authors) + " (" + entryData.year + "). " +
                     entryData.title + ". " +
                     ((entryData.howpublished) ? entryData.howpublished + ". " : "") +
                     ((entryData.publisher) ? ". " + entryData.publisher : "") +
                     ((entryData.note) ? entryData.note + "." : " [Misc/Preprint]");
         },
         phdthesis: function (entryData) {
-            return this.authors2html(entryData.author) + " (" + entryData.year + "). " +
+            var authors = getAuthors(entryData.author);
+            return this.authors2html(authors) + " (" + entryData.year + "). " +
                     entryData.title + ". " + entryData.type + ". " +
                     entryData.organization + ", " + entryData.school + ".<em style='background-color: coral;font-weight: bold;'>  [Ph.D. dissertation]</em>";
         },
-		mastersthesis: function (entryData) {
-            return this.authors2html(entryData.author) + " (" + entryData.year + "). " +
+        mastersthesis: function (entryData) {
+            var authors = getAuthors(entryData.author);
+            return this.authors2html(authors) + " (" + entryData.year + "). " +
                     entryData.title + ". " + entryData.type + ". " +
                     entryData.organization + ", " + entryData.school + ".<em style='background-color: yellow;font-weight: bold;'>  [MS thesis]</em>";
         },
-		
+        
+        thesis: function (entryData) {
+            var authors = getAuthors(entryData.author);
+            return this.authors2html(authors) + " (" + entryData.year + "). " +
+                    entryData.title + ". " + entryData.type + ". " +
+                    entryData.organization + ", " + entryData.school + ".<em style='background-color: LightSkyBlue;font-weight: bold;'>  [Bachelor's thesis]</em>";
+        },
+
         techreport: function (entryData) {
             return this.authors2html(entryData.author) + " (" + entryData.year + "). " +
                     entryData.title + ". " + entryData.institution + ". " +
@@ -4508,7 +4568,7 @@ var bibtexify = (function ($) {
             'manual': 10,
             'techreport': 20,
             'mastersthesis': 30,
-			'phdthesis': 35,
+            'phdthesis': 35,
             'inproceedings': 40,
             'incollection': 50,
             'proceedings': 60,
@@ -4529,16 +4589,18 @@ var bibtexify = (function ($) {
             'incollection': 'In Collection',
             'inproceedings': 'Conference',
             'manual': 'Manual',
-            'mastersthesis': 'Thesis',
-			'misc': 'Misc',
+            'mastersthesis': 'MS Thesis',
+            'thesis': 'BS Thesis',
+            'misc': 'Misc',
             'phdthesis': 'PhD Thesis',
             'proceedings': 'Conference proceeding',
             'techreport': 'Technical report',
             'unpublished': 'Unpublished'}
     };
     // format a phd thesis similarly to masters thesis
+    bib2html.thesis = bib2html.thesis;
     bib2html.mastersthesis = bib2html.mastersthesis;
-	bib2html.phdthesis = bib2html.phdthesis;
+    bib2html.phdthesis = bib2html.phdthesis;
     // conference is the same as inproceedings
     bib2html.conference = bib2html.inproceedings;
     //console.log(bib2html.conference);
