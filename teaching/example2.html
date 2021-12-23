@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title> Amir | Md Amiruzzaman</title>
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+
+        <!--[if lt IE 9]>
+        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript" src="../education/csvjson.js" ></script>
+
+
+        <script>
+            function readTextFile(file, callback) {
+                var rawFile = new XMLHttpRequest();
+                rawFile.overrideMimeType("application/json");
+                rawFile.open("GET", file, true);
+                rawFile.onreadystatechange = function () {
+                    if (rawFile.readyState === 4 && rawFile.status == "200") {
+                        callback(rawFile.responseText);
+                    }
+                }
+                rawFile.send(null);
+            }
+
+            function check_existing(key, arr) {
+                for (var i = 0; i < arr.length; i++)
+                {
+                    if (arr[i].CourseNo === key)
+                    {
+                        return i;
+                    } else {
+                        return -1;
+                    }
+                }
+            }
+
+
+
+            function getYear(val, data) {
+                let year = [];
+                for (let i = 0; i < data.length; i++)
+                {
+                    Object.keys(data[i]).forEach(function (key) {
+                        //console.log(data[0]);
+                        if (data[i][key] === val)
+                        {
+                            //console.log(data[i]);
+                            year.push(data[i].Year);
+                        }
+
+                    });
+                }
+                return year;
+            }
+
+            function getRest(val, data) {
+                //data = JSON.stringify(data);
+                let rest = [];
+                for (let i = 0; i < data.length; i++)
+                {
+                    Object.keys(data[i]).forEach(function (key) {
+                        //console.log(data[0]);
+                        if (data[i][key] === val)
+                        {
+                            //console.log(data[i]);
+//                            rest.push({
+//                                "CourseName": data[i].CourseName,
+//                                "University": data[i].University,
+//                                "Level": data[i].Level
+//                            });
+
+                            rest.push(data[i]);
+
+                        }
+
+                    });
+                }
+                return rest;
+            }
+
+            $.ajax("teaching_ugrad_grad.csv", {
+                success: function (data) {
+                    var jsonobject = csvjson.csv2json(data);
+                    // Now use jsonobject to do some charting...
+                    //console.log(jsonobject);
+                    var data = jsonobject.rows;
+                    console.log(data);
+                    var result = $('<div/>', {
+                        'id': 'results',
+                        'class': 'table'
+                    });
+                    var headers = $('<div/>', {
+                        'class': 'theader'
+                    });
+                    var teachingArray = [];
+                    var courseNoArray = [];
+                    Object.keys(data[0]).forEach(function (key) {
+                        //console.log(key);
+                        var table_header = $('<div/>', {
+                            'class': 'table_header'
+                        }).html(key);
+                        //teachingArray.push(key);
+                        //console.log(table_header);
+                        headers.append(table_header);
+                    })
+                    result.append(headers);
+                    //console.log(teachingArray);
+                    for (let i = 0; i < data.length; i++)
+                    {
+                        var table_row = $('<div/>', {
+                            'class': 'table_row'
+                        });
+
+                        Object.keys(data[i]).forEach(function (key) {
+                            courseNoArray.push(data[i].CourseNo);
+                            teachingArray.push(data[i][key]);
+//                            var pos = check_existing("ENGR/TECH46411", teachingArray);
+//                            if (pos === -1) {
+//                            } else {
+//                            }
+
+                            var table_small = $('<div/>', {
+                                'class': 'table_small'
+                            });
+                            var table_cell1 = $('<div/>', {
+                                'class': 'table_cell'
+                            }).html(key)
+
+                            var table_cell2 = $('<div/>', {
+                                'class': 'table_cell'
+                            }).html(data[i][key]);
+                            table_small.append(table_cell1).append(table_cell2);
+                            table_row.append(table_small);
+                        });
+                        result.append(table_row);
+                    }
+
+                    //var pos = check_existing("ENGR/TECH46411", teachingArray);
+                    //console.log(pos);
+
+//                    console.log(teachingArray);
+//                    var count = {};
+//                    teachingArray.forEach(function (i) {
+//                        count[i] = (count[i] || 0) + 1;
+//                    });
+//                    console.log(count);
+//                    console.log(count["ENGR/TECH46411"]);
+
+                    // https://stackoverflow.com/questions/18008025/remove-duplicate-item-from-array-javascript
+                    // remove duplicates from javascript array
+
+                    Array.prototype.removeDuplicates = function () {
+                        return this.filter(function (item, index, self) {
+                            return self.indexOf(item) == index;
+                        });
+                    };
+
+                    courseNoArray = courseNoArray.filter(function (item, index, inputArray) {
+                        return inputArray.indexOf(item) == index;
+                    });
+                    console.log(courseNoArray);
+                    var courses = [];
+                    for (let i = 0; i < courseNoArray.length; i++) {
+                        // https://www.w3schools.com/js/js_array_sort.asp
+                        // sort array javascript
+                        let years = getYear(courseNoArray[i], data).slice();
+                        years = years.removeDuplicates().sort();
+
+                        let courseInfo = getRest(courseNoArray[i], data);
+                        //console.log(Object.keys(courseInfo[0]));
+                        var keys = Object.keys(courseInfo[0]).slice();
+                        //console.log(keys);
+                        let course = [];
+
+                        //console.log(courseInfo[0][keys[5]]);
+                        course.push({
+                            "CourseNo": courseInfo[0][keys[3]], //for checking purpose
+                            "University": courseInfo[0][keys[2]],
+                            "CourseName": courseInfo[0][keys[4]],
+                            "Year": years.toString(),
+                            "Level": courseInfo[0][keys[5]],
+                            "Times": getYear(courseNoArray[i], data).length
+                        })
+
+                        courses.push(course[0]);
+
+
+                        // https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_tostring_array
+                        // javascript array to string
+                        //console.log(courseNoArray[i], getYear(courseNoArray[i], data).length, years.toString(), course[0]);
+                        //console.log(course[0]);
+                    }
+                    //console.log(courses);
+                    // https://stackoverflow.com/questions/16626735/how-to-loop-through-an-array-containing-objects-and-access-their-properties
+                    // loop through array of objects javascript
+                    console.log("Here are my results...\n")
+                    courses.forEach(function (item, index) {
+                        //console.log(item, index);
+                        for (let key in item)
+                        {
+                            console.log(key, item[key]);
+                        }
+                    });
+
+                    //console.log(getYear("ENGR/TECH46411", data));
+
+                    $('body').append(result);
+                },
+                error: function () {
+                    // Show some error message, couldn't get the CSV file
+                }
+            }
+            );
+
+
+        </script>
+        <style>
+            .table {
+                display: table;
+                text-align: center;
+                width: 45%;
+                margin: 10% auto 0;
+                border-collapse: separate;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 400;
+            }
+
+            .table_row {
+                display: table-row;
+            }
+
+            .theader {
+                display: table-row;
+            }
+
+            .table_header {
+                display: table-cell;
+                border-bottom: #ccc 1px solid;
+                border-top: #ccc 1px solid;
+                background: #bdbdbd;
+                color: #e5e5e5;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                font-weight: 700;
+                /*addition*/
+                text-align: left;
+                padding-left: 3px;
+            }
+
+            .table_header:first-child {
+                border-left: #ccc 1px solid;
+                border-top-left-radius: 5px;
+            }
+
+            .table_header:last-child {
+                border-right: #ccc 1px solid;
+                border-top-right-radius: 5px;
+            }
+
+            .table_small {
+                display: table-cell;
+            }
+
+            .table_row > .table_small > .table_cell:nth-child(odd) {
+                display: none;
+                background: #bdbdbd;
+                color: #e5e5e5;
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+
+            .table_row > .table_small > .table_cell {
+                padding-top: 3px;
+                padding-bottom: 3px;
+                color: #5b5b5b;
+                border-bottom: #ccc 1px solid;
+                /*addition*/
+                text-align: left;
+                padding-left: 3px;
+            }
+
+            .table_row > .table_small:first-child > .table_cell {
+                border-left: #ccc 1px solid;
+            }
+
+            .table_row > .table_small:last-child > .table_cell {
+                border-right: #ccc 1px solid;
+            }
+
+            .table_row:last-child > .table_small:last-child > .table_cell:last-child {
+                border-bottom-right-radius: 5px;
+            }
+
+            .table_row:last-child > .table_small:first-child > .table_cell:last-child {
+                border-bottom-left-radius: 5px;
+            }
+
+            .table_row:nth-child(2n+3) {
+                background: #e9e9e9;
+            }
+
+            @media screen and (max-width: 900px) {
+                .table {
+                    width: 90%
+                }
+            }
+
+            @media screen and (max-width: 650px) {
+                .table {
+                    display: block;
+                }
+                .table_row:nth-child(2n+3) {
+                    background: none;
+                }
+                .theader {
+                    display: none;
+                }
+                .table_row > .table_small > .table_cell:nth-child(odd) {
+                    display: table-cell;
+                    width: 50%;
+                }
+                .table_cell {
+                    display: table-cell;
+                    width: 50%;
+                }
+                .table_row {
+                    display: table;
+                    width: 100%;
+                    border-collapse: separate;
+                    padding-bottom: 20px;
+                    margin: 5% auto 0;
+                    text-align: center;
+                }
+                .table_small {
+                    display: table-row;
+                }
+                .table_row > .table_small:first-child > .table_cell:last-child {
+                    border-left: none;
+                }
+                .table_row > .table_small > .table_cell:first-child {
+                    border-left: #ccc 1px solid;
+                }
+                .table_row > .table_small:first-child > .table_cell:first-child {
+                    border-top-left-radius: 5px;
+                    border-top: #ccc 1px solid;
+                }
+                .table_row > .table_small:first-child > .table_cell:last-child {
+                    border-top-right-radius: 5px;
+                    border-top: #ccc 1px solid;
+                }
+                .table_row > .table_small:last-child > .table_cell:first-child {
+                    border-right: none;
+                }
+                .table_row > .table_small > .table_cell:last-child {
+                    border-right: #ccc 1px solid;
+                }
+                .table_row > .table_small:last-child > .table_cell:first-child {
+                    border-bottom-left-radius: 5px;
+                }
+                .table_row > .table_small:last-child > .table_cell:last-child {
+                    border-bottom-right-radius: 5px;
+                }
+            }
+        </style>
+
+
+
+    </head>
+    <body>
+        <script>
+
+
+        </script>
+
+
+    </body>
+</html>
