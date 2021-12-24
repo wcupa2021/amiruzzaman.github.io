@@ -3,6 +3,14 @@
     <head>
         <meta charset="utf-8"/>
         <title> Amir | Md Amiruzzaman</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
         <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
 
         <!--[if lt IE 9]>
@@ -13,207 +21,6 @@
 
 
         <script>
-            function readTextFile(file, callback) {
-                var rawFile = new XMLHttpRequest();
-                rawFile.overrideMimeType("application/json");
-                rawFile.open("GET", file, true);
-                rawFile.onreadystatechange = function () {
-                    if (rawFile.readyState === 4 && rawFile.status == "200") {
-                        callback(rawFile.responseText);
-                    }
-                }
-                rawFile.send(null);
-            }
-
-            function check_existing(key, arr) {
-                for (var i = 0; i < arr.length; i++)
-                {
-                    if (arr[i].CourseNo === key)
-                    {
-                        return i;
-                    } else {
-                        return -1;
-                    }
-                }
-            }
-
-
-
-            function getYear(val, data) {
-                let year = [];
-                for (let i = 0; i < data.length; i++)
-                {
-                    Object.keys(data[i]).forEach(function (key) {
-                        //console.log(data[0]);
-                        if (data[i][key] === val)
-                        {
-                            //console.log(data[i]);
-                            year.push(data[i].Year);
-                        }
-
-                    });
-                }
-                return year;
-            }
-
-            function getRest(val, data) {
-                //data = JSON.stringify(data);
-                let rest = [];
-                for (let i = 0; i < data.length; i++)
-                {
-                    Object.keys(data[i]).forEach(function (key) {
-                        //console.log(data[0]);
-                        if (data[i][key] === val)
-                        {
-                            //console.log(data[i]);
-//                            rest.push({
-//                                "CourseName": data[i].CourseName,
-//                                "University": data[i].University,
-//                                "Level": data[i].Level
-//                            });
-
-                            rest.push(data[i]);
-
-                        }
-
-                    });
-                }
-                return rest;
-            }
-
-            $.ajax("teaching_ugrad_grad.csv", {
-                success: function (data) {
-                    var jsonobject = csvjson.csv2json(data);
-                    // Now use jsonobject to do some charting...
-                    //console.log(jsonobject);
-                    var data = jsonobject.rows;
-                    console.log(data);
-                    var result = $('<div/>', {
-                        'id': 'results',
-                        'class': 'table'
-                    });
-                    var headers = $('<div/>', {
-                        'class': 'theader'
-                    });
-                    var teachingArray = [];
-                    var courseNoArray = [];
-                    Object.keys(data[0]).forEach(function (key) {
-                        //console.log(key);
-                        var table_header = $('<div/>', {
-                            'class': 'table_header'
-                        }).html(key);
-                        //teachingArray.push(key);
-                        //console.log(table_header);
-                        headers.append(table_header);
-                    })
-                    result.append(headers);
-                    //console.log(teachingArray);
-                    for (let i = 0; i < data.length; i++)
-                    {
-                        var table_row = $('<div/>', {
-                            'class': 'table_row'
-                        });
-
-                        Object.keys(data[i]).forEach(function (key) {
-                            courseNoArray.push(data[i].CourseNo);
-                            teachingArray.push(data[i][key]);
-//                            var pos = check_existing("ENGR/TECH46411", teachingArray);
-//                            if (pos === -1) {
-//                            } else {
-//                            }
-
-                            var table_small = $('<div/>', {
-                                'class': 'table_small'
-                            });
-                            var table_cell1 = $('<div/>', {
-                                'class': 'table_cell'
-                            }).html(key)
-
-                            var table_cell2 = $('<div/>', {
-                                'class': 'table_cell'
-                            }).html(data[i][key]);
-                            table_small.append(table_cell1).append(table_cell2);
-                            table_row.append(table_small);
-                        });
-                        result.append(table_row);
-                    }
-
-                    //var pos = check_existing("ENGR/TECH46411", teachingArray);
-                    //console.log(pos);
-
-//                    console.log(teachingArray);
-//                    var count = {};
-//                    teachingArray.forEach(function (i) {
-//                        count[i] = (count[i] || 0) + 1;
-//                    });
-//                    console.log(count);
-//                    console.log(count["ENGR/TECH46411"]);
-
-                    // https://stackoverflow.com/questions/18008025/remove-duplicate-item-from-array-javascript
-                    // remove duplicates from javascript array
-
-                    Array.prototype.removeDuplicates = function () {
-                        return this.filter(function (item, index, self) {
-                            return self.indexOf(item) == index;
-                        });
-                    };
-
-                    courseNoArray = courseNoArray.filter(function (item, index, inputArray) {
-                        return inputArray.indexOf(item) == index;
-                    });
-                    console.log(courseNoArray);
-                    var courses = [];
-                    for (let i = 0; i < courseNoArray.length; i++) {
-                        // https://www.w3schools.com/js/js_array_sort.asp
-                        // sort array javascript
-                        let years = getYear(courseNoArray[i], data).slice();
-                        years = years.removeDuplicates().sort();
-
-                        let courseInfo = getRest(courseNoArray[i], data);
-                        //console.log(Object.keys(courseInfo[0]));
-                        var keys = Object.keys(courseInfo[0]).slice();
-                        //console.log(keys);
-                        let course = [];
-
-                        //console.log(courseInfo[0][keys[5]]);
-                        course.push({
-                            "CourseNo": courseInfo[0][keys[3]], //for checking purpose
-                            "University": courseInfo[0][keys[2]],
-                            "CourseName": courseInfo[0][keys[4]],
-                            "Year": years.toString(),
-                            "Level": courseInfo[0][keys[5]],
-                            "Times": getYear(courseNoArray[i], data).length
-                        })
-
-                        courses.push(course[0]);
-
-
-                        // https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_tostring_array
-                        // javascript array to string
-                        //console.log(courseNoArray[i], getYear(courseNoArray[i], data).length, years.toString(), course[0]);
-                        //console.log(course[0]);
-                    }
-                    //console.log(courses);
-                    // https://stackoverflow.com/questions/16626735/how-to-loop-through-an-array-containing-objects-and-access-their-properties
-                    // loop through array of objects javascript
-                    console.log("Here are my results...\n")
-                    courses.forEach(function (item, index) {
-                        //console.log(item, index);
-                        for (let key in item)
-                        {
-                            console.log(key, item[key]);
-                        }
-                    });
-
-                    //console.log(getYear("ENGR/TECH46411", data));
-
-                    $('body').append(result);
-                },
-                error: function () {
-                    // Show some error message, couldn't get the CSV file
-                }
-            }
-            );
 
 
         </script>
@@ -221,7 +28,7 @@
             .table {
                 display: table;
                 text-align: center;
-                width: 45%;
+                width: 80%;
                 margin: 10% auto 0;
                 border-collapse: separate;
                 font-family: 'Roboto', sans-serif;
@@ -370,7 +177,286 @@
 
     </head>
     <body>
+        <!--https://stackoverflow.com/questions/38820760/how-to-create-tabbed-view-in-html/38843115-->
+        <div class="container">
+            <ul class="nav nav-pills">
+                <li class="active"><a data-toggle="pill" href="#ugrad">Undergraduate</a>
+                </li>
+                <li><a data-toggle="pill" href="#grad">Graduate</a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div id="ugrad" class="tab-pane fade in active">
+                    <h3>Undergraduate</h3>
+                    <p>Undergraduate course information</p>
+                </div>
+                <div id="grad" class="tab-pane fade">
+                    <h3>Graduate</h3>
+                    <p>Graduate course information</p>
+                </div>
+
+            </div>
+        </div>
+
         <script>
+            function readTextFile(file, callback) {
+                var rawFile = new XMLHttpRequest();
+                rawFile.overrideMimeType("application/json");
+                rawFile.open("GET", file, true);
+                rawFile.onreadystatechange = function () {
+                    if (rawFile.readyState === 4 && rawFile.status == "200") {
+                        callback(rawFile.responseText);
+                    }
+                }
+                rawFile.send(null);
+            }
+
+            function check_existing(key, arr) {
+                for (var i = 0; i < arr.length; i++)
+                {
+                    if (arr[i].CourseNo === key)
+                    {
+                        return i;
+                    } else {
+                        return -1;
+                    }
+                }
+            }
+
+            function getYear(val, data) {
+                let year = [];
+                for (let i = 0; i < data.length; i++)
+                {
+                    Object.keys(data[i]).forEach(function (key) {
+                        //console.log(data[0]);
+                        if (data[i][key] === val)
+                        {
+                            //console.log(data[i]);
+                            year.push(data[i].Year);
+                        }
+
+                    });
+                }
+                return year;
+            }
+
+            function getRest(val, data) {
+                //data = JSON.stringify(data);
+                let rest = [];
+                for (let i = 0; i < data.length; i++)
+                {
+                    Object.keys(data[i]).forEach(function (key) {
+                        //console.log(data[0]);
+                        if (data[i][key] === val)
+                        {
+                            rest.push(data[i]);
+                        }
+
+                    });
+                }
+                return rest;
+            }
+
+            $.ajax("teaching_ugrad_grad.csv", {
+                success: function (data) {
+                    var jsonobject = csvjson.csv2json(data);
+                    // Now use jsonobject to do some charting...
+                    //console.log(jsonobject);
+                    var data = jsonobject.rows;
+                    console.log(data);
+
+                    var teachingArray = [];
+                    var courseNoArray = [];
+//                    Object.keys(data[0]).forEach(function (key) {
+//                        //console.log(key);
+//                        var table_header = $('<div/>', {
+//                            'class': 'table_header'
+//                        }).html(key);
+//                        headers.append(table_header);
+//                    })
+//                    result.append(headers);
+                    //console.log(teachingArray);
+                    for (let i = 0; i < data.length; i++)
+                    {
+//                        var table_row = $('<div/>', {
+//                            'class': 'table_row'
+//                        });
+
+                        Object.keys(data[i]).forEach(function (key) {
+                            courseNoArray.push(data[i].CourseNo);
+                            teachingArray.push(data[i][key]);
+
+//                            var table_small = $('<div/>', {
+//                                'class': 'table_small'
+//                            });
+//                            var table_cell1 = $('<div/>', {
+//                                'class': 'table_cell'
+//                            }).html(key)
+//
+//                            var table_cell2 = $('<div/>', {
+//                                'class': 'table_cell'
+//                            }).html(data[i][key]);
+//                            table_small.append(table_cell1).append(table_cell2);
+//                            table_row.append(table_small);
+                        });
+                        //result.append(table_row);
+                    }
+
+                    //var pos = check_existing("ENGR/TECH46411", teachingArray);
+                    //console.log(pos);
+
+
+
+                    // https://stackoverflow.com/questions/18008025/remove-duplicate-item-from-array-javascript
+                    // remove duplicates from javascript array
+
+                    Array.prototype.removeDuplicates = function () {
+                        return this.filter(function (item, index, self) {
+                            return self.indexOf(item) == index;
+                        });
+                    };
+
+                    courseNoArray = courseNoArray.filter(function (item, index, inputArray) {
+                        return inputArray.indexOf(item) == index;
+                    });
+                    console.log(courseNoArray);
+                    var courses = [];
+                    for (let i = 0; i < courseNoArray.length; i++) {
+                        // https://www.w3schools.com/js/js_array_sort.asp
+                        // sort array javascript
+                        let years = getYear(courseNoArray[i], data).slice();
+                        years = years.removeDuplicates().sort();
+
+                        let courseInfo = getRest(courseNoArray[i], data);
+                        //console.log(Object.keys(courseInfo[0]));
+                        var keys = Object.keys(courseInfo[0]).slice();
+                        //console.log(keys);
+                        let course = [];
+
+                        //console.log(courseInfo[0][keys[5]]);
+                        course.push({
+                            "Year": years.toString(),
+                            "University": courseInfo[0][keys[2]],
+                            "CourseNo": courseInfo[0][keys[3]], //for checking purpose
+                            "CourseName": courseInfo[0][keys[4]],
+                            "Times": getYear(courseNoArray[i], data).length,
+                            "Level": courseInfo[0][keys[5]]
+                        })
+
+                        courses.push(course[0]);
+
+
+                        // https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_tostring_array
+                        // javascript array to string
+                        //console.log(courseNoArray[i], getYear(courseNoArray[i], data).length, years.toString(), course[0]);
+                        //console.log(course[0]);
+                    }
+                    //console.log(courses);
+                    // https://stackoverflow.com/questions/16626735/how-to-loop-through-an-array-containing-objects-and-access-their-properties
+                    // loop through array of objects javascript
+                    console.log("Here are my results...\n")
+                    courses.forEach(function (item, index) {
+                        //console.log(item, index);
+                        for (let key in item)
+                        {
+                            //console.log(key, item[key]);
+                        }
+                    });
+                    //var keys_header = Object.keys(courses[0]).slice();
+                    //console.log(keys_header);
+                    var result_u = $('<div/>', {
+                        'id': 'results',
+                        'class': 'table'
+                    });
+                     var result_g = $('<div/>', {
+                        'id': 'results',
+                        'class': 'table'
+                    });
+                    var headers_u = $('<div/>', {
+                        'class': 'theader'
+                    });
+                    var headers_g = $('<div/>', {
+                        'class': 'theader'
+                    });
+                    Object.keys(courses[0]).forEach(function (key) {
+                        //console.log(key);
+                        var table_header_u = $('<div/>', {
+                            'class': 'table_header'
+                        }).html(key);
+                        headers_u.append(table_header_u);
+                        
+                        var table_header_g = $('<div/>', {
+                            'class': 'table_header'
+                        }).html(key);
+                        headers_g.append(table_header_g);
+                    })
+                    result_u.append(headers_u);
+                    result_g.append(headers_g);
+
+                    for (let i = 0; i < courses.length; i++)
+                    {
+                        var table_row_u = $('<div/>', {
+                            'class': 'table_row'
+                        });
+                        var table_row_g = $('<div/>', {
+                            'class': 'table_row'
+                        });
+
+                        Object.keys(courses[i]).forEach(function (key) {
+                            //console.log(courses[i][key]);
+                            if (courses[i]["Level"] === "ugrad\r")
+                            {
+                                //console.log("found", courses[i][key]);
+                                //console.log(key);
+                                //console.log(courses[i][key]);
+                                var table_small_u = $('<div/>', {
+                                    'class': 'table_small'
+                                });
+                                var table_cell1_u = $('<div/>', {
+                                    'class': 'table_cell'
+                                }).html(key)
+
+                                var table_cell2_u = $('<div/>', {
+                                    'class': 'table_cell'
+                                }).html(courses[i][key]);
+                                table_small_u.append(table_cell1_u).append(table_cell2_u);
+                                table_row_u.append(table_small_u);
+                            } else
+                            {
+                                //console.log("found", courses[i][key]);
+                                //console.log(key);
+                               // console.log(courses[i][key]);
+                                var table_small_g = $('<div/>', {
+                                    'class': 'table_small'
+                                });
+                                var table_cell1_g = $('<div/>', {
+                                    'class': 'table_cell'
+                                }).html(key)
+
+                                var table_cell2_g = $('<div/>', {
+                                    'class': 'table_cell'
+                                }).html(courses[i][key]);
+                                table_small_g.append(table_cell1_g).append(table_cell2_g);
+                                table_row_g.append(table_small_g);
+                            }
+                        });
+                        result_u.append(table_row_u);
+                        result_g.append(table_row_g);
+                        
+                    }
+
+                    //console.log(getYear("ENGR/TECH46411", data));
+
+                    //$('body').append(result);
+                    $('#ugrad').append(result_u);
+                    $('#grad').append(result_g);
+                },
+                error: function () {
+                    // Show some error message, couldn't get the CSV file
+                }
+            }
+            );
 
 
         </script>
