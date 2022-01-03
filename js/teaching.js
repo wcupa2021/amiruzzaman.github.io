@@ -44,12 +44,29 @@ var sortBy = (function () {
 }());
 
 
+
 // Parse the CSV file using PapaParse library all the dynamic functions are written inside complete callback method
 Papa.parse("teaching/teaching_ugrad_grad.csv", {
     download: true,
     header: true,
     skipEmptyLines: true,
     complete: function (results) {
+        var ugradHeader = '<div class="theader">' +
+                            '<div class="table_header">Year</div>'+
+                            '<div class="table_header">Course #</div>'+
+                            '<div class="table_header">Name</div>'+
+                            '<div class="table_header">University</div>'+
+                            '<div class="table_header">Times</div>'+
+                            '</div>';
+        $(ugradHeader).appendTo("#add-ugrad-table");
+        var gradHeader = '<div class="theader">' +
+                            '<div class="table_header">Year</div>'+
+                            '<div class="table_header">Course #</div>'+
+                            '<div class="table_header">Name</div>'+
+                            '<div class="table_header">University</div>'+
+                            '<div class="table_header">Times</div>'+
+                            '</div>';
+        $(gradHeader).appendTo("#add-grad-table");
         $.each(results.data, function (i, f) {
             //Separate Grad and Undergrad details in the new JSON
             if (results.data[i].Level == 'grad') {
@@ -83,21 +100,54 @@ Papa.parse("teaching/teaching_ugrad_grad.csv", {
                     yearArray[i] = year.Year;
                 })
                 yearArray = [...new Set(yearArray)].sort();
-                var gradDetail = '<div class="row">' +
-                        '<div class="col-md-2">' + yearArray + '</div>' +
-                        '<div class="col-md-2">' + value[0].CourseNo + '</div>' +
-                        '<div class="col-md-3">' + value[0].CourseName + '</div>' +
-                        '<div class="col-md-3">' + value[0].University + '</div>' +
-                        '<div class="col-md-2">' + value.length + '</div> </div>';
-                $(gradDetail).appendTo("#add-grad-details");
+                yearArray = yearArray.sort(function(a, b){return a-b}).reverse();
+                var gradDetail = '<div class="table_row">' +
+                                    '<div class="table_small">' +
+                                        '<div class="table_cell"> Year </div>'+
+                                        '<div class="table_cell">'+ yearArray.join(', ') +'</div>'+
+                                    '</div>'+
+                                    '<div class="table_small">' +
+                                        '<div class="table_cell"> Course # </div>'+
+                                        '<div class="table_cell">'+ value[0].CourseNo +'</div>'+
+                                    '</div>'+
+                                    '<div class="table_small">' +
+                                        '<div class="table_cell"> Name </div>'+
+                                        '<div class="table_cell">'+  value[0].CourseName +'</div>'+
+                                    '</div>'+
+                                    '<div class="table_small">' +
+                                        '<div class="table_cell"> University </div>'+
+                                        '<div class="table_cell">'+ value[0].University +'</div>'+
+                                    '</div>'+
+                                    '<div class="table_small">' +
+                                        '<div class="table_cell"> Times </div>'+
+                                        '<div class="table_cell">'+ value.length +'</div>'+
+                                    '</div>' +
+                                  '</div>';
+                $(gradDetail).appendTo("#add-grad-table");
             } else {
-                var gradDetail = '<div class="row">' +
-                        '<div class="col-md-2">' + value[0].Year + '</div>' +
-                        '<div class="col-md-2">' + value[0].CourseNo + '</div>' +
-                        '<div class="col-md-3">' + value[0].CourseName + '</div>' +
-                        '<div class="col-md-3">' + value[0].University + '</div>' +
-                        '<div class="col-md-2">' + value.length + '</div> </div>';
-                $(gradDetail).appendTo("#add-grad-details");
+                var gradDetail = '<div class="table_row">' +
+                                    '<div class="table_small">' +
+                                        '<div class="table_cell"> Year </div>'+
+                                        '<div class="table_cell">'+ value[0].Year +'</div>'+
+                                    '</div>'+
+                                    '<div class="table_small">' +
+                                        '<div class="table_cell"> Course # </div>'+
+                                        '<div class="table_cell">'+ value[0].CourseNo +'</div>'+
+                                    '</div>'+
+                                    '<div class="table_small">' +
+                                        '<div class="table_cell"> Name </div>'+
+                                        '<div class="table_cell">'+  value[0].CourseName +'</div>'+
+                                    '</div>'+
+                                    '<div class="table_small">' +
+                                        '<div class="table_cell"> University </div>'+
+                                        '<div class="table_cell">'+ value[0].University +'</div>'+
+                                    '</div>'+
+                                    '<div class="table_small">' +
+                                        '<div class="table_cell"> Times </div>'+
+                                        '<div class="table_cell">'+ value.length +'</div>'+
+                                    '</div>' +
+                                '</div>';
+                $(gradDetail).appendTo("#add-grad-table");
             }
         });
         $.each(gradUgradJSON.ugrad[0], function (key, value) {
@@ -107,21 +157,55 @@ Papa.parse("teaching/teaching_ugrad_grad.csv", {
                     yearArray[i] = year.Year;
                 })
                 yearArray = [...new Set(yearArray)].sort();
-                var ugradDetail = '<div class="row">' +
-                        '<div class="col-md-2">' + yearArray + '</div>' +
-                        '<div class="col-md-2">' + value[0].CourseNo + '</div>' +
-                        '<div class="col-md-3">' + value[0].CourseName + '</div>' +
-                        '<div class="col-md-3">' + value[0].University + '</div>' +
-                        '<div class="col-md-2">' + value.length + '</div> </div>';
-                $(ugradDetail).appendTo("#add-ugrad-details");
+                yearArray = yearArray.sort(function(a, b){return a-b}).reverse(); 
+                var ugradDetail = '<div class="table_row">' +
+                                    '<div class="table_small">' +
+                                        '<div class="table_cell"> Year </div>'+
+                                        '<div class="table_cell">'+ yearArray.join(', ') +'</div>'+
+                                    '</div>'+
+                                    '<div class="table_small">' +
+                                        '<div class="table_cell"> Course # </div>'+
+                                        '<div class="table_cell">'+ value[0].CourseNo +'</div>'+
+                                    '</div>'+
+                                    '<div class="table_small">' +
+                                        '<div class="table_cell"> Name </div>'+
+                                        '<div class="table_cell">'+  value[0].CourseName +'</div>'+
+                                    '</div>'+
+                                    '<div class="table_small">' +
+                                        '<div class="table_cell"> University </div>'+
+                                        '<div class="table_cell">'+ value[0].University +'</div>'+
+                                    '</div>'+
+                                    '<div class="table_small">' +
+                                        '<div class="table_cell"> Times </div>'+
+                                        '<div class="table_cell">'+ value.length +'</div>'+
+                                    '</div>' +
+                                   '</div>';
+
+                $(ugradDetail).appendTo("#add-ugrad-table");
             } else {
-                var ugradDetail = '<div class="row">' +
-                        '<div class="col-md-2">' + value[0].Year + '</div>' +
-                        '<div class="col-md-2">' + value[0].CourseNo + '</div>' +
-                        '<div class="col-md-3">' + value[0].CourseName + '</div>' +
-                        '<div class="col-md-3">' + value[0].University + '</div>' +
-                        '<div class="col-md-2">' + value.length + '</div> </div>';
-                $(ugradDetail).appendTo("#add-ugrad-details");
+                var ugradDetail = '<div class="table_row">' +
+                                    '<div class="table_small">' +
+                                        '<div class="table_cell"> Year </div>'+
+                                        '<div class="table_cell">'+ value[0].Year +'</div>'+
+                                    '</div>'+
+                                    '<div class="table_small">' +
+                                        '<div class="table_cell"> Course # </div>'+
+                                        '<div class="table_cell">'+ value[0].CourseNo +'</div>'+
+                                    '</div>'+
+                                    '<div class="table_small">' +
+                                        '<div class="table_cell"> Name </div>'+
+                                        '<div class="table_cell">'+  value[0].CourseName +'</div>'+
+                                    '</div>'+
+                                    '<div class="table_small">' +
+                                        '<div class="table_cell"> University </div>'+
+                                        '<div class="table_cell">'+ value[0].University +'</div>'+
+                                    '</div>'+
+                                    '<div class="table_small">' +
+                                        '<div class="table_cell"> Times </div>'+
+                                        '<div class="table_cell">'+ value.length +'</div>'+
+                                    '</div>'+
+                                  '</div>';
+                $(ugradDetail).appendTo("#add-ugrad-table");
             }
         });
     }
