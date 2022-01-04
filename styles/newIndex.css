@@ -58,8 +58,10 @@
     margin-top: 2vh !important;
     padding-left: 1vw !important;
 }
-#pub>.card , #edu>.card, #teach>.card, #ugrad>.card, #grad>.card{
+#pub>.card , #education>.card, #teach>.card, #ugrad>.card, #grad>.card, #interest>.card{
    border-top: 0 !important;
+   border-top-right-radius: 0rem;
+   border-top-left-radius: 0rem;
 }
 #pub>.card-body > .row {
     padding-top: 1h;
