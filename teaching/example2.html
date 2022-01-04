@@ -28,7 +28,7 @@
             .table {
                 display: table;
                 text-align: center;
-                width: 80%;
+                width: 70%;
                 margin: 10% auto 0;
                 border-collapse: separate;
                 font-family: 'Roboto', sans-serif;
@@ -369,7 +369,7 @@
                         'id': 'results',
                         'class': 'table'
                     });
-                     var result_g = $('<div/>', {
+                    var result_g = $('<div/>', {
                         'id': 'results',
                         'class': 'table'
                     });
@@ -381,15 +381,17 @@
                     });
                     Object.keys(courses[0]).forEach(function (key) {
                         //console.log(key);
-                        var table_header_u = $('<div/>', {
-                            'class': 'table_header'
-                        }).html(key);
-                        headers_u.append(table_header_u);
-                        
-                        var table_header_g = $('<div/>', {
-                            'class': 'table_header'
-                        }).html(key);
-                        headers_g.append(table_header_g);
+                        if (key !== "Level") {
+                            var table_header_u = $('<div/>', {
+                                'class': 'table_header'
+                            }).html(key);
+                            headers_u.append(table_header_u);
+
+                            var table_header_g = $('<div/>', {
+                                'class': 'table_header'
+                            }).html(key);
+                            headers_g.append(table_header_g);
+                        }
                     })
                     result_u.append(headers_u);
                     result_g.append(headers_g);
@@ -410,40 +412,46 @@
                                 //console.log("found", courses[i][key]);
                                 //console.log(key);
                                 //console.log(courses[i][key]);
-                                var table_small_u = $('<div/>', {
-                                    'class': 'table_small'
-                                });
-                                var table_cell1_u = $('<div/>', {
-                                    'class': 'table_cell'
-                                }).html(key)
+                                if (key !== "Level")
+                                {
+                                    var table_small_u = $('<div/>', {
+                                        'class': 'table_small'
+                                    });
+                                    var table_cell1_u = $('<div/>', {
+                                        'class': 'table_cell'
+                                    }).html(key)
 
-                                var table_cell2_u = $('<div/>', {
-                                    'class': 'table_cell'
-                                }).html(courses[i][key]);
-                                table_small_u.append(table_cell1_u).append(table_cell2_u);
-                                table_row_u.append(table_small_u);
+                                    var table_cell2_u = $('<div/>', {
+                                        'class': 'table_cell'
+                                    }).html(courses[i][key]);
+                                    table_small_u.append(table_cell1_u).append(table_cell2_u);
+                                    table_row_u.append(table_small_u);
+                                }
                             } else
                             {
                                 //console.log("found", courses[i][key]);
                                 //console.log(key);
-                               // console.log(courses[i][key]);
-                                var table_small_g = $('<div/>', {
-                                    'class': 'table_small'
-                                });
-                                var table_cell1_g = $('<div/>', {
-                                    'class': 'table_cell'
-                                }).html(key)
+                                // console.log(courses[i][key]);
+                                if (key !== "Level")
+                                {
+                                    var table_small_g = $('<div/>', {
+                                        'class': 'table_small'
+                                    });
+                                    var table_cell1_g = $('<div/>', {
+                                        'class': 'table_cell'
+                                    }).html(key)
 
-                                var table_cell2_g = $('<div/>', {
-                                    'class': 'table_cell'
-                                }).html(courses[i][key]);
-                                table_small_g.append(table_cell1_g).append(table_cell2_g);
-                                table_row_g.append(table_small_g);
+                                    var table_cell2_g = $('<div/>', {
+                                        'class': 'table_cell'
+                                    }).html(courses[i][key]);
+                                    table_small_g.append(table_cell1_g).append(table_cell2_g);
+                                    table_row_g.append(table_small_g);
+                                }
                             }
                         });
                         result_u.append(table_row_u);
                         result_g.append(table_row_g);
-                        
+
                     }
 
                     //console.log(getYear("ENGR/TECH46411", data));
