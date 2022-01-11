@@ -571,3 +571,20 @@ doi = "10.1007/978-3-642-10619-4_22"
   doi={10.1109/TVCG.2021.3114853},
   ISSN={1941-0506},
   month={Jan},}
+
+
+@INPROCEEDINGS{9667925,
+  author={Amiruzzaman, Md and Rahman, Rashik and Islam, Md. Rajibul and Nor, Rizal Mohd},
+  booktitle={2021 5th International Conference on Electrical Engineering and Information   Communication Technology (ICEEICT)}, 
+  title={Evaluation of DBSCAN algorithm on different programming languages: An exploratory study}, 
+  year={2021},
+  volume={},
+  number={},
+  pages={1-6},
+  abstract={DBSCAN is a well-known clustering algorithm that is often used to find associations and structures in large spatial data. Due to its popularity, built-in functions for DBSCAN have been implemented on top of many different programming languages. Researchers and practitioners (i.e., data scientists) have been using these built-in functions to cluster and analyze a prolific area of research in data science. Due to the many implementations of DBSCAN and its utilization in many different languages, the output of each built-in DBSCAN function is assumed to be identical. In this paper, we present a systematic approach to evaluate the built-in functions of DBSCAN algorithms and to identify discrepancies in their output. The evidence from the study shows that there are some discrepancies and recommends caution in dealing with built-in functions.},
+  keywords={},
+  doi={10.1109/ICEEICT53905.2021.9667925},
+  url = {https://ieeexplore.ieee.org/document/9667925},
+  publisher={IEEE},
+  ISSN={},
+  month={Nov},}
