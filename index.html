@@ -76,32 +76,7 @@
             }
 
         </style>
-        <script>
-            // Read txt file
-            // https://stackoverflow.com/questions/14446447/how-to-read-a-local-text-file
-            function readTextFile(file)
-            {
-                var rawFile = new XMLHttpRequest();
-                rawFile.open("GET", file, false);
-                var allText;
-                rawFile.onreadystatechange = function ()
-                {
-                    if (rawFile.readyState === 4)
-                    {
-                        if (rawFile.status === 200 || rawFile.status == 0)
-                        {
-                            allText = rawFile.responseText;
-                            alert(allText);
-
-                        }
-                    }
-                }
-                return allText;
-                rawFile.send();
-            }
-
-            //readTextFile("bio/bio.txt");
-        </script>
+        
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky">
@@ -569,7 +544,7 @@
                         Times: course.Times,
 
                     };
-                    if (course.Level === "ugrad\r") {
+                    if (course.Level === "ugrad") {
                         result.undergraduate.push(d);
                     } else {
                         result.graduate.push(d);
