@@ -19,7 +19,7 @@
         <script type="text/javascript" src="education/csvjson.js" ></script>
         <script src="https://unpkg.com/papaparse@5.3.1/papaparse.min.js"></script>
         <script type='text/javascript' src='scripts/respond.min.js'></script>
-        <script src="js/teaching.js"></script> 
+<!--        <script src="js/teaching.js"></script> -->
         <link rel="stylesheet" href="css/newEducation.css">
         <link rel="stylesheet" href="css/teaching.css">
         <link rel="stylesheet" href="styles/bib-publication-list.css"/>
@@ -76,7 +76,32 @@
             }
 
         </style>
-        
+        <script>
+            // Read txt file
+            // https://stackoverflow.com/questions/14446447/how-to-read-a-local-text-file
+            function readTextFile(file)
+            {
+                var rawFile = new XMLHttpRequest();
+                rawFile.open("GET", file, false);
+                var allText;
+                rawFile.onreadystatechange = function ()
+                {
+                    if (rawFile.readyState === 4)
+                    {
+                        if (rawFile.status === 200 || rawFile.status == 0)
+                        {
+                            allText = rawFile.responseText;
+                            alert(allText);
+
+                        }
+                    }
+                }
+                return allText;
+                rawFile.send();
+            }
+
+            //readTextFile("bio/bio.txt");
+        </script>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky">
@@ -119,16 +144,34 @@
             </div>
             <div class="col-md-8 about-me">
                 <h3>About Me</h3>
-                <p class="card-text">I am an Assistant Professor in the Department of Computer Science at West Chester University. 
-                    Prior to joining WCU, I have worked as a software developer for almost 10 years for several companies.
-                    I have also held the position of an Assistant Professor at Kent State University.<br><br>
-                    I have completed my Bachelor's Degree in Computer Science  from National University.
-                    Alongwith that I have completed three Master's degree with my major as Computer Engineering, Computer Science and Technology.
-                    I have received my Ph.D. degrees from Kent State University in 2016, 2019 and 2021.<br><br>
-                    In the past, I have worked as a Research Assistant in Sejong University and Korea University.
-                    Alongwith that I had gained the opportunity to teach at both National University and Korea University.
-                    My research interests include Visual Analytics of urban data, Data Mining, Deep Learning and Data Hiding. </p>
+                <p id ="bio" class="card-text">
+                    <!--                    I am an Assistant Professor in the Department of Computer Science at West Chester University. 
+                                        Prior to joining WCU, I have worked as a software developer for almost 10 years for several companies.
+                                        I have also held the position of an Assistant Professor at Kent State University.<br><br>
+                                        I have completed my Bachelor's Degree in Computer Science  from National University.
+                                        Alongwith that I have completed three Master's degree with my major as Computer Engineering, Computer Science and Technology.
+                                        I have received my Ph.D. degrees from Kent State University in 2016, 2019 and 2021.<br><br>
+                                        In the past, I have worked as a Research Assistant in Sejong University and Korea University.
+                                        Alongwith that I had gained the opportunity to teach at both National University and Korea University.
+                                        My research interests include Visual Analytics of urban data, Data Mining, Deep Learning and Data Hiding. -->
+                </p>
             </div>
+            <script>
+                // Read a text file
+                // https://stackoverflow.com/questions/196498/how-do-i-load-the-contents-of-a-text-file-into-a-javascript-variable
+                jQuery.get('bio/bio.txt', function (data) {
+                    //console.log(data);
+                    var lineByLine = data.split("\n");
+                    //console.log(lineByLine);
+                    var str;
+                    for (let i = 0; i < lineByLine.length; i++)
+                    {
+                        str += lineByLine[i] + "<br/>";
+                    }
+                    $('#bio').html(str);
+                });
+
+            </script>
             <div class="col-md-1">
 
             </div>
@@ -173,7 +216,7 @@
                             <div class="card card-body" id="education-table"></div>
                         </div>
                         <!-- Teaching starts here -->
-                        <div id="teach" class="tab-pane fade">
+                        <div id="teach" class="tab-pane fade in active">
                             <div class="card card-body">
                                 <ul class="nav nav-tabs">
                                     <li class="active"><a data-toggle="tab" href="#ugrad">Undergraduate Courses</a></li>
@@ -182,12 +225,12 @@
 
                                 <div class="tab-content">
                                     <div id="ugrad" class="tab-pane fade in active"> 
-                                        <div class="card card-body">
+<!--                                        <div class="card card-body">
                                             <div id="add-ugrad-table" class="table"></div>
-                                        </div>
+                                        </div>-->
                                     </div>
                                     <div id="grad" class="tab-pane fade"> <div class="card card-body">
-                                            <div id="add-grad-table" class="table"></div>
+<!--                                            <div id="add-grad-table" class="table"></div>-->
                                         </div>
                                     </div>
                                 </div>
@@ -203,7 +246,7 @@
                                 <div class="ticker">
                                     <h3>Latest News</h3>
                                     <ul id="ticker">
-                                        
+
                                     </ul>
                                 </div>
                             </div>
@@ -490,5 +533,205 @@
             });
         </script>
         
+        <script>
+
+            function aggregate(data) {
+                const courses = {};
+                const result = {
+                    graduate: [],
+                    undergraduate: [],
+                };
+
+                for (let row of data.rows) {
+                    if (!courses[row.CourseNo]) {
+                        courses[row.CourseNo] = {};
+                        courses[row.CourseNo].Year = [row.Year];
+                        courses[row.CourseNo].CourseName = row.CourseName;
+                        courses[row.CourseNo].Times = 1;
+                        courses[row.CourseNo].University = row.University;
+                        courses[row.CourseNo].Level = row["Level\r"];
+                    } else {
+                        if (!courses[row.CourseNo].Year.includes(row.Year)) {
+                            courses[row.CourseNo].Year.push(row.Year);
+                            courses[row.CourseNo].Year.sort();
+                        }
+                        courses[row.CourseNo].Times++;
+                    }
+                }
+
+                for (courseNo in courses) {
+                    const course = courses[courseNo];
+                    const d = {
+                        Year: course.Year,
+                        University: course.University,
+                        "Course No": courseNo,
+                        "Course Name": course.CourseName,
+                        Times: course.Times,
+
+                    };
+                    if (course.Level === "ugrad\r") {
+                        result.undergraduate.push(d);
+                    } else {
+                        result.graduate.push(d);
+                    }
+                }
+
+                return result;
+            }
+
+            // sort json array using key
+            // https://stackoverflow.com/questions/881510/sorting-json-by-values
+            function sortJSON(arr, key, way) {
+                return arr.sort(function (a, b) {
+                    var x = a[key];
+                    var y = b[key];
+                    if (way === '123') {
+                        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+                    }
+                    if (way === '321') {
+                        return ((x > y) ? -1 : ((x < y) ? 1 : 0));
+                    }
+                });
+            }
+
+            $.ajax("teaching/teaching_ugrad_grad.csv", {
+                success: function (data) {
+                    var jsonobject = csvjson.csv2json(data);
+                    // Now use jsonobject to do some charting...
+                    //console.log(jsonobject);
+                    var data = jsonobject.rows;
+                    console.log(data);
+
+                    var jsondata = aggregate(jsonobject);
+                    console.log(jsondata);
+
+
+                    var ugrad = [];
+                    var grad = [];
+
+                    // graduate section
+                    for (let i = 0; i < jsondata.graduate.length; i++)
+                    {
+//                        grad.push(jsondata.graduate[i]);
+                        var result_g = $('<div/>', {
+                            'id': 'results_g',
+                            'class': 'table'
+                        });
+
+                        var headers_g = $('<div/>', {
+                            'class': 'theader'
+                        });
+                        Object.keys(jsondata.graduate[0]).forEach(function (key) {
+                            //console.log(key);
+                            var table_header_g = $('<div/>', {
+                                'class': 'table_header'
+                            }).html(key);
+                            headers_g.append(table_header_g);
+
+                        })
+                        result_g.append(headers_g);
+
+                    }
+                    // end of firt loop graduate
+                    //push the data rows
+                    jsondata.graduate = sortJSON(jsondata.graduate, 'Year', '321');
+                    for (let i = 0; i < jsondata.graduate.length; i++)
+                    {
+                        var table_row_g = $('<div/>', {
+                            'class': 'table_row'
+                        });
+
+                        Object.keys(jsondata.graduate[i]).forEach(function (key) {
+                            //console.log(jsondata.graduate[i]);
+                            var table_small_g = $('<div/>', {
+                                'class': 'table_small'
+                            });
+                            var table_cell1_g = $('<div/>', {
+                                'class': 'table_cell'
+                            }).html(key)
+                            if (key === "Year") {
+                                var table_cell2_g = $('<div/>', {
+                                    'class': 'table_cell'
+                                }).html(jsondata.graduate[i][key].toString().replace(",", ", "));
+                                //.css("text-align", "left").css("padding-left", "5px");
+                            } else {
+                                var table_cell2_g = $('<div/>', {
+                                    'class': 'table_cell'
+                                }).html(jsondata.graduate[i][key]);
+                            }
+                            table_small_g.append(table_cell1_g).append(table_cell2_g);
+                            table_row_g.append(table_small_g);
+                        });
+                        result_g.append(table_row_g);
+                    }
+                    //console.log(grad);
+                    $('#grad').append(result_g);
+
+
+                    //undergraduate section
+                    for (let i = 0; i < jsondata.undergraduate.length; i++)
+                    {
+//                        grad.push(jsondata.graduate[i]);
+                        var result_u = $('<div/>', {
+                            'id': 'results_u',
+                            'class': 'table'
+                        });
+
+                        var headers_u = $('<div/>', {
+                            'class': 'theader'
+                        });
+                        Object.keys(jsondata.undergraduate[0]).forEach(function (key) {
+                            //console.log(key);
+                            var table_header_u = $('<div/>', {
+                                'class': 'table_header'
+                            }).html(key);
+                            headers_u.append(table_header_u);
+
+                        })
+                        result_u.append(headers_u);
+
+                    }
+                    //push the data rows
+                    jsondata.undergraduate = sortJSON(jsondata.undergraduate, 'Year', '321');
+                    for (let i = 0; i < jsondata.undergraduate.length; i++)
+                    {
+                        var table_row_u = $('<div/>', {
+                            'class': 'table_row'
+                        });
+
+                        Object.keys(jsondata.undergraduate[i]).forEach(function (key) {
+                            //console.log(jsondata.undergraduate[i]);
+                            var table_small_u = $('<div/>', {
+                                'class': 'table_small'
+                            });
+                            var table_cell1_u = $('<div/>', {
+                                'class': 'table_cell'
+                            }).html(key)
+                            if (key === "Year") {
+                                var table_cell2_u = $('<div/>', {
+                                    'class': 'table_cell'
+                                }).html(jsondata.undergraduate[i][key].toString().replace(",", ", "));
+                                //.css("text-align", "left").css("padding-left", "5px");
+                            } else {
+                                var table_cell2_u = $('<div/>', {
+                                    'class': 'table_cell'
+                                }).html(jsondata.undergraduate[i][key]);
+                            }
+                            table_small_u.append(table_cell1_u).append(table_cell2_u);
+                            table_row_u.append(table_small_u);
+                        });
+                        result_u.append(table_row_u);
+                    }
+                    //console.log(grad);
+                    $('#ugrad').append(result_u);
+                },
+                error: function () {
+                    // Show some error message, couldn't get the CSV file
+                }
+            });
+
+
+        </script>
+
     </body>
 </html>

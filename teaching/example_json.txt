@@ -1,0 +1,12 @@
+{
+	"graduate":{
+		{"year":"2021", "university": "Kent State University", "Course No": "EVAL65511", "Times": 1, "Course Name": "Research in educ services"},
+		{"year":"2016, 2017, 2018, 2019, 2021", "university": "Kent State University", "Course No": "ENGR/TECH56411", "Times": 12, "Course Name": "Requirements eng analysis tech"},
+		{"year":"2020", "university": "Kent State University", "Course No": "TECH61095", "Times": 1, "Course Name": "ST: research in technology"}
+	}
+	"undergradute":{
+		{"year":"2017, 2018, 2019, 2020, 2021", "university": "Kent State University", "Course No": "ENGR/TECH46411", "Times": 14, "Course Name": "Requirements eng and analysis"},
+		{"year":"2017, 2018, 2020", "university": "Kent State University", "Course No": "ENGR/TECH46330", "Times": 4, "Course Name": "VB programming in engineering"},
+		{"year":"2018, 2019", "university": "Kent State University", "Course No": "TECH26310", "Times": 2, "Course name": "Web design and development"}
+	}
+}
