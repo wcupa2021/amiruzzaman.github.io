@@ -1,70 +1,70 @@
-Year,Semester,University,CourseNo,CourseName,Level
-2021,Fall,Kent State University,ENGR/TECH46411,Requirements eng and analysis,ugrad
-2021,Summer,Kent State University,EVAL65511,Research in educ services,grad
-2021,Spring,Kent State University,ENGR/TECH56411,Requirements eng analysis tech,grad
-2020,Fall,Kent State University,ENGR/TECH46411,Requirements eng and analysis,ugrad
-2020,Fall,Kent State University,ENGR/TECH46330,VB programming in engineering,ugrad
-2020,Fall,Kent State University,ENGR/TECH56330,VB programming in engineering,grad
-2020,Summer,Kent State University,ENGR/TECH46411,Requirements eng and analysis,ugrad
-2020,Summer,Kent State University,TECH61095,ST: research in technology,grad
-2020,Summer,Kent State University,TECH63496,Ind inv in energy/power tech,grad
-2020,Spring,Kent State University,ENGR/TECH46411,Requirements eng analysis tech,ugrad
-2020,Spring,Kent State University,ENGR/TECH46411,Requirements eng and analysis,ugrad
-2020,Spring,Kent State University,TECH60078,Research methods in tech,grad
-2019,Fall,Kent State University,ENGR/TECH56411,Requirements eng analysis tech,grad
-2019,Fall,Kent State University,ENGR/TECH46411,Requirements eng and analysis,ugrad
-2019,Fall,Kent State University,TECH60078,Research methods in tech,grad
-2019,Fall,Kent State University,TECH26310,Web design and development,ugrad
-2019,Summer,Kent State University,ENGR/TECH56411,Requirements eng analysis tech,grad
-2019,Summer,Kent State University,ENGR/TECH46411,Requirements eng and analysis,ugrad
-2019,Summer,Kent State University,TECH60001,Quant methods in tech,grad
-2019,Summer,Kent State University,TECH63496,Ind inv in energy/power tech,grad
-2019,Spring,Kent State University,TECH60078,Research methods in tech,grad
-2019,Spring,Kent State University,ENGR/TECH56411,Requirements eng analysis tech,grad
-2019,Spring,Kent State University,ENGR/TECH46411,Requirements eng and analysis,ugrad
-2019,Spring,Kent State University,TECH26200,Programming for engineers I,ugrad
-2019,Spring,Kent State University,TECH26200,Programming for engineers I,ugrad
-2016,Spring,Kent State University,MIS24053,Computer applications,ugrad
-2016,Spring,Kent State University,MIS44033,Advance computer programming,ugrad
-2016,Summer,Kent State University,MIS34054,Using IS for business problems,ugrad
-2016,Fall,Kent State University,MIS44043,Database management systems,ugrad
-2016,Fall,Kent State University,ENGR/TECH56411,Requirements eng analysis tech,grad
-2016,Fall,Kent State University,ENGR/TECH56411,Requirements eng analysis tech,grad
-2016,Fall,Kent State University,TECH66380,Advanced networking,grad
-2017,Fall,Kent State University,MIS34070,Programming theory and applications,ugrad
-2017,Fall,Kent State University,TECH33095,ST:Advanced android applications,ugrad
-2017,Fall,Kent State University,TECH43222,Computer hardware engineering,ugrad
-2017,Fall,Kent State University,TECH53222,Computer hardware engineering,grad
-2017,Fall,Kent State University,ENGR/TECH46330,VB programming in engineering,ugrad
-2017,Fall,Kent State University,ENGR/TECH46411,Requirements eng and analysis,ugrad
-2017,Fall,Kent State University,ENGR/TECH46411,Requirements eng and analysis,ugrad
-2017,Spring,Kent State University,ENGR/TECH56330,VB programming in engineering,grad
-2017,Spring,Kent State University,ENGR/TECH56330,VB programming in engineering,grad
-2017,Spring,Kent State University,ENGR/TECH56411,Requirements eng analysis tech,grad
-2017,Spring,Kent State University,ENGR/TECH56411,Requirements eng analysis tech,grad
-2017,Spring,Kent State University,DSCI60998,Capstone in digital sciences,grad
-2017,Summer,Kent State University,ENGR/TECH56330,VB programming in engineering,grad
-2017,Summer,Kent State University,ENGR/TECH56411,Requirements eng analysis tech,grad
-2018,Spring,Kent State University,ENGR/TECH46330,VB programming in engineering,ugrad
-2018,Spring,Kent State University,ENGR/TECH46411,Requirements eng and analysis,ugrad
-2018,Spring,Kent State University,ENGR/TECH46411,Requirements eng and analysis,ugrad
-2018,Spring,Kent State University,ENGR/TECH56330,VB programming in engineering,grad
-2018,Spring,Kent State University,ENGR/TECH56411,Requirements eng analysis tech,grad
-2018,Spring,Kent State University,ENGR/TECH56411,Requirements eng analysis tech,grad
-2018,Fall,Kent State University,TECH26310,Web design and development,ugrad
-2018,Fall,Kent State University,TECH33095,ST:Programming for engineering,ugrad
-2018,Fall,Kent State University,ENGR/TECH46330,VB programming in engineering,ugrad
-2018,Fall,Kent State University,ENGR/TECH46411,Requirements eng and analysis,ugrad
-2018,Fall,Kent State University,ENGR/TECH56330,VB programming in engineering,grad
-2018,Fall,Kent State University,ENGR/TECH56411,Requirements eng analysis tech,grad
-2018,Summer,Kent State University,ENGR/TECH46411,Requirements eng and analysis,ugrad
-2018,Summer,Kent State University,ENGR/TECH56330,VB programming in engineering,grad
-2021,Fall,West Chester University,CSC141,Computer Science I,ugrad
-2021,Fall,West Chester University,CSC141,Computer Science I,ugrad
-2021,Fall,West Chester University,CSC231,Computer Systems,ugrad
-2021,Fall,West Chester University,CSC240,Computer Science III,ugrad
-2021,Fall,West Chester University,CSC490,Independent Project in Computer Science,ugrad
-2022,Spring,West Chester University,CSC141,Computer Science I,ugrad
-2022,Spring,West Chester University,CSC231,Computer Systems,ugrad
-2022,Spring,West Chester University,CSC231,Computer Systems,ugrad
-2022,Spring,West Chester University,CSC576,Data Science,grad
+Year,Semester,University,CourseNo,CourseName,Level,foo
+2021,Fall,Kent State University,ENGR/TECH46411,Requirements eng and analysis,ugrad,0
+2021,Summer,Kent State University,EVAL65511,Research in educ services,grad,0
+2021,Spring,Kent State University,ENGR/TECH56411,Requirements eng analysis tech,grad,0
+2020,Fall,Kent State University,ENGR/TECH46411,Requirements eng and analysis,ugrad,0
+2020,Fall,Kent State University,ENGR/TECH46330,VB programming in engineering,ugrad,0
+2020,Fall,Kent State University,ENGR/TECH56330,VB programming in engineering,grad,0
+2020,Summer,Kent State University,ENGR/TECH46411,Requirements eng and analysis,ugrad,0
+2020,Summer,Kent State University,TECH61095,ST: research in technology,grad,0
+2020,Summer,Kent State University,TECH63496,Ind inv in energy/power tech,grad,0
+2020,Spring,Kent State University,ENGR/TECH46411,Requirements eng analysis tech,ugrad,0
+2020,Spring,Kent State University,ENGR/TECH46411,Requirements eng and analysis,ugrad,0
+2020,Spring,Kent State University,TECH60078,Research methods in tech,grad,0
+2019,Fall,Kent State University,ENGR/TECH56411,Requirements eng analysis tech,grad,0
+2019,Fall,Kent State University,ENGR/TECH46411,Requirements eng and analysis,ugrad,0
+2019,Fall,Kent State University,TECH60078,Research methods in tech,grad,0
+2019,Fall,Kent State University,TECH26310,Web design and development,ugrad,0
+2019,Summer,Kent State University,ENGR/TECH56411,Requirements eng analysis tech,grad,0
+2019,Summer,Kent State University,ENGR/TECH46411,Requirements eng and analysis,ugrad,0
+2019,Summer,Kent State University,TECH60001,Quant methods in tech,grad,0
+2019,Summer,Kent State University,TECH63496,Ind inv in energy/power tech,grad,0
+2019,Spring,Kent State University,TECH60078,Research methods in tech,grad,0
+2019,Spring,Kent State University,ENGR/TECH56411,Requirements eng analysis tech,grad,0
+2019,Spring,Kent State University,ENGR/TECH46411,Requirements eng and analysis,ugrad,0
+2019,Spring,Kent State University,TECH26200,Programming for engineers I,ugrad,0
+2019,Spring,Kent State University,TECH26200,Programming for engineers I,ugrad,0
+2016,Spring,Kent State University,MIS24053,Computer applications,ugrad,0
+2016,Spring,Kent State University,MIS44033,Advance computer programming,ugrad,0
+2016,Summer,Kent State University,MIS34054,Using IS for business problems,ugrad,0
+2016,Fall,Kent State University,MIS44043,Database management systems,ugrad,0
+2016,Fall,Kent State University,ENGR/TECH56411,Requirements eng analysis tech,grad,0
+2016,Fall,Kent State University,ENGR/TECH56411,Requirements eng analysis tech,grad,0
+2016,Fall,Kent State University,TECH66380,Advanced networking,grad,0
+2017,Fall,Kent State University,MIS34070,Programming theory and applications,ugrad,0
+2017,Fall,Kent State University,TECH33095,ST:Advanced android applications,ugrad,0
+2017,Fall,Kent State University,TECH43222,Computer hardware engineering,ugrad,0
+2017,Fall,Kent State University,TECH53222,Computer hardware engineering,grad,0
+2017,Fall,Kent State University,ENGR/TECH46330,VB programming in engineering,ugrad,0
+2017,Fall,Kent State University,ENGR/TECH46411,Requirements eng and analysis,ugrad,0
+2017,Fall,Kent State University,ENGR/TECH46411,Requirements eng and analysis,ugrad,0
+2017,Spring,Kent State University,ENGR/TECH56330,VB programming in engineering,grad,0
+2017,Spring,Kent State University,ENGR/TECH56330,VB programming in engineering,grad,0
+2017,Spring,Kent State University,ENGR/TECH56411,Requirements eng analysis tech,grad,0
+2017,Spring,Kent State University,ENGR/TECH56411,Requirements eng analysis tech,grad,0
+2017,Spring,Kent State University,DSCI60998,Capstone in digital sciences,grad,0
+2017,Summer,Kent State University,ENGR/TECH56330,VB programming in engineering,grad,0
+2017,Summer,Kent State University,ENGR/TECH56411,Requirements eng analysis tech,grad,0
+2018,Spring,Kent State University,ENGR/TECH46330,VB programming in engineering,ugrad,0
+2018,Spring,Kent State University,ENGR/TECH46411,Requirements eng and analysis,ugrad,0
+2018,Spring,Kent State University,ENGR/TECH46411,Requirements eng and analysis,ugrad,0
+2018,Spring,Kent State University,ENGR/TECH56330,VB programming in engineering,grad,0
+2018,Spring,Kent State University,ENGR/TECH56411,Requirements eng analysis tech,grad,0
+2018,Spring,Kent State University,ENGR/TECH56411,Requirements eng analysis tech,grad,0
+2018,Fall,Kent State University,TECH26310,Web design and development,ugrad,0
+2018,Fall,Kent State University,TECH33095,ST:Programming for engineering,ugrad,0
+2018,Fall,Kent State University,ENGR/TECH46330,VB programming in engineering,ugrad,0
+2018,Fall,Kent State University,ENGR/TECH46411,Requirements eng and analysis,ugrad,0
+2018,Fall,Kent State University,ENGR/TECH56330,VB programming in engineering,grad,0
+2018,Fall,Kent State University,ENGR/TECH56411,Requirements eng analysis tech,grad,0
+2018,Summer,Kent State University,ENGR/TECH46411,Requirements eng and analysis,ugrad,0
+2018,Summer,Kent State University,ENGR/TECH56330,VB programming in engineering,grad,0
+2021,Fall,West Chester University,CSC141,Computer Science I,ugrad,0
+2021,Fall,West Chester University,CSC141,Computer Science I,ugrad,0
+2021,Fall,West Chester University,CSC231,Computer Systems,ugrad,0
+2021,Fall,West Chester University,CSC240,Computer Science III,ugrad,0
+2021,Fall,West Chester University,CSC490,Independent Project in Computer Science,ugrad,0
+2022,Spring,West Chester University,CSC141,Computer Science I,ugrad,0
+2022,Spring,West Chester University,CSC231,Computer Systems,ugrad,0
+2022,Spring,West Chester University,CSC231,Computer Systems,ugrad,0
+2022,Spring,West Chester University,CSC576,Data Science,grad,0
