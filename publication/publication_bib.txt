@@ -588,3 +588,17 @@ doi = "10.1007/978-3-642-10619-4_22"
   publisher={IEEE},
   ISSN={},
   month={Nov},}
+
+@article{Amiruzzaman2020PreserviceMT,
+  title={Preservice mathematics teachers understanding of mode},
+  author={Md Amiruzzaman and Karl W. Kosko and Stefanie Amiruzzaman},
+  journal={arXiv: History and Overview},
+  year={2020}
+}
+
+@article{Amiruzzaman2020ExploringSU,
+  title={Exploring students' understanding of median},
+  author={Md Amiruzzaman and Karl W. Kosko},
+  journal={arXiv: History and Overview},
+  year={2020}
+}
