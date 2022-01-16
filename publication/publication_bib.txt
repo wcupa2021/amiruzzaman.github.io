@@ -528,7 +528,7 @@ doi = "10.1007/978-3-642-10619-4_22"
 
 @article{bhatblockchain,
   title={Blockchain letter of credit: A transaction-level analysis},
-  author={Bhat, Asif and Nor, Rizal MOhd and Amiruzzaman, Md},
+  author={Bhat, Asif and Nor, Rizal Mohd and Amiruzzaman, Md},
   journal={Journal of Engineering Science and Technology},
   pages={120--136},
   year={2021},
@@ -589,16 +589,18 @@ doi = "10.1007/978-3-642-10619-4_22"
   ISSN={},
   month={Nov},}
 
-@article{Amiruzzaman2020PreserviceMT,
+@INPROCEEDINGS{Amiruzzaman2020PreserviceMT,
   title={Preservice mathematics teachers understanding of mode},
   author={Md Amiruzzaman and Karl W. Kosko and Stefanie Amiruzzaman},
-  journal={arXiv: History and Overview},
-  year={2020}
+  booktitle={Proceedings of the 39th annual meeting of the North American Chapter of the International Group for the Psychology of Mathematics Education},
+  year={2017},
+  publisher={PMENA},
 }
 
-@article{Amiruzzaman2020ExploringSU,
+@INPROCEEDINGS{Amiruzzaman2020ExploringSU,
   title={Exploring students' understanding of median},
   author={Md Amiruzzaman and Karl W. Kosko},
-  journal={arXiv: History and Overview},
-  year={2020}
+  booktitle={Proceedings of the 38th annual meeting of the North American Chapter of the International Group for the Psychology of Mathematics Education},
+  year={2016},
+  publisher={PMENA},
 }
