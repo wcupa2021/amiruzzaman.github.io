@@ -174,9 +174,9 @@
                                                                                 </div>-->
                                     </div>
                                     <div id="grad" class="tab-pane fade"> 
-<!--                                        <div class="card card-body">
-                                            <div id="add-grad-table" class="table"></div>
-                                        </div>-->
+                                        <!--                                        <div class="card card-body">
+                                                                                    <div id="add-grad-table" class="table"></div>
+                                                                                </div>-->
                                     </div>
                                 </div>
                             </div>
@@ -194,7 +194,9 @@
 
                                     </ul>
                                 </div>
+                                <div id = "lastModified"></div>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -545,10 +547,10 @@
                     // Now use jsonobject to do some charting...
                     //console.log(jsonobject);
                     var data = jsonobject.rows;
-                    console.log(data);
+                    //console.log(data);
 
                     var jsondata = aggregate(jsonobject);
-                    console.log(jsondata);
+                    //console.log(jsondata);
 
 
                     var ugrad = [];
@@ -674,8 +676,20 @@
                     // Show some error message, couldn't get the CSV file
                 }
             });
+            function clearConsole() {
+                if (window.console || window.console.firebug) {
+                    console.clear();
+                }
+            }
 
+            $(document).ready(function () {
+                console.log("ready!");
+                clearConsole();
+            });
 
+            var x = document.lastModified;
+            console.log(x);
+            $('#lastModified').html(x);
         </script>
 
     </body>
