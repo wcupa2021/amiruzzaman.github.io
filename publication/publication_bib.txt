@@ -604,3 +604,19 @@ doi = "10.1007/978-3-642-10619-4_22"
   year={2016},
   publisher={PMENA},
 }
+
+@INPROCEEDINGS{9706544,
+  author={Bhat, Asif and Nor, Rizal Mohd. and Mansor, Hafizah and Amiruzzaman, Md},
+  booktitle={2021 International Conference on Cyber Security and Internet of Things (ICSIoT)}, 
+  title={Leveraging Decentralized Internet of Things (IoT) and Blockchain Technology in International Trade}, 
+  year={2021},
+  volume={},
+  number={},
+  pages={1-6},
+  abstract={Supply chains in the modern era have developed into very complex value networks and have become a critical source of competitive advantage. Verifying the origin of raw materials and maintaining visibility of goods and merchandise as they move through the value chain network is difficult. The Internet of Things (IoT) application may assist businesses in observing, tracking, and monitoring items, activities, and processes inside their value chain networks. Both blockchain and Internet of Things technologies have the potential to accelerate the implementation of Industry 4.0 and transform foreign trade procedures. Integrated technology utilization may be a component of the answer to this future. This paper’s contribution is to demonstrate how the marriage of Blockchain technology with IoT infrastructure may simplify and enhance contemporary supply chains in a variety of ways. Such as increasing scalability, security, immutability, and auditing, as well as information flows, traceability, and interoperability, and quality, using Ping Asset devices and Chainlink, and so setting the groundwork for future research projects.},
+  keywords={},
+  doi={10.1109/ICSIoT55070.2021.00010},
+  url = {https://ieeexplore.ieee.org/document/9706544},
+  publisher={IEEE},
+  ISSN={},
+  month={Dec},}
