@@ -621,6 +621,17 @@ doi = "10.1007/978-3-642-10619-4_22"
   ISSN={},
   month={Dec},}
   
+  @incollection{dbhati2021mobile,
+  title={Interactive Visualization and Capturing Geo-Coded Multimedia Data on Mobile Devices},
+  author={Bhati, Deepshikha and Amiruzzaman, Md and Jamonnak,Suphanut and Zhao, Ye},
+  booktitle={Intelligent Human Computer Interaction},
+  pages={--},
+  year={2022},
+  publisher={Springer},
+  doi={https://doi.org/10.1007/978-3-030-98403-8},
+  url={https://link.springer.com/chapter/10.1007/978-3-030-98403-8}
+}
+  
   @INPROCEEDINGS{9730236,
   author={Amiruzzaman, Stefanie and Amiruzzaman, Md},
   booktitle={2021 IEEE Intl Conf on Dependable, Autonomic and Secure Computing, Intl Conf on Pervasive Intelligence and Computing, Intl Conf on Cloud and Big Data Computing, Intl Conf on Cyber Science and Technology Congress (DASC/PiCom/CBDCom/CyberSciTech)}, 
