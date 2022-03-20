@@ -623,16 +623,8 @@ doi = "10.1007/978-3-642-10619-4_22"
   
 
 @InProceedings{dbhati2021mobile,
-author="Bhati, Deepshikha
-and Amiruzzaman, Md
-and Jamonnak, Suphanut
-and Zhao, Ye",
-editor="Kim, Jong-Hoon
-and Singh, Madhusudan
-and Khan, Javed
-and Tiwary, Uma Shanker
-and Sur, Marigankar
-and Singh, Dhananjay",
+author="Bhati, Deepshikha and Amiruzzaman, Md and Jamonnak, Suphanut and Zhao, Ye", 
+editor="Kim, Jong-Hoon and Singh, Madhusudan and Khan, Javed and Tiwary, Uma Shanker and Sur, Marigankar and Singh, Dhananjay",
 title="Interactive Visualization and Capture of Geo-Coded Multimedia Data on Mobile Devices",
 booktitle="Intelligent Human Computer Interaction",
 year="2022",
