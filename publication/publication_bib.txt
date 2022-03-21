@@ -623,16 +623,21 @@ doi = "10.1007/978-3-642-10619-4_22"
   ISSN={},
   month={Dec},}
   
-  @incollection{dbhati2021mobile,
-  title={Interactive Visualization and Capturing Geo-Coded Multimedia Data on Mobile Devices},
-  author={Bhati, Deepshikha and Amiruzzaman, Md and Jamonnak,Suphanut and Zhao, Ye},
-  booktitle={Intelligent Human Computer Interaction},
-  pages={1-12},
-  year={2022},
-  publisher={Springer},
-  doi={https://doi.org/10.1007/978-3-030-98403-8},
-  url={https://link.springer.com/chapter/10.1007/978-3-030-98403-8}
-}
+
+	@InProceedings{dbhati2021mobile,
+	author="Bhati, Deepshikha and Amiruzzaman, Md and Jamonnak, Suphanut and Zhao, Ye", 
+	editor="Kim, Jong-Hoon and Singh, Madhusudan and Khan, Javed and Tiwary, Uma Shanker and Sur, Marigankar and Singh, Dhananjay",
+	title="Interactive Visualization and Capture of Geo-Coded Multimedia Data on Mobile Devices",
+	booktitle="Intelligent Human Computer Interaction",
+	year="2022",
+	publisher="Springer International Publishing",
+	address="Cham",
+	pages="260--271",
+	abstract="In digital community applications, geo-coded multimedia data including spatial videos, speech, and geo-narratives are collected and utilized by community users and researchers from multiple fields. It is often preferred that these data can be captured, visualized, and explored directly on mobile phones and tablets interactively. In this paper, we present a Geo-Video Mobile Application (GVM App) that collects geo-coded multimedia data for experts to process and analyze over an interactive visual exploration. This mobile App integrates user interactivity, AI-based semantic image segmentation, and audio transcription for effective data extraction and utilization. Then visualization functions are designed to quickly present geographical, semantic, and street view visual information for knowledge discovery. The users of this tool can include community workers, teachers, and tourists, and also span across multiple social disciplines in digital humanity studies.",
+	isbn="978-3-030-98404-5",
+	doi={https://doi.org/10.1007/978-3-030-98403-8},
+	  url={https://link.springer.com/chapter/10.1007/978-3-030-98403-8}
+	}
   
   @INPROCEEDINGS{9730236,
   author={Amiruzzaman, Stefanie and Amiruzzaman, Md},
