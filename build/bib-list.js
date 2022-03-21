@@ -4496,9 +4496,9 @@ var bibtexify = (function ($) {
                     entryData.title + ". <em>" + entryData.journal + ", " + entryData.volume +
                     ((entryData.number) ? "(" + entryData.number + ")" : "") + ", " +
                     "pp. " + entryData.pages + ". " +
-                    ((entryData.address) ? entryData.address + "." : "") +
-                    ((entryData.publisher) ? " " + entryData.publisher : "") +
-                    ((entryData.doi) ? ". <a href=\"https://doi.org/" + entryData.doi +"\">[doi]</a>": "") +
+                    ((entryData.address) ? entryData.address + ". " : "") +
+                    ((entryData.publisher) ? " " + entryData.publisher + ". " : "") +
+                    ((entryData.doi) ? "<a href=\"https://doi.org/" + entryData.doi +"\">[doi]</a>": "") +
                     ".<em style='color:blue;font-weight: bold;'> [Journal]</em><\/em>";
         },
         misc: function (entryData) {

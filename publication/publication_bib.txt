@@ -569,6 +569,8 @@ doi = "10.1007/978-3-642-10619-4_22"
   abstract={Vision-based deep learning (DL) methods have made great progress in learning autonomous driving models from large-scale crowd-sourced video datasets. They are trained to predict instantaneous driving behaviors from video data captured by on-vehicle cameras. In this paper, we develop a geo-context aware visualization system for the study of Autonomous Driving Model (ADM) predictions together with large-scale ADM video data. The visual study is seamlessly integrated with the geographical environment by combining DL model performance with geospatial visualization techniques. Model performance measures can be studied together with a set of geospatial attributes over map views. Users can also discover and compare prediction behaviors of multiple DL models in both city-wide and street-level analysis, together with road images and video contents. Therefore, the system provides a new visual exploration platform for DL model designers in autonomous driving. Use cases and domain expert evaluation show the utility and effectiveness of the visualization system.},
   keywords={},
   doi={10.1109/TVCG.2021.3114853},
+  url = {https://ieeexplore.ieee.org/document/9555830},
+  publisher={IEEE},
   ISSN={1941-0506},
   month={Jan},}
 
@@ -625,7 +627,7 @@ doi = "10.1007/978-3-642-10619-4_22"
   title={Interactive Visualization and Capturing Geo-Coded Multimedia Data on Mobile Devices},
   author={Bhati, Deepshikha and Amiruzzaman, Md and Jamonnak,Suphanut and Zhao, Ye},
   booktitle={Intelligent Human Computer Interaction},
-  pages={--},
+  pages={1-12},
   year={2022},
   publisher={Springer},
   doi={https://doi.org/10.1007/978-3-030-98403-8},
