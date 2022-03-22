@@ -1,0 +1,65 @@
+<!DOCTYPE html> 
+<html>
+<head>
+  <title>Number Line </title>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="numberLine-1.js"></script>
+	<link rel="stylesheet" href="numberLine.css">
+  </head>
+  <body>
+	  <div class="canvas-container"><canvas id="canvas"></canvas></div>
+	<div class="feedbackSection">
+		<h3>Feedback</h3>
+		<div class="container">
+			<div class="feedback item" id="sd-2-left">You are going in the right direction</div>
+
+			<div class="feedback item" id="sd-1-left">You are almost there!</div>
+
+			<div class="feedback item" id="correctGuess">You have found the right answer.</div>
+
+			<div class="feedback item" id="sd-1-right">Try going back in the opposite direction</div>
+
+			<div class="feedback item" id="sd-2-right">You are going in the wrong direction</div>
+		</div>
+	</div>
+	<div class="numberLineDets">
+		<div class="numberSelected">
+			<span>Numbers Selected: </span>
+			<div contenteditable="true" id="selectedVals"></div >
+		</div>
+	
+		<div class="numberSorted">
+			<span>Sorted Values: </span>
+			<span id="sortedVals"></span>
+		</div>
+		
+		<div class="calcTypes"> 
+  			<input type="radio" id="mean" name="calc" value="mean">
+ 			<label for="mean">Mean</label>
+  			<input type="radio" id="median" name="calc" value="median">
+  			<label for="median">Median</label>
+  			<input type="radio" id="mode" name="calc" value="mode">
+  			<label for="mode">Mode</label>
+			<input type="radio" id="range" name="calc" value="range">
+  			<label for="range">Range</label>
+		</div>
+		<div class="calcButton">
+			<input type="button" id="calcBtn" class="calcBtn" value="Calculate" click="startCalc()"/>
+			<input type="button" id="rstBtn" class="rstBtn" value="Reset" click="reloadPage()"/>
+			<input type="button" id="showHint" class="showHint" value="Show Hint" click="showHint()"/>
+			<input type="button" id="showAnswer" class="showAnswer" value="Show Answer" click="showAnswer()"/>
+		</div>
+		<div class="definition">
+			<div class="mean-def"><b>Mean,</b> in mathematics, a quantity that has a value intermediate between those of the extreme members of some set. </div>
+			<div class="median-def"><b>Median,</b> is the middle number in a sorted list of numbers. To determine the median value in a sequence of numbers, the numbers must first be sorted, or arranged, in value order from lowest to highest or highest to lowest. </div>
+			<div class="mode-def"><b>Mode,</b> is the value that appears most frequently in a data set. A set of data may have one mode, more than one mode, or no mode at all. </div>
+			<div class="range-def"><b>Range,</b> is the difference between the highest and lowest values in a set of numbers. To find it, subtract the lowest number in the distribution from the highest.</div>
+		</div>
+
+		<div class="finalAnswer">
+		</div>
+	</div>
+	
+	
+  </body>
+</html>
