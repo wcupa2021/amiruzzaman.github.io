@@ -657,7 +657,7 @@ doi = "10.1007/978-3-642-10619-4_22"
 
 
 @article{Jamonnak2022VisualCommunity,
-  title={Classifying crime places by neighborhood visual appearance and police geonarratives: a machine learning approach},
+  title={VisualCommunity: a platform for archiving and studying communities},
   author={Jamonnak, Suphanut and Bhati, Deepshikha and Amiruzzaman, Md and Zhao, Ye and  and Ye, Xinyue and and Curtis, Andrew},
   journal={Journal of computational social science},
   year={2022},
