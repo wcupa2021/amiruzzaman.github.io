@@ -658,7 +658,7 @@ doi = "10.1007/978-3-642-10619-4_22"
 
 @article{Jamonnak2022VisualCommunity,
   title={VisualCommunity: a platform for archiving and studying communities},
-  author={Jamonnak, Suphanut and Bhati, Deepshikha and Amiruzzaman, Md and Zhao, Ye and  and Ye, Xinyue and and Curtis, Andrew},
+  author={Jamonnak, Suphanut and Bhati, Deepshikha and Amiruzzaman, Md and Zhao, Ye and Ye, Xinyue and and Curtis, Andrew},
   journal={Journal of computational social science},
   year={2022},
   doi = {https://doi.org/10.1007/s42001-022-00170-y},
