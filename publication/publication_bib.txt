@@ -667,7 +667,7 @@ doi = "10.1007/978-3-642-10619-4_22"
 }
 
 @article{amiruzzaman2022dbscanmist,
-  author  = {Amiruzzaman, Md and Rahman, Rashik and Islam, Rajibul Md. and Nor, Rizal Mohd},
+  author  = {Amiruzzaman, Md and Rahman, Rashik and Islam, Md. Rajibul and Nor, Rizal Mohd},
   title   = {Logical analysis of Built-in DBSCAN Functions in Popular Data Science Programming Languages},
   journal = {MIST International Journal of Science and Technology (MIJST)},
   year    = {2022},
@@ -675,7 +675,7 @@ doi = "10.1007/978-3-642-10619-4_22"
  number  = {},
   pages   = {to appear},
   month   = May,
- issn    = {},
-  url = {http://doi.acm.org/},
+ issn    = {2224-2007},
+  url = {https://doi.acm.org/},
  doi = {},
 }

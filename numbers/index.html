@@ -1,0 +1,28 @@
+ <!DOCTYPE html>
+<html>
+ <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+</head> 
+<body>
+
+<span id="amount">3.25</span>
+<input id="amount_entry" style="display:none;"></input>
+<script>
+$('#amount').click(function() {
+    $('#amount').css('display', 'none');
+    $('#amount_entry')
+        .val($('#amount').text())
+        .css('display', '')
+        .focus();
+});
+
+$('#amount_entry').blur(function() {
+    $('#amount_entry').css('display', 'none');
+    $('#amount')
+        .text($('#amount_entry').val())
+        .css('display', '');
+});
+</script>
+</body>
+</html> 
