@@ -4488,6 +4488,7 @@ var bibtexify = (function ($) {
                     "<em>" + entryData.booktitle +
                     ", pp. " + entryData.pages +
                     ((entryData.address) ? ", " + entryData.address : "") +
+					((entryData.doi) ? ". <a href=\"https://doi.org/" + entryData.doi +"\">[doi]</a>": "") +
                     ".<em style='color:brown;font-weight: bold;'> [Book chapter]</em><\/em>";
         },
         article: function (entryData) {
