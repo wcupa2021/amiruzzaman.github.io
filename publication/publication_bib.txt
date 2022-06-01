@@ -545,7 +545,9 @@ doi = "10.1007/978-3-642-10619-4_22"
   pages={289--302},
   year={2018},
   publisher={Pittsburgh, PA: ETC Press},
-  editor = {Kennedy and Ferdig}
+  doi = {https://www.doi.org/10.1184/R1/6686813},
+  isbn = {9781387704156},
+  editor = {Kathryn Kennedy and Richard E. Ferdig}
 }
 
 @incollection{kosko2014few,
@@ -555,7 +557,9 @@ doi = "10.1007/978-3-642-10619-4_22"
   pages={163--177},
   year={2014},
   publisher={Pittsburgh, PA: ETC Press},
-  editor = {Ferdig and Kennedy}
+  doi = {https://www.doi.org/10.1184/R1/6686810},
+  isbn = {9781312587083},
+  editor = {Richard E. Ferdig and Kathryn Kennedy}
 }
 
 @ARTICLE{9555830,
