@@ -448,14 +448,26 @@ doi = "10.1007/978-3-642-10619-4_22"
   title={A bottom-up mergesort eliminating recursion},
   author={Wadud, M and Amiruzzaman, Md and Chae, Oksam},
   year={2008},
-  publisher={Daffodil International University}
+  publisher={Daffodil International University},
+  journal = {DIU Journal of Science and Technology},
+  volume  = "3",
+  number  = "1",
+  pages   = "59--64",
+  issn = {2408-8498},
+  url = {http://hdl.handle.net/20.500.11948/464}
 }
 
 @article{amiruzzaman2008embedded,
   title={An embedded network-engine},
   author={Amiruzzaman, Md},
   year={2008},
-  publisher={Daffodil International University}
+  publisher={Daffodil International University},
+  journal = {DIU Journal of Science and Technology},
+  volume  = "3",
+  number  = "2",
+  pages   = "13--19",
+  issn = {2408-8498},
+  url = {http://hdl.handle.net/20.500.11948/472}
 }
 
 
