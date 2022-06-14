@@ -664,12 +664,12 @@ doi = "10.1007/978-3-642-10619-4_22"
   number={},
   pages={863-866},
   abstract={For almost a decade, Twitter use and its impact on academic achievement has been explored by many researchers. Despite the growing scholarly interest, studies have been correlational and exploratory in nature. The purpose of this study is to develop the Twitter and Scholastic Synchronicity Scale (TSSS) and the Twitter and Scholastic Apportionment Assessment (TSAA) to measure the impact of perceived Twitter use on students' scholastic achievement. Undergraduate and graduate students (<tex>$\mathrm{N}=326$</tex>) responded to a set of items that was created from qualitative research findings. The descriptive statistics, the factor structure, and internal consistency reliability for the overall measure and subscales were reported. The psychometric results of the scales reported high internal consistency and three- and two-factor structures. This study not only develops the scales to measure the effect of Twitter use among students, but also checks the reliability and validity of the newly developed scales.},
-  keywords={},
-  doi={10.1109/DASC-PICom-CBDCom-CyberSciTech52372.2021.00143},
-  url = {https://ieeexplore.ieee.org/document/9730236},
-  publisher={IEEE},
-  ISSN={},
-  month={Oct},}
+  keywords = {social networking (online);blogs;big data;multitasking;reliability},
+  doi = {10.1109/DASC-PICom-CBDCom-CyberSciTech52372.2021.00143},
+  url = {https://doi.ieeecomputersociety.org/10.1109/DASC-PICom-CBDCom-CyberSciTech52372.2021.00143},
+  publisher = {IEEE Computer Society},
+  address = {Los Alamitos, CA, USA},
+  month = {oct}}
 
 
 @article{Jamonnak2022VisualCommunity,
@@ -687,11 +687,11 @@ doi = "10.1007/978-3-642-10619-4_22"
   title   = {Logical analysis of Built-in DBSCAN Functions in Popular Data Science Programming Languages},
   journal = {MIST International Journal of Science and Technology (MIJST)},
   year    = {2022},
- volume  = {},
+ volume  = {10},
  number  = {},
-  pages   = {to appear},
+  pages   = {25--32},
   month   = May,
  issn    = {2224-2007},
-  url = {https://doi.acm.org/},
- doi = {},
+  url = {https://mijst.mist.ac.bd/mijst/index.php/mijst/index},
+ doi = {https://doi.org/10.47981/j.mijst.10(01)2022.349(25-32)},
 }
