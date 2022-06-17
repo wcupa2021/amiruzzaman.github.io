@@ -4274,6 +4274,13 @@ function replaceAll(string, search, replace) {
     return string.split(search).join(replace);
 }
 
+function cleanDoiURL(url)
+{
+	//alert(url);
+	const regex = /^(?:https?:\/\/)?(?:www\.)?doi.org\//i;
+	return url.replace(regex, '');
+}
+
 
 function getAuthors(authors)
 {
@@ -4499,7 +4506,7 @@ var bibtexify = (function ($) {
                     "pp. " + entryData.pages + ". " +
                     ((entryData.address) ? entryData.address + ". " : "") +
                     ((entryData.publisher) ? " " + entryData.publisher + ". " : "") +
-                    ((entryData.doi) ? "<a href=\"https://doi.org/" + entryData.doi +"\">[doi]</a>": "") +
+                    ((entryData.doi) ? "<a href=\"https://doi.org/" + cleanDoiURL(entryData.doi) +"\">[doi]</a>": "") +
                     ".<em style='color:blue;font-weight: bold;'> [Journal]</em><\/em>";
         },
         misc: function (entryData) {
