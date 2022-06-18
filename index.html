@@ -459,15 +459,16 @@
 
                     for (let i = 0; i < data.length; i++)
                     {
+					    var compareDay = parseInt(data[data.length-1].Keep);
                         var str = null;
-                        if (getDateDifference(data[i].Date) < 30)
+                        if (getDateDifference(data[i].Date) < compareDay)
                         {
                             if (data[i]["URL\r"] !== 0)
                             {
-                                str = data[i].Event + ", \"" + data[i].Title + "\", <a href =\"" + data[i]["URL\r"] + "\">" + data[i].Venue + "</a>";
+                                str = data[i].Event + ", \"" + cleanComma(data[i].Title) + "\", <a href =\"" + data[i]["URL\r"] + "\">" + data[i].Venue + "</a>";
                             } else
                             {
-                                str = data[i].Event + ", \"" + data[i].Title + "\", " + data[i].Venue;
+                                str = data[i].Event + ", \"" + cleanComma(data[i].Title) + "\", " + data[i].Venue;
                             }
                             var listitem = $('<li/>', {
                                 'class': 'ulclass list'
@@ -540,6 +541,13 @@
                     }
                 });
             }
+			
+			// clean ' from string 
+			// https://stackoverflow.com/questions/44111580/how-to-deal-with-commas-in-csv-using-javascript
+			function cleanComma(str){
+			    const regex = /\'/g
+			    return str.replace(regex, "\'");
+			}
 
             $.ajax("teaching/teaching_ugrad_grad.csv", {
                 success: function (data) {

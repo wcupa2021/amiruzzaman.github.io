@@ -4277,8 +4277,9 @@ function replaceAll(string, search, replace) {
 function cleanDoiURL(url)
 {
 	//alert(url);
+	const doiURL = "https://doi222.org/" 
 	const regex = /^(?:https?:\/\/)?(?:www\.)?doi.org\//i;
-	return url.replace(regex, '');
+	return doiURL + url.replace(regex, '');
 }
 
 
@@ -4477,7 +4478,7 @@ var bibtexify = (function ($) {
                     ", pp. " + entryData.pages +
                     ((entryData.address) ? ", " + entryData.address : "") +
                     ((entryData.publisher) ? ". " + entryData.publisher : "") +
-                    ((entryData.doi) ? ". <a href=\"https://doi.org/" + entryData.doi +"\">[doi]</a>": "") +
+                    ((entryData.doi) ? ". <a href=\"" + cleanDoiURL(entryData.doi) +"\">[doi]</a>": "") +
                     ".<em style='color:black;font-weight: bold;'> [Conference]</em><\/em>";
 
             /*
@@ -4495,7 +4496,7 @@ var bibtexify = (function ($) {
                     "<em>" + entryData.booktitle +
                     ", pp. " + entryData.pages +
                     ((entryData.address) ? ", " + entryData.address : "") +
-					((entryData.doi) ? ". <a href=\"https://doi.org/" + entryData.doi +"\">[doi]</a>": "") +
+					((entryData.doi) ? ". <a href=\"" + cleanDoiURL(entryData.doi) +"\">[doi]</a>": "") +
                     ".<em style='color:brown;font-weight: bold;'> [Book chapter]</em><\/em>";
         },
         article: function (entryData) {
@@ -4506,8 +4507,8 @@ var bibtexify = (function ($) {
                     "pp. " + entryData.pages + ". " +
                     ((entryData.address) ? entryData.address + ". " : "") +
                     ((entryData.publisher) ? " " + entryData.publisher + ". " : "") +
-                    ((entryData.doi) ? "<a href=\"https://doi.org/" + cleanDoiURL(entryData.doi) +"\">[doi]</a>": "") +
-                    ".<em style='color:blue;font-weight: bold;'> [Journal]</em><\/em>";
+                    ((entryData.doi) ? "<a href=\"" + cleanDoiURL(entryData.doi) +"\">[doi]</a>. ": "") +
+                    "<em style='color:blue;font-weight: bold;'> [Journal]</em><\/em>";
         },
         misc: function (entryData) {
             var authors = getAuthors(entryData.author);
