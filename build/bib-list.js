@@ -4277,7 +4277,7 @@ function replaceAll(string, search, replace) {
 function cleanDoiURL(url)
 {
 	//alert(url);
-	const doiURL = "https://doi222.org/" 
+	const doiURL = "https://doi.org/" 
 	const regex = /^(?:https?:\/\/)?(?:www\.)?doi.org\//i;
 	return doiURL + url.replace(regex, '');
 }

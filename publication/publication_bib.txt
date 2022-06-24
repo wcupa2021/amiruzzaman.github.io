@@ -695,3 +695,19 @@ doi = "10.1007/978-3-642-10619-4_22"
   url = {https://mijst.mist.ac.bd/mijst/index.php/mijst/index},
  doi = {https://doi.org/10.47981/j.mijst.10(01)2022.349(25-32)},
 }
+
+@InProceedings{doi:10.2514/6.2022-3416,
+author = {David Sheets and Md Amiruzzaman and D. Blake Stringer and Brian Neff and Ye Zhao},
+title = {AVES: A data-driven approach for airman certification},
+booktitle = {AIAA AVIATION 2022 Forum},
+year = {2022},
+chapter = {},
+pages = {1--14},
+doi = {10.2514/6.2022-3416},
+URL = {https://arc.aiaa.org/doi/abs/10.2514/6.2022-3416},
+eprint = {https://arc.aiaa.org/doi/pdf/10.2514/6.2022-3416},
+presentation = {https://doi.org/10.2514/6.2022-3416.vid},
+    abstract = { View Video Presentation: https://doi.org/10.2514/6.2022-3416.vidAirman certification training relies on post-flight debriefing conducted between flight instructor and student, which is a review of the flight using observations from hand-written notes and the collective memory of the two persons on board. Data-driven visualizations have yet to be fully incorporated into the flight training process. The Airman Visual Evaluation System (AVES) applies a data-driven approach to support airman certification training by processing data recorded from common avionics systems such as the Garmin G1000. Maneuvers, e.g. steep turns, are decomposed into a hierarchical definition including task, sub-task, and related components according to available data. Each level in the hierarchy defines a related event detectable within the data. At the top-level of the hierarchy are points where an instructor may wish to review with a student while lower levels of the hierarchy support the review with additional information. Performance measurements are associated with each event to be captured from the data. Visual analytics approaches are applied to convey the events and related performance information including 2D and 3D views of flight replay, event timelines, performance related visualizations. The visualizations are provided in an interactive application to convey the information. User studies are conducted to identify and measure value within airman certification programs. }
+}
+
+
