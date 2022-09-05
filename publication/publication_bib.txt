@@ -736,3 +736,17 @@ presentation = {https://doi.org/10.2514/6.2022-3416.vid},
   doi = "10.22667/ReBiCTE.2022.08.31.007",
   url = "http://dx.doi.org/10.22667/ReBiCTE.2022.08.31.007"
 }
+
+@Article{socsci11090404,
+AUTHOR = {Amiruzzaman, Stefanie and Amiruzzaman, Md},
+TITLE = {Use of Twitter among College Students for Academics: A Mixed-Methods Approach},
+JOURNAL = {Social Sciences},
+VOLUME = {11},
+YEAR = {2022},
+NUMBER = {9},
+ARTICLE-NUMBER = {404},
+URL = {https://www.mdpi.com/2076-0760/11/9/404},
+ISSN = {2076-0760},
+ABSTRACT = {For almost a decade, Twitter use and its impact on students&rsquo; academic performance have been explored by many researchers. Despite growing scholarly interest, studies have been mostly quantitative in nature. The findings of previous studies are conflicting; thus, an in-depth study is needed to determine how and what impacts college students&rsquo; academic performance (i.e., GPA) when they spend time on Twitter. The purpose of this study was to understand the effects of Twitter use on college students&rsquo; academic performance. The present study shows that individual analysis techniques, such as quantitative or qualitative tools, are not enough to understand the underlying relationship. Therefore, a mixed-method approach (i.e., correlation and discourse analysis) was used to analyze the research data. Undergraduate students responded (N = 498) to a set of items along with some open-ended questions (n = 121). The results of this study indicate that how students use Twitter matters more than the amount of time they spend using it for their studies.},
+DOI = {10.3390/socsci11090404}
+}
