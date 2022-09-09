@@ -210,12 +210,13 @@
         <!-- Office hour Starts here -->
         <div class="meet-me-container row" id="office"> 
             <div class="col-md-6"> <a name="office"></a>
-                <h5>Office Hours (Spring 2022)</h5>
-                <div>Monday - 10:00 am - 11:00 am </div>
-                <div>Monday - 1:00 pm - 2:00 pm </div>
-                <div>Wednesday - 10:00 am - 11:00 am</div>
-                <div>Wednesday - 1:00 pm - 2:00 pm </div>
-                <div>Friday - 1:00 pm - 2:00 pm</div>
+                <div id ="officehours"></div>
+                <!--                <h5>Office Hours (Spring 2022)</h5>
+                                <div>Monday - 10:00 am - 11:00 am </div>
+                                <div>Monday - 1:00 pm - 2:00 pm </div>
+                                <div>Wednesday - 10:00 am - 11:00 am</div>
+                                <div>Wednesday - 1:00 pm - 2:00 pm </div>
+                                <div>Friday - 1:00 pm - 2:00 pm</div>-->
             </div>
             <div class="col-md-6" id = "contact"> <a name="contact"></a>
                 <h5>Contact Details</h5>
@@ -459,7 +460,7 @@
 
                     for (let i = 0; i < data.length; i++)
                     {
-					    var compareDay = parseInt(data[data.length-1].Keep);
+                        var compareDay = parseInt(data[data.length - 1].Keep);
                         var str = null;
                         if (getDateDifference(data[i].Date) < compareDay)
                         {
@@ -541,13 +542,13 @@
                     }
                 });
             }
-			
-			// clean ' from string 
-			// https://stackoverflow.com/questions/44111580/how-to-deal-with-commas-in-csv-using-javascript
-			function cleanComma(str){
-			    const regex = /\'/g
-			    return str.replace(regex, "\'");
-			}
+
+            // clean ' from string 
+            // https://stackoverflow.com/questions/44111580/how-to-deal-with-commas-in-csv-using-javascript
+            function cleanComma(str) {
+                const regex = /\'/g
+                return str.replace(regex, "\'");
+            }
 
             $.ajax("teaching/teaching_ugrad_grad.csv", {
                 success: function (data) {
@@ -698,6 +699,35 @@
             var x = document.lastModified;
             console.log(x);
             $('#lastModified').html(x);
+        </script>
+
+        <script>
+            $.ajax("officehours/officehours.csv", {
+                success: function (data) {
+                    var jsonobject = csvjson.csv2json(data);
+                    // Now use jsonobject to do some charting...
+                    //console.log(jsonobject);
+                    var data = jsonobject.rows;
+                    //console.log(data);
+
+                    if (data.length > 0) {
+                        let semester = data[0]['Semester'];
+                        //console.log(semester);
+                        let year = data[0]['Year'];
+                        //console.log(year);
+                        $('#officehours').append("<h5><b>Office Hours (" + semester + " " + year + ")</b></h5>");
+                    }
+                    for (let i = 0; i < data.length; i++) {
+
+                        //console.log(data[i]['Day'] + ': ' + data[i]['From'] + data[i]['am_pm1'] + '-' + data[i]['To'] + data[i]['am_pm2'] + ' (' + data[i]['Type'] + ')');
+                        //console.log(data[i]);
+                        $('#officehours').append('<div>' + data[i]['Day'] + ': ' + data[i]['From'] + data[i]['am_pm1'] + '-' + data[i]['To'] + data[i]['am_pm2'] + ' (' + data[i]['Type'] + ')' + '</div>');
+                    }
+                },
+                error: function () {
+                    // Show some error message, couldn't get the CSV file
+                }
+            });
         </script>
 
     </body>
