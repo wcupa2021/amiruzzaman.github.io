@@ -49,6 +49,14 @@
                 width: 100%;/*800px; */        
                 background-color: #ccc;  
             }
+            .block{
+                border-width: 2px;
+                border-color: red;
+                border-style: solid;
+                /*border: 1px solid #000;*/ 
+                /*display: inline-block;*/ 
+                width: fit-content;
+            }
         </style>
     </head>
     <body>
@@ -83,34 +91,52 @@
             </div>
         </div>
         <script>
-
+            function processDiv(input, target) {
+                var str_array = input.split("%0A");
+                for (var i = 0; i < str_array.length; i++) {
+                    // Trim the excess whitespace.
+                     //str_array[i] = str_array[i].replace(/^\s*/, "").replace(/\s*$/, "");
+                    // Add additional code here, such as:
+                    console.log(str_array[i], ":");
+                    var newLink = document.createElement('div');
+                    newLink.className = 'block';
+                    // preserve whitespace in dynamically added javascript DOM element without using CSS?
+                    var text = str_array[i].replace(/\s/g, '&nbsp;');
+                    newLink.innerHTML = text;
+                    target.appendChild(newLink);
+                }
+            }
             $('button').on('click', function () {
                 //document.getElementsByName('your-message')[0].value = this.value;
                 var textarea = document.getElementsByName('your-message')[0].value;
-                console.log(textarea);
+                //console.log(textarea);
                 str = textarea.split("%0AExpected:").pop();
 
-                console.log(str);
+                //console.log(str);
 
                 var fields = str.split('%0AActual:');
 
-                var one = fields[0];
-                var two = fields[1];
+                var one = fields[0].replaceAll("%0A", "");
+                var two = fields[1].replaceAll("%0A", "");
 
-                console.log(one);
-                console.log(two);
+                //console.log(one);
+                //console.log(two);
 
                 document.getElementById('div1').innerHTML = "";
                 document.getElementById('div2').innerHTML = "";
 
 
                 var div1 = document.getElementById('div1');
-                div1.innerHTML += one;
+                //div1.innerHTML += one;
 
                 var div2 = document.getElementById('div2');
-                div2.innerHTML += two;
+                //div2.innerHTML += two;
 
 
+
+
+                processDiv(fields[0], div1);
+                processDiv(fields[1], div2);
                 //var keyword="%0AActual:";
                 //var t = str.split(keyword, 2);
                 //console.log(t);
