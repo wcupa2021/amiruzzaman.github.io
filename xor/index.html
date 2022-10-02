@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Compute XOR</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="Free Web tutorials">
+        <meta name="keywords" content="HTML, CSS, JavaScript">
+        <meta name="author" content="John Doe">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <style>
+
+            body {
+                height: 100%;
+            }
+
+            textarea {
+                width: 100%;
+                height: 100px;
+            }
+
+            .div-table {
+                display: table;  
+                width:100%;
+                /*width: auto;*/         
+                background-color: #eee;         
+                border: 1px solid #666666;         
+                border-spacing: 5px; /* cellspacing:poor IE support for  this */
+            }
+            .div-table-row {
+                display: table-row;
+                /*width:100%;*/ 
+                width: auto;
+                clear: both;
+            }
+            .div-table-col1 {
+                float: left; /* fix for  buggy browsers */
+                display: table-column;         
+                width: 80px;         
+                background-color: #ccc;
+                background-color: blue;
+                color: white;
+            }
+
+            .div-table-col2 {
+                float: left; /* fix for  buggy browsers */
+                display: table-column;         
+                width: 100%;/*800px; */        
+                background-color: #ccc;  
+            }
+            .block{
+                border-width: 2px;
+                border-color: red;
+                border-style: solid;
+                /*border: 1px solid #000;*/ 
+                /*display: inline-block;*/ 
+                width: fit-content;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Compute xor values</h1>
+        <!--        <p>Copy and paste your GitHub output in the textarea below</p>-->
+
+        <!--    <textarea id="story" name="story"
+                      rows="5" cols="33">
+        
+            </textarea>-->
+
+        <textarea name="first-message"  id="first-message" style="font-family: Arial;font-size: 12pt;width:100%;height:30px">
+1100
+        </textarea>
+
+        <textarea name="second-message" id="second-message" style="font-family: Arial;font-size: 12pt;width:100%;height:30px">
+1001
+        </textarea>
+        <textarea name="third-message" id = "third-message" style="font-family: Arial;font-size: 12pt;width:100%;height:30px" disabled="disabled">
+1001
+        </textarea>
+
+        <button type="button">Click to compute!</button> 
+
+        <div id="old">
+
+        </div>
+
+        <hr/>
+        <div id="new">
+        </div>
+        <hr/>
+        <!--        Expected <div id="div1"></div>
+                <br/>
+                Actual <div id="div2"></div>-->
+
+        <!--        <div class="div-table">
+                                <div class="div-table-row">
+                                    <div  class="div-table-col1">Type</div>
+                                    <div  class="div-table-col2">Values</div>
+                                </div>
+                    <div class="div-table-row">
+                        <div class="div-table-col1">Expected</div>
+                        <div class="div-table-col2" id = "div1"></div>
+                    </div>
+                    <div class="div-table-row">
+                        <div class="div-table-col1">Actual</div>
+                        <div class="div-table-col2" id = "div2"></div>
+                    </div>
+                </div>-->
+        <script>
+            function processDiv(input, target) {
+                var str_array = input.split("%0A");
+                for (var i = 0; i < str_array.length; i++) {
+                    // Trim the excess whitespace.
+                    //str_array[i] = str_array[i].replace(/^\s*/, "").replace(/\s*$/, "");
+                    // Add additional code here, such as:
+                    console.log(str_array[i], ":");
+                    var newLink = document.createElement('div');
+                    newLink.className = 'block';
+                    // preserve whitespace in dynamically added javascript DOM element without using CSS?
+                    var text = str_array[i].replace(/\s/g, '&nbsp;');
+                    newLink.innerHTML = text;
+                    target.appendChild(newLink);
+                }
+            }
+            $('button').on('click', function () {
+                //document.getElementsByName('your-message')[0].value = this.value;
+                var firstmessage = document.getElementsByName('first-message')[0].value;
+                var secondmessage = document.getElementsByName('second-message')[0].value;
+                console.log(firstmessage);
+                console.log(secondmessage);
+                //console.log(parseInt("1100", 2) ^ parseInt("1001", 2));
+
+                function xor(first, second) {
+                    //console.log(parseInt(first, 2) ^ parseInt(second, 2));
+                    return (parseInt(first, 2) ^ parseInt(second, 2));
+                }
+                //console.log('xor', xor("1100", "1001")) //=> 5
+
+
+                function bitCount(n) {
+                    n = n - ((n >> 1) & 0x55555555)
+                    n = (n & 0x33333333) + ((n >> 2) & 0x33333333)
+                    return ((n + (n >> 4) & 0xF0F0F0F) * 0x1010101) >> 24
+                }
+
+//console.log(bitCount(0xFF)) //=> 8
+                //console.log('bitcount', bitCount("1100")) //=> 8
+
+                var q = xor(firstmessage.trim(), secondmessage.trim())
+                var n = 0;
+                if (parseInt((firstmessage.trim()).length) > parseInt((secondmessage.trim()).length)) {
+                    n = (firstmessage.trim()).length;
+                } else {
+                    n = (secondmessage.trim()).length;
+                }
+                if (n > 0) {
+                    if (parseInt((firstmessage.trim()).length) > 0)
+                    {
+                        if (parseInt((secondmessage.trim()).length) > 0) {
+                            console.log(parseInt((secondmessage.trim()).length));
+
+                            var paddedValue = '';
+                            if (parseInt((firstmessage.trim()).length) < n) {
+                                paddedValue = pad(firstmessage, n);
+                                document.getElementById('first-message').value = paddedValue;
+                                firstmessage = paddedValue;
+                            }
+                            if (parseInt((secondmessage.trim()).length) < n) {
+                                paddedValue = pad(secondmessage, n);
+                                document.getElementById('second-message').value = paddedValue;
+                                secondmessage = paddedValue;
+                            }
+
+                            console.log(pad(secondmessage, n));
+
+                            var result = decimalToBinary(q, n);
+                            console.log('bitcount', n);
+                            console.log('d2b', result);
+
+                            //var thirdmessage = document.getElementsByName('third-message');
+                            document.getElementById('third-message').value = result;
+
+                            add(firstmessage, secondmessage, result);
+                        } else
+                        {
+                            console.log('One of the value is empty');
+                        }
+                    } else
+                    {
+                        console.log('One of the value is empty');
+                    }
+
+                }
+
+                function pad(binaryStr, n)
+                {
+                    console.log('binaryStr', parseInt((binaryStr.trim()).length));
+                    while (parseInt((binaryStr.trim()).length) < n) {
+                        binaryStr = "0" + binaryStr;
+                    }
+                    return binaryStr;
+                }
+                function decimalToBinary(numberToConvert, numberOfBits) {
+                    //const numberToConvert = 5;
+                    //const numberOfBits = 32; // 32-bits binary
+                    const arrBitwise = [0]; // save the resulting bitwise
+
+                    for (let i = 0; i < numberOfBits; i++) {
+                        let mask = 1;
+
+                        const bit = numberToConvert & (mask << i); // And bitwise with left shift
+
+                        if (bit === 0) {
+                            arrBitwise[i] = 0;
+                        } else {
+                            arrBitwise[i] = 1;
+                        }
+                    }
+
+                    const binary = arrBitwise.reverse().join("");
+
+                    //console.log(`This is the resulting binary: ${binary}`)
+                    //console.log(`This is the verification ${parseInt(binary, 2)}`);
+                    return binary;
+                }
+
+                const numberToConvert = 5;
+                const numberOfBits = 32; // 32-bits binary
+                const arrBitwise = [0]; // save the resulting bitwise
+
+                for (let i = 0; i < numberOfBits; i++) {
+                    let mask = 1;
+
+                    const bit = numberToConvert & (mask << i); // And bitwise with left shift
+
+                    if (bit === 0) {
+                        arrBitwise[i] = 0;
+                    } else {
+                        arrBitwise[i] = 1;
+                    }
+                }
+
+                const binary = arrBitwise.reverse().join("");
+
+                //console.log(`This is the resulting binary: ${binary}`)
+                //console.log(`This is the verification ${parseInt(binary, 2)}`);
+
+                function add(message1, message2, message3) {
+
+                    var i = document.getElementById('old');
+
+                    var d = document.createElement('div');
+                    d.id = message1;
+                    d.innerHTML = message1 + "&oplus; " + message2 + "= " + message3; //i.innerHTML;
+                    var p = document.getElementById('new');
+
+                    p.appendChild(d);
+
+                }
+
+            });
+        </script>
+
+    </body>
+</html> 
