@@ -1,0 +1,6 @@
+presenter,title,venue,presentation,link,course_id
+Alex,Visualizing and Understanding Convolutional Networks,European Conference on Computer Vision,VUCN.pptx,https://link.springer.com/chapter/10.1007/978-3-319-10590-1_53,
+Deepshikha,Interactive Graph Construction for Graph-Based Semi-Supervised Learning ,IEEE Transactions on Visualization and Computer Graphics,Presentation_24_06_2022.pptx,https://ieeexplore.ieee.org/document/9444198,
+Deepshikha,Explaining CNN and RNN Using Selective Layer-Wise Relevance Propagation,IEEE Access,Presentation_Research.pptx,https://ieeexplore.ieee.org/document/9320473,
+Deepshikha,Explaining Convolutional Neural Networks using Softmax Gradient Layer-wise Relevance Propagation,2019 IEEE/CVF International Conference on Computer Vision Workshop (ICCVW),Presentation1.pptx,https://www.computer.org/csdl/proceedings-article/iccvw/2019/09022542/1i5myefF7Lq,
+Deepshikha,SUMMIT: Scaling Deep Learning Interpretability by Visualizing Activation and Attribution Summarizations,IEEE Transactions on Visualization and Computer Graphics,Summit- Presentation.pptx,https://www.computer.org/csdl/journal/tg/2020/01/08807294/1cG6pGxvLOg,

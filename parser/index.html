@@ -9,6 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <style>
 
             body {
@@ -57,6 +58,7 @@
                 /*display: inline-block;*/ 
                 width: fit-content;
             }
+            .highlight {background-color: #B4D5FF}
         </style>
     </head>
     <body>
@@ -68,7 +70,7 @@
         
             </textarea>-->
 
-        <textarea name="your-message" style="font-family: Arial;font-size: 12pt;width:100%;height:100px">
+        <textarea name="your-message" id = "your-message" style="font-family: Arial;font-size: 12pt;width:100%;height:100px">
 ::error::The output for test Multiple input from keyboard did not match%0AExpected:%0AEnter the first value%0AEnter the second value%0AThe sum is : 25%0AActual:%0A20%0A5%0AThe sum is : 25
         </textarea>
         <button type="button">Click to compare!</button> 
@@ -89,13 +91,15 @@
                 <div class="div-table-col1">Actual</div>
                 <div class="div-table-col2" id = "div2"></div>
             </div>
+            <p id="old">this is number 123</p>
+            <p id="new">that is number 124</p>
         </div>
         <script>
             function processDiv(input, target) {
                 var str_array = input.split("%0A");
                 for (var i = 0; i < str_array.length; i++) {
                     // Trim the excess whitespace.
-                     //str_array[i] = str_array[i].replace(/^\s*/, "").replace(/\s*$/, "");
+                    //str_array[i] = str_array[i].replace(/^\s*/, "").replace(/\s*$/, "");
                     // Add additional code here, such as:
                     console.log(str_array[i], ":");
                     var newLink = document.createElement('div');
@@ -147,7 +151,59 @@
 
                 //document.getElementsByTagName('body')[0].appendChild(iDiv);
                 //
+                // https://stackoverflow.com/questions/38037163/how-to-highlight-the-difference-of-two-texts-with-css
+                function highlight(newElem, oldElem) {
+
+
+
+
+                    var oldText = oldElem.text(),
+                            text = '';
+                    newElem.text().split('').forEach(function (val, i) {
+                        if (val != oldText.charAt(i))
+                            text += "<span class='highlight'>" + val + "</span>";
+                        else
+                            text += val;
+                    });
+                    newElem.html(text);
+                }
+
+                var divItem1 = document.getElementById("old");
+                divItem1.innerHTML = "";
+                divItem1.innerHTML = fields[0];
+
+                var divItem2 = document.getElementById("new");
+                divItem2.innerHTML = "";
+                divItem2.innerHTML = fields[1];
+
+                highlight($("#new"), $("#old"));
+
+
             });
+
+            // https://stackoverflow.com/questions/39677466/clearing-div-element-using-javascript
+            const newdiv = document.getElementById("new");
+            const olddiv = document.getElementById("old");
+            newdiv.innerHTML = '';
+            olddiv.innerHTML = '';
+
+            // https://bobbyhadz.com/blog/javascript-clear-textarea-value
+            const textarea = document.getElementById('your-message');
+
+            // ✅ Clear textarea value
+            //textarea.value = '';
+
+            // ✅ Clear textarea value on click
+            //const btn = document.getElementById('btn');
+            textarea.addEventListener('click', function handleClick() {
+                // 👇️ log value before clearing it
+                console.log(textarea.value);
+
+                // 👇️ clear textarea value
+                textarea.value = '';
+            });
+
+
         </script>
 
     </body>
