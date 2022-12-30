@@ -789,5 +789,6 @@ DOI = {10.3390/socsci11090404}
   journal={Journal of Computational Social Science},
   pages={1--23},
   year={2022},
+  doi = {https://doi.org/10.1007/s42001-022-00197-1},
   publisher={Springer}
 }
