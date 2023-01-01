@@ -792,3 +792,16 @@ DOI = {10.3390/socsci11090404}
   doi = {https://doi.org/10.1007/s42001-022-00197-1},
   publisher={Springer}
 }
+
+@article{rajibulislam2022hyperparameters,
+  title={An Efficient Technique for Recognizing Tomato Leaf Disease Based on the Most Effective Deep CNN Hyperparameters},
+  author={Md. Rajibul Islam, Md. Asif Mahmod Tusher Siddique, Md Amiruzzaman, M. Abdullah-Al-Wadud, Shah Murtaza Rashid Al Masud and Aloke Kumar Saha},
+  journal={Annals of Emerging Technologies in Computing (AETiC)},
+  volume = {7},
+  number = {1},
+  pages={1-14},
+  doi = {https://doi.org/0.33166/AETiC.2023.01.001},
+  url = {http://aetic.theiaer.org/archive/v7/v7n1/p1.html},
+  year={2023},
+  publisher ={International Association for Educators and Researchers (IAER)}
+}
