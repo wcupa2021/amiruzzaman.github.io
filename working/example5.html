@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<head>
+    <style>
+        * {}
+
+        body {
+            background-color: #3a4a63;
+        }
+
+        img {
+            min-width: 500px;
+            height: 400px;
+        }
+
+        .container {
+            min-width: 500px;
+            height: 400px;
+            margin: 0 auto;
+            background-color: #363537;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%);
+            border: 7px solid #fff;
+            background-image: url(https://upload.wikimedia.org/wikipedia/commons/5/50/Bodiam-castle-10My8-1197.jpg);
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat
+        }
+
+        button {
+            font-size: 50px;
+            padding: 5px 10px;
+            background-color: #3a4a63;
+            border: 4px solid #fff;
+            border-radius: 10px;
+        }
+
+        .fa-angle-left,
+        .fa-angle-right {
+            color: #fff;
+        }
+
+        .left {
+            position: relative;
+            left: -25px;
+        }
+
+        .right {
+            position: relative;
+            left: 25px;
+        }
+
+        */
+    </style>
+    <link rel="shortcut icon" href="#">
+</head>
+
+<body>
+
+    <h2 style="text-align:center">Slideshow Gallery</h2>
+
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <div class="container" id="container" data-index="0">
+        <button class="left" onclick="next('left')"><i class='fas fa-angle-left'></i></button>
+        <button class="right" onclick="next('right')"><i class='fas fa-angle-right'></i></button>
+    </div>
+    <script>
+        var images = [{ img: "https://upload.wikimedia.org/wikipedia/commons/5/50/Bodiam-castle-10My8-1197.jpg" }, { img: "https://upload.wikimedia.org/wikipedia/commons/4/4d/Balmoral_Castle.jpg" }];
+        var element = document.getElementById("container");
+        function next(direction) {
+            var index = element.dataset.index;
+            if (direction == "right") { index++; } else { index-- }
+            if (index > images.length - 1) { index = 0; }
+            if (index < 0) { index = images.length - 1; }
+            element.dataset.index = index;
+            element.style.backgroundImage = "url('" + images[index].img + "')";
+        }; 
+    </script>
+
+    <script>
+
+    </script>
+
+
+    <script>
+
+
+    </script>
+
+</body>
+
+</html>

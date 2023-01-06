@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<head>
+    <style>
+        .phone_contain_div {
+            position: relative;
+        }
+
+        .phone_contain_div .image_div {
+            position: absolute;
+            border: thin #000 solid;
+            top: 16%;
+            bottom: 0;
+            left: 12.7%;
+            right: 0;
+            width: 46%;
+            height: 64.4%;
+            overflow: hidden;
+        }
+
+        .phone_contain_div .image_div img {
+            max-width: 100%;
+            max-height: 100%;
+            box-sizing: border-box;
+            overflow: hidden;
+            transition: all .2s;
+        }
+
+        .image_click>.image.active {
+            color: red;
+        }
+
+        .image_div img {
+            position: absolute;
+            left: 100%;
+            top: 0;
+        }
+    </style>
+    <link rel="shortcut icon" href="#">
+</head>
+
+<body>
+
+    <h2 style="text-align:center">Slideshow Gallery</h2>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <div class="image_click">
+        <div class="image"> Image 1</div>
+        <div class="image"> Image 2</div>
+        <div class="image"> Image 3</div>
+    </div>
+    <div class="phone_contain_div">
+        <img src="https://i.imgur.com/pzG9Elb.png">
+
+        <div class="image_div">
+            <img src="https://i.imgur.com/PtuiQo8.jpg">
+            <img src="https://i.imgur.com/fCOoKNU.jpg">
+            <img src="https://i.imgur.com/rm3BCnn.jpg">
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('.image_click .image').click(function () {
+                $(this).siblings('.image').removeClass('active');
+                $(this).addClass('active');
+                $('.image_div').find('img').css('left', '100%');
+                $('.image_div').find('img').eq($(this).index()).css('left', '0');
+
+            });
+        });
+    </script>
+
+    <script>
+
+    </script>
+
+
+    <script>
+
+
+    </script>
+
+</body>
+
+</html>

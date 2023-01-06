@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body {
+    background-color: rgb(58, 58, 58);
+    margin-top: 100px;
+  }
+
+  .carousel-container {
+    width: 600px;
+    height: 400px;
+    position: relative;
+    margin: 0 auto;
+
+  }
+
+  .navigation .prev {
+    position: absolute;
+    z-index: 10;
+    font-size: 25px;
+    top: 40%;
+    left: 10px;
+    font-weight: 700;
+  }
+
+  .navigation .next {
+    right: 10px;
+    position: absolute;
+    font-size: 25px;
+    z-index: 10;
+    top: 40%;
+  }
+
+  .navigation .nav-btn {
+    background: rgba(176, 173, 173, 0.55);
+    cursor: pointer;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
+  }
+
+  .navigation .nav-btn:hover {
+    background: white;
+  }
+
+  .carousel {
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    /* position: relative; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Centering y-axis */
+    align-items: center;
+    /* Centering x-axis */
+    margin-top: 25px;
+  }
+
+  .carousel img {
+    width: 100%;
+    transition: all 0.3s ease;
+    border: 8px solid white;
+    margin-top: 50%;
+    /* margin-bottom: 20%; */
+  }
+
+  .item {
+    position: absolute;
+    display: none;
+  }
+
+  .main {
+    display: block;
+  }
+
+  .caption {
+    position: absolute;
+    bottom: 0;
+    width: 103%;
+    display: flex;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    background: rgba(0, 0, 0, 0.3);
+    height: 35px;
+  }
+</style>
+
+<body>
+
+  <h2 style="text-align:center">Slideshow Gallery</h2>
+
+  <div class="carousel-container">
+    <!--Add Add Preview and Next buttons-->
+    <div class="navigation">
+      <div class="prev nav-btn">&#60;</div>
+      <div class="next nav-btn">&#62;</div>
+    </div>
+
+
+    <!--Add Image-->
+    <div class="carousel">
+      <div class="item main">
+        <img src="images/00a001f0a69a4c2995524f0444adfd2f-0.jpg" alt="mountain" />
+        <div class="caption">Image 1</div>
+      </div>
+      <div class="item">
+        <img src="images/00a001f0a69a4c2995524f0444adfd2f-180.jpg" alt="beach" />
+        <div class="caption">Image 2</div>
+      </div>
+      <div class="item">
+        <img src="images/0a0495deef56467186f81e804cdb9416-90.jpg" alt="cityscape" />
+        <div class="caption">Image 3</div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <script>
+    const prev = document.querySelector('.prev');
+    const next = document.querySelector('.next');
+    const images = document.querySelector('.carousel').children;
+    const totalImages = images.length;
+    let index = 0;
+
+    prev.addEventListener('click', () => {
+      nextImage('next');
+    })
+
+    next.addEventListener('click', () => {
+      nextImage('prev');
+    })
+
+    function nextImage(direction) {
+      if (direction == 'next') {
+        index++;
+        if (index == totalImages) {
+          index = 0;
+        }
+      } else {
+        if (index == 0) {
+          index = totalImages - 1;
+        } else {
+          index--;
+        }
+      }
+
+      for (let i = 0; i < images.length; i++) {
+        images[i].classList.remove('main');
+      }
+      images[index].classList.add('main');
+    }
+
+  </script>
+
+</body>
+
+</html>
