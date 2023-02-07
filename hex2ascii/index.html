@@ -8,7 +8,8 @@
  Enter your hexcode:<input type="text" id="wage" value ="" size=20>
         <!--<button id="sub">Submit</button>-->
 		<button onclick="validate(document.getElementById('wage').value)" id="testButton" >Submit</button>
-<p id ="demo"></p>
+<p id ="demo"></p><br/>
+<p id ="demo2"></p>
 <script>
 function hex2a(hexx) {
 	hexx = hexx.replace('0x','');
@@ -22,6 +23,17 @@ function hex2a(hexx) {
 //document.getElementById("demo").innerHTML = hex2a('0x90909062');
 
 
+function reverse(s){
+let str = s;
+var reverse = '';
+for (var i=str.length;i>0;i--){
+
+    var newstr = str.substring(0,i)
+    reverse += newstr.substr(-1,1)
+}
+return reverse;
+}
+
 var wage = document.getElementById("wage");
 wage.addEventListener("keydown", function (e) {
     if (e.keyCode === 13) {
@@ -33,6 +45,7 @@ wage.addEventListener("keydown", function (e) {
 function validate(e) {
     //alert('Validated: '+e);
 	document.getElementById("demo").innerHTML = hex2a(e);
+	document.getElementById("demo2").innerHTML = reverse(hex2a(e));
 }
 </script>
 </body>
