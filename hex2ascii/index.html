@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Convert Hexadecimal to ASCII</title>
+</head>
+<body>
+ Enter your hexcode:<input type="text" id="wage" value ="" size=20>
+        <!--<button id="sub">Submit</button>-->
+		<button onclick="validate(document.getElementById('wage').value)" id="testButton" >Submit</button>
+<p id ="demo"></p>
+<script>
+function hex2a(hexx) {
+	hexx = hexx.replace('0x','');
+    var hex = hexx.toString();//force conversion
+    var str = '';
+    for (var i = 0; i < hex.length; i += 2)
+        str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
+    return str;
+}
+//hex2a('32343630'); // returns '2460'
+//document.getElementById("demo").innerHTML = hex2a('0x90909062');
+
+
+var wage = document.getElementById("wage");
+wage.addEventListener("keydown", function (e) {
+    if (e.keyCode === 13) {
+	var t = document.getElementById('wage').value
+        validate(t);
+    }
+});
+
+function validate(e) {
+    //alert('Validated: '+e);
+	document.getElementById("demo").innerHTML = hex2a(e);
+}
+</script>
+</body>
+</html>
