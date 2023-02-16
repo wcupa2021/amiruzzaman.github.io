@@ -1,52 +1,199 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>Convert Hexadecimal to ASCII</title>
+    <meta charset="utf-8">
+    <title>Convert Hexadecimal to ASCII</title>
+    <style>
+        label {
+            width: 200px;
+            float: left;
+            margin: 0 20px 0 0;
+        }
+
+        span {
+            display: block;
+            margin: 0 0 3px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        input {
+            width: 200px;
+            border: 1px solid #000;
+            padding: 5px;
+        }
+
+    </style>
 </head>
 <body>
- Enter your hexcode:<input type="text" id="wage" value ="" size=20>
-        <!--<button id="sub">Submit</button>-->
-		<button onclick="validate(document.getElementById('wage').value)" id="testButton" >Submit</button>
-<p id ="demo"></p><br/>
-<p id ="demo2"></p>
-<script>
-function hex2a(hexx) {
-	hexx = hexx.replace('0x','');
-    var hex = hexx.toString();//force conversion
-    var str = '';
-    for (var i = 0; i < hex.length; i += 2)
-        str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
-    return str;
-}
-//hex2a('32343630'); // returns '2460'
-//document.getElementById("demo").innerHTML = hex2a('0x90909062');
+    Enter your hexcode<br />
+    <textarea id="inputhex" value="" rows="4" cols="50" onkeypress="onTestChange();"></textarea>
+    <!--<button id="sub">Submit</button>-->
+    <button onclick="validate(document.getElementById('inputhex').value)" id="testButton">Submit</button>
+    <p id="demo"></p><br />
+    <p id="demo2"></p>
+    <div id="demop" style="background-color:powderblue;">This the ASCII</div><br />
+    <div id="target">
+        <!-- all divs will append here -->
+    </div>
+    <div id="demo2p" style="background-color:tomato;">This the REVERSE ASCII</div><br />
+    <div id="target_reverse">
+        <!-- all divs will append here -->
+    </div>
 
 
-function reverse(s){
-let str = s;
-var reverse = '';
-for (var i=str.length;i>0;i--){
+    <label for="company">
+        <span>First value</span>
+        <input type="text" id="first" />
+    </label>
+    <label for="contact">
+        <span>Second value</span>
+        <input type="text" id="second" />
+    </label>
+    <button type="submit"
+            style="margin-right: 15px;"
+            onClick="add()">
+        Add
+    </button>
+    <br/>
+    <div id="addresult"></div>
+    <script>
+        function hex2a(hexx) {
+            hexx = hexx.replace('0x', '');
+            var hex = hexx.toString();//force conversion
+            var str = '';
+            for (var i = 0; i < hex.length; i += 2)
+                str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
+            return str;
+        }
+        //hex2a('32343630'); // returns '2460'
+        //document.getElementById("demo").innerHTML = hex2a('0x90909062');
 
-    var newstr = str.substring(0,i)
-    reverse += newstr.substr(-1,1)
-}
-return reverse;
-}
+        function hex2ascii(hexx) {
+            if (hexx === null) {
+                return;
+            }
+            hexx = hexx.replace('0x', '');
+            return hexx.match(/.{1,2}/g).reduce((acc, char) => acc + String.fromCharCode(parseInt(char, 16)), "")
 
-var wage = document.getElementById("wage");
-wage.addEventListener("keydown", function (e) {
-    if (e.keyCode === 13) {
-	var t = document.getElementById('wage').value
-        validate(t);
-    }
-});
+        }
 
-function validate(e) {
-    //alert('Validated: '+e);
-	document.getElementById("demo").innerHTML = hex2a(e);
-	document.getElementById("demo2").innerHTML = reverse(hex2a(e));
-}
-</script>
+        function reverse(s) {
+            let str = s;
+            var reverse = '';
+            for (var i = str.length; i > 0; i--) {
+
+                var newstr = str.substring(0, i)
+                reverse += newstr.substr(-1, 1)
+            }
+            return reverse;
+        }
+
+        var inputhex = document.getElementById("inputhex");
+        inputhex.addEventListener("keydown", function (e) {
+            if (e.keyCode === 13) {
+                var t = document.getElementById('inputhex').value
+
+                //var textArea = document.getElementById("my-text-area");
+                //var arrayOfLines = textArea.value.split("\n"); // arrayOfLines is array where every element is string of one line
+
+                //validate(t);
+            }
+        });
+
+        function validate(e) {
+            //alert('Validated: '+e);
+            //console.log(e);
+            var lines = e.split('\n');
+            //console.log(lines);
+
+            showInDivs(lines);
+
+            //document.getElementById("demo").innerHTML = hex2ascii(e);
+            //document.getElementById("demo2").innerHTML = reverse(hex2ascii(e));
+        }
+    </script>
+
+    <script>
+
+        function removeOldChildDiv(divId) {
+            const myNode = document.getElementById(divId);
+            while (myNode.firstChild) {
+                myNode.removeChild(myNode.lastChild);
+            }
+        }
+        function onTestChange() {
+            var key = window.event.keyCode;
+
+            // If the user has pressed enter
+            if (key === 13) {
+                //document.getElementById("inputhex").value = document.getElementById("inputhex").value + "\n*";
+
+                var textArea = document.getElementById('inputhex');
+                var lines = textArea.value.split('\n');    // lines is an array of strings
+
+                showInDivs(lines);
+
+                //document.appendChild(toAdd);
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+
+        function showInDivs(lines) {
+
+            removeOldChildDiv('target');
+
+            var toAdd = document.getElementById('target')
+            // Loop through all lines
+            for (var j = 0; j < lines.length; j++) {
+                //validate(lines[j]);
+                console.log('Line ' + j + ' is ' + lines[j])
+
+                if (lines[j] != null) {
+                    var newDiv = document.createElement('div');
+                    newDiv.id = 't' + j;
+                    newDiv.className = 'ansbox';
+                    newDiv.innerHTML += hex2ascii(lines[j])//'Extra stuff';
+                    toAdd.appendChild(newDiv);
+                }
+            }
+
+
+            removeOldChildDiv('target_reverse');
+
+            var toAdd = document.getElementById('target_reverse')
+            // Loop through all lines
+            for (var j = 0; j < lines.length; j++) {
+                //validate(lines[j]);
+                console.log('Line ' + j + ' is ' + lines[j])
+
+                if (lines[j] != null) {
+                    var newDiv = document.createElement('div');
+                    newDiv.id = 'r' + j;
+                    newDiv.className = 'ansbox';
+                    newDiv.innerHTML += reverse(hex2ascii(lines[j]))//'Extra stuff';
+                    toAdd.appendChild(newDiv);
+                }
+            }
+
+        }
+
+        function add() {
+
+
+            var hexValue = document.getElementById('first').value;
+            var a = document.getElementById('second').value
+            var resultHexValue = (parseInt(hexValue, 16) + parseInt(a, 16)).toString(16);
+            //document.writeln(hexValue); // outputs 'ababab'
+
+            document.getElementById('demop').innerHTML = hexValue + "+" + a;
+                document.getElementById('demo2p').innerHTML = "0x"+resultHexValue;
+            //document.getElementById('addresult').innerHTML = 'hello';
+            //console.log('here');
+        }
+    </script>
 </body>
 </html>
