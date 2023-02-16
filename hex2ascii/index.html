@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <link rel="shortcut icon" href="#"/>
     <title>Convert Hexadecimal to ASCII</title>
     <style>
         label {
@@ -22,7 +23,6 @@
             border: 1px solid #000;
             padding: 5px;
         }
-
     </style>
 </head>
 <body>
@@ -70,15 +70,17 @@
         //document.getElementById("demo").innerHTML = hex2a('0x90909062');
 
         function hex2ascii(hexx) {
-            if (hexx === null) {
+            console.log(hexx);
+            if (hexx === null || hexx === '') {
                 return;
+            } else {
+                hexx = hexx.replace('0x', '');
+                return hexx.match(/.{1,2}/g).reduce((acc, char) => acc + String.fromCharCode(parseInt(char, 16)), "")
             }
-            hexx = hexx.replace('0x', '');
-            return hexx.match(/.{1,2}/g).reduce((acc, char) => acc + String.fromCharCode(parseInt(char, 16)), "")
-
         }
 
         function reverse(s) {
+            if (!s) return;
             let str = s;
             var reverse = '';
             for (var i = str.length; i > 0; i--) {
