@@ -5,8 +5,14 @@
     <link rel="shortcut icon" href="#"/>
     <title>Convert Hexadecimal to ASCII</title>
     <style>
-        label {
+        .label1 {
             width: 200px;
+            float: left;
+            margin: 0 20px 0 0;
+        }
+
+        .label2 {
+            width: 40px;
             float: left;
             margin: 0 20px 0 0;
         }
@@ -23,13 +29,20 @@
             border: 1px solid #000;
             padding: 5px;
         }
+
+        select {
+            width: 40px;
+            border: 1px solid #000;
+            padding: 5px;
+        }
     </style>
 </head>
 <body>
     Enter your hexcode<br />
     <textarea id="inputhex" value="" rows="4" cols="50" onkeypress="onTestChange();"></textarea>
     <!--<button id="sub">Submit</button>-->
-    <button onclick="validate(document.getElementById('inputhex').value)" id="testButton">Submit</button>
+    <button onclick="validate(document.getElementById('inputhex').value)" id="testButton">To ASCII</button>
+    <button onclick="toDecimal(document.getElementById('inputhex').value)" id="testButton">To Decimal</button>
     <p id="demo"></p><br />
     <p id="demo2"></p>
     <div id="demop" style="background-color:powderblue;">This the ASCII</div><br />
@@ -42,11 +55,18 @@
     </div>
 
 
-    <label for="company">
+    <label class = "label1" for="company">
         <span>First value</span>
         <input type="text" id="first" />
     </label>
-    <label for="contact">
+    <label class = "label2" for="company">
+        <span>+/-</span>
+        <select name="op" id="op">
+          <option value="+">+</option>
+          <option value="-">-</option>
+        </select>
+    </label>
+    <label class = "label1" for="contact">
         <span>Second value</span>
         <input type="text" id="second" />
     </label>
@@ -114,6 +134,18 @@
             //document.getElementById("demo").innerHTML = hex2ascii(e);
             //document.getElementById("demo2").innerHTML = reverse(hex2ascii(e));
         }
+
+        function toDecimal(e) {
+            //alert('Validated: '+e);
+            //console.log(e);
+            var lines = e.split('\n');
+            //console.log(lines);
+
+            showInDivsDecimal(lines);
+
+            //document.getElementById("demo").innerHTML = hex2ascii(e);
+            //document.getElementById("demo2").innerHTML = reverse(hex2ascii(e));
+        }
     </script>
 
     <script>
@@ -147,6 +179,7 @@
         function showInDivs(lines) {
 
             removeOldChildDiv('target');
+            document.getElementById('demop').innerHTML = "This the ASCII";
 
             var toAdd = document.getElementById('target')
             // Loop through all lines
@@ -165,6 +198,7 @@
 
 
             removeOldChildDiv('target_reverse');
+            document.getElementById('demo2p').innerHTML = "This the REVERSE ASCII";
 
             var toAdd = document.getElementById('target_reverse')
             // Loop through all lines
@@ -183,18 +217,88 @@
 
         }
 
+
+        function showInDivsDecimal(lines) {
+
+            removeOldChildDiv('target');
+            document.getElementById('demop').innerHTML = "The decimal value";
+
+            var toAdd = document.getElementById('target')
+            // Loop through all lines
+            for (var j = 0; j < lines.length; j++) {
+                //validate(lines[j]);
+                console.log('Line ' + j + ' is ' + lines[j])
+
+                if (lines[j] != null) {
+                    var newDiv = document.createElement('div');
+                    newDiv.id = 't' + j;
+                    newDiv.className = 'ansbox';
+                    newDiv.innerHTML += hexToDec(lines[j])//'Extra stuff';
+                    toAdd.appendChild(newDiv);
+                }
+            }
+
+
+            removeOldChildDiv('target_reverse');
+            /*
+            var toAdd = document.getElementById('target_reverse')
+            // Loop through all lines
+            for (var j = 0; j < lines.length; j++) {
+                //validate(lines[j]);
+                console.log('Line ' + j + ' is ' + lines[j])
+
+                if (lines[j] != null) {
+                    var newDiv = document.createElement('div');
+                    newDiv.id = 'r' + j;
+                    newDiv.className = 'ansbox';
+                    newDiv.innerHTML += reverse(hex2ascii(lines[j]))//'Extra stuff';
+                    toAdd.appendChild(newDiv);
+                }
+            }
+            */
+        }
+
+
         function add() {
 
 
             var hexValue = document.getElementById('first').value;
             var a = document.getElementById('second').value
+            var op = document.getElementById("op").value;
+            console.log(op);
+        if (op == '+'){
             var resultHexValue = (parseInt(hexValue, 16) + parseInt(a, 16)).toString(16);
+            document.getElementById('demop').innerHTML = hexValue + "+" + a;
+        }else{
+            var resultHexValue = (parseInt(hexValue, 16) - parseInt(a, 16)).toString(16);
+            document.getElementById('demop').innerHTML = hexValue + "-" + a;
+        }
+
             //document.writeln(hexValue); // outputs 'ababab'
 
-            document.getElementById('demop').innerHTML = hexValue + "+" + a;
-                document.getElementById('demo2p').innerHTML = "0x"+resultHexValue;
+            
+            document.getElementById('demo2p').innerHTML = "0x"+resultHexValue;
             //document.getElementById('addresult').innerHTML = 'hello';
             //console.log('here');
+        }
+
+
+        function hexToDec(s) {
+        s = s.replace('0x', '');
+            var i, j, digits = [0], carry;
+            for (i = 0; i < s.length; i += 1) {
+                carry = parseInt(s.charAt(i), 16);
+                for (j = 0; j < digits.length; j += 1) {
+                    digits[j] = digits[j] * 16 + carry;
+                    carry = digits[j] / 10 | 0;
+                    digits[j] %= 10;
+                }
+                while (carry > 0) {
+                    digits.push(carry % 10);
+                    carry = carry / 10 | 0;
+                }
+            }
+            return digits.reverse().join('');
         }
     </script>
 </body>
