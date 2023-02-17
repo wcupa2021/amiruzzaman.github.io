@@ -805,3 +805,15 @@ DOI = {10.3390/socsci11090404}
   year={2023},
   publisher ={International Association for Educators and Researchers (IAER)}
 }
+
+@article{marhanum2023constructing,
+  author  = "Marhanum Che Mohd Salleh and Rizal Mohd Nor and Faizal Yusof nd Md Amiruzzaman",
+  title   = "Constructing a Shariah Document Screening Prototype Based on Serverless Architecture",
+  journal = "Computers",
+  year    = 2023,
+  volume  = "12",
+  number  = "x",
+  pages   = "--",
+  publisher = "MDPI",
+  doi = "https://doi.org/10.3390/xxxxx",
+}
