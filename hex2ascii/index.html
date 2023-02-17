@@ -39,7 +39,7 @@
 </head>
 <body>
     Enter your hexcode<br />
-    <textarea id="inputhex" value="" rows="4" cols="50" onkeypress="onTestChange();"></textarea>
+    <textarea id="inputhex" value="" rows="4" cols="50" onkeypress="onTestChange();" placeholder="0xef"></textarea>
     <!--<button id="sub">Submit</button>-->
     <button onclick="validate(document.getElementById('inputhex').value)" id="testButton">To ASCII</button>
     <button onclick="toDecimal(document.getElementById('inputhex').value)" id="testButton">To Decimal</button>
@@ -56,8 +56,8 @@
 
 
     <label class = "label1" for="company">
-        <span>First value</span>
-        <input type="text" id="first" />
+        <span id="firstspan">First value</span>
+        <input type="text" id="first" placeholder="0xef or 123" />
     </label>
     <label class = "label2" for="company">
         <span>+/-</span>
@@ -67,13 +67,18 @@
         </select>
     </label>
     <label class = "label1" for="contact">
-        <span>Second value</span>
-        <input type="text" id="second" />
+        <span id="secondspan">Second value</span>
+        <input type="text" id="second" placeholder="0xef or 123" />
     </label>
     <button type="submit"
             style="margin-right: 15px;"
             onClick="add()">
-        Add
+        Add hex values
+    </button>
+    <button type="submit"
+            style="margin-right: 15px;"
+            onClick="decimalToHex()">
+        Decimal to hex
     </button>
     <br/>
     <div id="addresult"></div>
@@ -266,6 +271,9 @@
             var a = document.getElementById('second').value
             var op = document.getElementById("op").value;
             console.log(op);
+
+        document.getElementById('firstspan').innerHTML = "First hex value";
+        document.getElementById('secondspan').innerHTML = "Second hex value";
         if (op == '+'){
             var resultHexValue = (parseInt(hexValue, 16) + parseInt(a, 16)).toString(16);
             document.getElementById('demop').innerHTML = hexValue + "+" + a;
@@ -300,6 +308,53 @@
             }
             return digits.reverse().join('');
         }
+
+        function decimalToHex() {
+
+        var input = (document.getElementById('first').value).toString();
+        console.log(input);
+        var d;
+        //var a = document.getElementById('second').value
+
+        var n = 8  // arbitrary length
+        var arr = Array(n).fill(0)
+
+        if (input.indexOf(',') > -1) { 
+            d = input.split(',')[0];
+            var padding = input.split(',')[1];
+
+            const item = 0
+            arr = Array.from({length: padding}, () => item)
+            console.log('arr', arr)
+        }else{
+            d = input;
+        }
+
+        document.getElementById('firstspan').innerHTML = "Decimal value";
+        document.getElementById('secondspan').innerHTML = "Hex value";
+
+            //var d, padding = input.split(',');
+            var hex = Number(d).toString(16);
+            padding = typeof (padding) === "undefined" || padding === null ? padding = 2 : padding;
+
+            while (hex.length < padding) {
+                hex = "0" + hex;
+            }
+        console.log(hex);
+
+        for(let i = arr.length; i>0; i--){
+      
+        }
+
+        while (hex.length < arr.length) {
+                hex = "0" + hex;
+            }
+        hex = "0x"+hex;
+            document.getElementById('second').value = hex;
+            //return hex;
+        }
+
+
     </script>
 </body>
 </html>
