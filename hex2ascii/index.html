@@ -43,6 +43,7 @@
     <!--<button id="sub">Submit</button>-->
     <button onclick="validate(document.getElementById('inputhex').value)" id="testButton">To ASCII</button>
     <button onclick="toDecimal(document.getElementById('inputhex').value)" id="testButton">To Decimal</button>
+    <button onclick="toLittleEndian(document.getElementById('inputhex').value)" id="testButton">To little endian</button>
     <p id="demo"></p><br />
     <p id="demo2"></p>
     <div id="demop" style="background-color:powderblue;">This the ASCII</div><br />
@@ -88,6 +89,8 @@
     </button>
     <br/>
     <div id="addresult"></div>
+
+
     <script>
         function hex2a(hexx) {
             hexx = hexx.replace('0x', '');
@@ -156,6 +159,56 @@
 
             //document.getElementById("demo").innerHTML = hex2ascii(e);
             //document.getElementById("demo2").innerHTML = reverse(hex2ascii(e));
+        }
+
+
+        function toLittleEndian(e) {
+            //alert('Validated: '+e);
+            //console.log(e);
+            var lines = e.split('\n');
+            console.log(lines);
+            
+            // get the first one for now
+            var str = lines[0];
+
+            var linesLittleEndian = [];
+
+            for(let j = 0; j<lines.length; j++){
+                let s = littleEndianStr(lines[j]);
+                linesLittleEndian.push(s);
+            }
+
+            console.log(linesLittleEndian);
+
+
+            showInDivsLtEndian(linesLittleEndian);
+
+            //document.getElementById("demo").innerHTML = hex2ascii(e);
+            //document.getElementById("demo2").innerHTML = reverse(hex2ascii(e));
+        }
+
+        function littleEndianStr(str){
+        
+            str = str.replace('0x', '');
+
+                var chunks = [];
+
+                for (var i = 0, charsLength = str.length; i < charsLength; i += 2) {
+                    chunks.push(str.substring(i, i + 2));
+                }
+
+                console.log(chunks);
+
+                littleEndian = "";
+                // reverse the array
+                for(let c = chunks.length; c>=0; c--){
+                    if(typeof chunks[c] !== "undefined"){
+                        console.log("\\x"+chunks[c]);
+                        littleEndian += "\\x"+chunks[c];
+                    }
+                }
+                console.log(littleEndian);
+            return littleEndian
         }
     </script>
 
@@ -228,6 +281,27 @@
 
         }
 
+
+        function showInDivsLtEndian(lines) {
+
+            removeOldChildDiv('target');
+            document.getElementById('demop').innerHTML = "The little endian value";
+
+            var toAdd = document.getElementById('target')
+            // Loop through all lines
+            for (var j = 0; j < lines.length; j++) {
+                //validate(lines[j]);
+                console.log('Line ' + j + ' is ' + lines[j])
+
+                if (lines[j] != null) {
+                    var newDiv = document.createElement('div');
+                    newDiv.id = 't' + j;
+                    newDiv.className = 'ansbox';
+                    newDiv.innerHTML += lines[j];//'Extra stuff';
+                    toAdd.appendChild(newDiv);
+                }
+          }
+        }
 
         function showInDivsDecimal(lines) {
 
