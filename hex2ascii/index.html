@@ -44,6 +44,11 @@
     <button onclick="validate(document.getElementById('inputhex').value)" id="testButton">To ASCII</button>
     <button onclick="toDecimal(document.getElementById('inputhex').value)" id="testButton">To Decimal</button>
     <button onclick="toLittleEndian(document.getElementById('inputhex').value)" id="testButton">To little endian</button>
+
+    <br/>
+    <input id="source">
+    <div id="result"></div>
+
     <p id="demo"></p><br />
     <p id="demo2"></p>
     <div id="demop" style="background-color:powderblue;">This the ASCII</div><br />
@@ -89,7 +94,985 @@
     </button>
     <br/>
     <div id="addresult"></div>
+    <script>
 
+    
+
+
+        var ascii_val = [
+    {
+      "decimal": 0,
+      "hexa": "0",
+      "html": "&#0;",
+      "character": "NUL",
+      "description": null
+    },
+    {
+      "decimal": 1,
+      "hexa": "1",
+      "html": "&#1;",
+      "character": "SOH",
+      "description": "Start of Header"
+    },
+    {
+      "decimal": 2,
+      "hexa": "2",
+      "html": "&#2;",
+      "character": "STX",
+      "description": "Start of Text"
+    },
+    {
+      "decimal": 3,
+      "hexa": "3",
+      "html": "&#3;",
+      "character": "ETX",
+      "description": "End of Text"
+    },
+    {
+      "decimal": 4,
+      "hexa": "4",
+      "html": "&#4;",
+      "character": "EOT",
+      "description": "End of Transmission"
+    },
+    {
+      "decimal": 5,
+      "hexa": "5",
+      "html": "&#5;",
+      "character": "ENQ",
+      "description": "Enquiry"
+    },
+    {
+      "decimal": 6,
+      "hexa": "6",
+      "html": "&#6;",
+      "character": "ACK",
+      "description": "Acknowledge"
+    },
+    {
+      "decimal": 7,
+      "hexa": "7",
+      "html": "&#7;",
+      "character": "BEL",
+      "description": "Bell"
+    },
+    {
+      "decimal": 8,
+      "hexa": "8",
+      "html": "&#8;",
+      "character": "BS",
+      "description": "Backspace"
+    },
+    {
+      "decimal": 9,
+      "hexa": "9",
+      "html": "&#9;",
+      "character": "HT",
+      "description": "Horizontal Tab"
+    },
+    {
+      "decimal": 10,
+      "hexa": "0A",
+      "html": "&#10;",
+      "character": "LF",
+      "description": "Line Feed"
+    },
+    {
+      "decimal": 11,
+      "hexa": "0B",
+      "html": "&#11;",
+      "character": "VT",
+      "description": "Vertical Tab"
+    },
+    {
+      "decimal": 12,
+      "hexa": "0C",
+      "html": "&#12;",
+      "character": "FF",
+      "description": "Form Feed"
+    },
+    {
+      "decimal": 13,
+      "hexa": "0D",
+      "html": "&#13;",
+      "character": "CR",
+      "description": "Carriage Return"
+    },
+    {
+      "decimal": 14,
+      "hexa": "0E",
+      "html": "&#14;",
+      "character": "SO",
+      "description": "Shift Out"
+    },
+    {
+      "decimal": 15,
+      "hexa": "0F",
+      "html": "&#15;",
+      "character": "SI",
+      "description": "Shift In"
+    },
+    {
+      "decimal": 16,
+      "hexa": "10",
+      "html": "&#16;",
+      "character": "DLE",
+      "description": "Data Link Escape"
+    },
+    {
+      "decimal": 17,
+      "hexa": "11",
+      "html": "&#17;",
+      "character": "DC1",
+      "description": "Device Control 1"
+    },
+    {
+      "decimal": 18,
+      "hexa": "12",
+      "html": "&#18;",
+      "character": "DC2",
+      "description": "Device Control 2"
+    },
+    {
+      "decimal": 19,
+      "hexa": "13",
+      "html": "&#19;",
+      "character": "DC3",
+      "description": "Device Control 3"
+    },
+    {
+      "decimal": 20,
+      "hexa": "14",
+      "html": "&#20;",
+      "character": "DC4",
+      "description": "Device Control 4"
+    },
+    {
+      "decimal": 21,
+      "hexa": "15",
+      "html": "&#21;",
+      "character": "NAK",
+      "description": "Negative Acknowledge"
+    },
+    {
+      "decimal": 22,
+      "hexa": "16",
+      "html": "&#22;",
+      "character": "SYN",
+      "description": "Synchronize"
+    },
+    {
+      "decimal": 23,
+      "hexa": "17",
+      "html": "&#23;",
+      "character": "ETB",
+      "description": "End of Transmission Block"
+    },
+    {
+      "decimal": 24,
+      "hexa": "18",
+      "html": "&#24;",
+      "character": "CAN",
+      "description": "Cancel"
+    },
+    {
+      "decimal": 25,
+      "hexa": "19",
+      "html": "&#25;",
+      "character": "EM",
+      "description": "End of Medium"
+    },
+    {
+      "decimal": 26,
+      "hexa": "1A",
+      "html": "&#26;",
+      "character": "SUB",
+      "description": "Substitute"
+    },
+    {
+      "decimal": 27,
+      "hexa": "1B",
+      "html": "&#27;",
+      "character": "ESC",
+      "description": "Escape"
+    },
+    {
+      "decimal": 28,
+      "hexa": "1C",
+      "html": "&#28;",
+      "character": "FS",
+      "description": "File Separator"
+    },
+    {
+      "decimal": 29,
+      "hexa": "1D",
+      "html": "&#29;",
+      "character": "GS",
+      "description": "Group Separator"
+    },
+    {
+      "decimal": 30,
+      "hexa": "1E",
+      "html": "&#30;",
+      "character": "RS",
+      "description": "Record Separator"
+    },
+    {
+      "decimal": 31,
+      "hexa": "1F",
+      "html": "&#31;",
+      "character": "US",
+      "description": "Unit Separator"
+    },
+    {
+      "decimal": 32,
+      "hexa": "20",
+      "html": "&#32;",
+      "character": "space",
+      "description": "Space"
+    },
+    {
+      "decimal": 33,
+      "hexa": "21",
+      "html": "&#33;",
+      "character": "!",
+      "description": "Exclamation mark"
+    },
+    {
+      "decimal": 34,
+      "hexa": "22",
+      "html": "&#34;",
+      "character": "\"",
+      "description": "Double Quote"
+    },
+    {
+        "decimal": 35,
+        "hexa": 23,
+        "html": "&#35;",
+        "character": "#",
+        "description": "Number"
+      },
+      {
+        "decimal": 36,
+        "hexa": 24,
+        "html": "&#36;",
+        "character": "$",
+        "description": "Dollar sign"
+      },
+      {
+        "decimal": 37,
+        "hexa": 25,
+        "html": "&#37;",
+        "character": "%",
+        "description": "Percent"
+      },
+      {
+        "decimal": 38,
+        "hexa": 26,
+        "html": "&#38;",
+        "character": "&",
+        "description": "Ampersand"
+      },
+      {
+        "decimal": 39,
+        "hexa": 27,
+        "html": "&#39;",
+        "character": "'",
+        "description": "Single quote"
+      },
+      {
+        "decimal": 40,
+        "hexa": 28,
+        "html": "&#40;",
+        "character": "(",
+        "description": "Left parenthesis"
+      },
+      {
+        "decimal": 41,
+        "hexa": 29,
+        "html": "&#41;",
+        "character": ")",
+        "description": "Right parenthesis"
+      },
+      {
+        "decimal": 42,
+        "hexa": "2A",
+        "html": "&#42;",
+        "character": "*",
+        "description": "Asterisk"
+      },
+      {
+        "decimal": 43,
+        "hexa": "2B",
+        "html": "&#43;",
+        "character": "+",
+        "description": "Plus"
+      },
+      {
+        "decimal": 44,
+        "hexa": "2C",
+        "html": "&#44;",
+        "character": ",",
+        "description": "Comma"
+      },
+      {
+        "decimal": 45,
+        "hexa": "2D",
+        "html": "&#45;",
+        "character": "-",
+        "description": "Minus"
+      },
+      {
+        "decimal": 46,
+        "hexa": "2E",
+        "html": "&#46;",
+        "character": ".",
+        "description": "Period"
+      },
+      {
+        "decimal": 47,
+        "hexa": "2F",
+        "html": "&#47;",
+        "character": "/",
+        "description": "Slash"
+      },
+      {
+        "decimal": 48,
+        "hexa": 30,
+        "html": "&#48;",
+        "character": 0,
+        "description": "Zero"
+      },
+      {
+        "decimal": 49,
+        "hexa": 31,
+        "html": "&#49;",
+        "character": 1,
+        "description": "One"
+      },
+      {
+        "decimal": 50,
+        "hexa": 32,
+        "html": "&#50;",
+        "character": 2,
+        "description": "Two"
+      },
+      {
+        "decimal": 51,
+        "hexa": 33,
+        "html": "&#51;",
+        "character": 3,
+        "description": "Three"
+      },
+      {
+        "decimal": 52,
+        "hexa": 34,
+        "html": "&#52;",
+        "character": 4,
+        "description": "Four"
+      },
+      {
+        "decimal": 53,
+        "hexa": 35,
+        "html": "&#53;",
+        "character": 5,
+        "description": "Five"
+      },
+      {
+        "decimal": 54,
+        "hexa": 36,
+        "html": "&#54;",
+        "character": 6,
+        "description": "Six"
+      },
+      {
+        "decimal": 55,
+        "hexa": 37,
+        "html": "&#55;",
+        "character": 7,
+        "description": "Seven"
+      },
+      {
+        "decimal": 56,
+        "hexa": 38,
+        "html": "&#56;",
+        "character": 8,
+        "description": "Eight"
+      },
+      {
+        "decimal": 57,
+        "hexa": 39,
+        "html": "&#57;",
+        "character": 9,
+        "description": "Nine"
+      },
+      {
+        "decimal": 58,
+        "hexa": "3A",
+        "html": "&#58;",
+        "character": ":",
+        "description": "Colon"
+      },
+      {
+        "decimal": 59,
+        "hexa": "3B",
+        "html": "&#59;",
+        "character": ";",
+        "description": "Semicolon"
+      },
+      {
+        "decimal": 60,
+        "hexa": "3C",
+        "html": "&#60;",
+        "character": "<",
+        "description": "Less than"
+      },
+      {
+        "decimal": 61,
+        "hexa": "3D",
+        "html": "&#61;",
+        "character": "=",
+        "description": "Equality sign"
+      },
+      {
+        "decimal": 62,
+        "hexa": "3E",
+        "html": "&#62;",
+        "character": ">",
+        "description": "Greater than"
+      },
+      {
+        "decimal": 63,
+        "hexa": "3F",
+        "html": "&#63;",
+        "character": "?",
+        "description": "Question mark"
+      },
+      {
+        "decimal": 64,
+        "hexa": 40,
+        "html": "&#64;",
+        "character": "@",
+        "description": "At sign"
+      },
+      {
+        "decimal": 65,
+        "hexa": 41,
+        "html": "&#65;",
+        "character": "A",
+        "description": "Capital A"
+      },
+      {
+        "decimal": 66,
+        "hexa": 42,
+        "html": "&#66;",
+        "character": "B",
+        "description": "Capital B"
+      },
+      {
+        "decimal": 67,
+        "hexa": 43,
+        "html": "&#67;",
+        "character": "C",
+        "description": "Capital C"
+      },
+      {
+        "decimal": 68,
+        "hexa": 44,
+        "html": "&#68;",
+        "character": "D",
+        "description": "Capital D"
+      },
+      {
+        "decimal": 69,
+        "hexa": 45,
+        "html": "&#69;",
+        "character": "E",
+        "description": "Capital E"
+      },
+      {
+        "decimal": 70,
+        "hexa": 46,
+        "html": "&#70;",
+        "character": "F",
+        "description": "Capital F"
+      },
+      {
+        "decimal": 71,
+        "hexa": 47,
+        "html": "&#71;",
+        "character": "G",
+        "description": "Capital G"
+      },
+      {
+        "decimal": 72,
+        "hexa": 48,
+        "html": "&#72;",
+        "character": "H",
+        "description": "Capital H"
+      },
+      {
+        "decimal": 73,
+        "hexa": 49,
+        "html": "&#73;",
+        "character": "I",
+        "description": "Capital I"
+      },
+      {
+        "decimal": 74,
+        "hexa": "4A",
+        "html": "&#74;",
+        "character": "J",
+        "description": "Capital J"
+      },
+      {
+        "decimal": 75,
+        "hexa": "4B",
+        "html": "&#75;",
+        "character": "K",
+        "description": "Capital K"
+      },
+      {
+        "decimal": 76,
+        "hexa": "4C",
+        "html": "&#76;",
+        "character": "L",
+        "description": "Capital L"
+      },
+      {
+        "decimal": 77,
+        "hexa": "4D",
+        "html": "&#77;",
+        "character": "M",
+        "description": "Capital M"
+      },
+      {
+        "decimal": 78,
+        "hexa": "4E",
+        "html": "&#78;",
+        "character": "N",
+        "description": "Capital N"
+      },
+      {
+        "decimal": 79,
+        "hexa": "4F",
+        "html": "&#79;",
+        "character": "O",
+        "description": "Capital O"
+      },
+      {
+        "decimal": 80,
+        "hexa": 50,
+        "html": "&#80;",
+        "character": "P",
+        "description": "Capital P"
+      },
+      {
+        "decimal": 81,
+        "hexa": 51,
+        "html": "&#81;",
+        "character": "Q",
+        "description": "Capital Q"
+      },
+      {
+        "decimal": 82,
+        "hexa": 52,
+        "html": "&#82;",
+        "character": "R",
+        "description": "Capital R"
+      },
+      {
+        "decimal": 83,
+        "hexa": 53,
+        "html": "&#83;",
+        "character": "S",
+        "description": "Capital S"
+      },
+      {
+        "decimal": 84,
+        "hexa": 54,
+        "html": "&#84;",
+        "character": "T",
+        "description": "Capital T"
+      },
+      {
+        "decimal": 85,
+        "hexa": 55,
+        "html": "&#85;",
+        "character": "U",
+        "description": "Capital U"
+      },
+      {
+        "decimal": 86,
+        "hexa": 56,
+        "html": "&#86;",
+        "character": "V",
+        "description": "Capital V"
+      },
+      {
+        "decimal": 87,
+        "hexa": 57,
+        "html": "&#87;",
+        "character": "W",
+        "description": "Capital W"
+      },
+      {
+        "decimal": 88,
+        "hexa": 58,
+        "html": "&#88;",
+        "character": "X",
+        "description": "Capital X"
+      },
+      {
+        "decimal": 89,
+        "hexa": 59,
+        "html": "&#89;",
+        "character": "Y",
+        "description": "Capital Y"
+      },
+      {
+        "decimal": 90,
+        "hexa": "5A",
+        "html": "&#90;",
+        "character": "Z",
+        "description": "Capital Z"
+      },
+      {
+        "decimal": 91,
+        "hexa": "5B",
+        "html": "&#91;",
+        "character": "[",
+        "description": "Left square bracket"
+      },
+      {
+        "decimal": 92,
+        "hexa": "5C",
+        "html": "&#92;",
+        "character": "\\",
+        "description": "Backslash"
+      },
+      {
+        "decimal": 93,
+        "hexa": "5D",
+        "html": "&#93;",
+        "character": "]",
+        "description": "Right square bracket"
+      },
+      {
+        "decimal": 94,
+        "hexa": "5E",
+        "html": "&#94;",
+        "character": "^",
+        "description": "Caret / circumflex"
+      },
+      {
+        "decimal": 95,
+        "hexa": "5F",
+        "html": "&#95;",
+        "character": "_",
+        "description": "Underscore"
+      },
+      {
+        "decimal": 96,
+        "hexa": 60,
+        "html": "&#96;",
+        "character": "`",
+        "description": "Grave / accent"
+      },
+      {
+        "decimal": 97,
+        "hexa": 61,
+        "html": "&#97;",
+        "character": "a",
+        "description": "Small a"
+      },
+      {
+        "decimal": 98,
+        "hexa": 62,
+        "html": "&#98;",
+        "character": "b",
+        "description": "Small b"
+      },
+      {
+        "decimal": 99,
+        "hexa": 63,
+        "html": "&#99;",
+        "character": "c",
+        "description": "Small c"
+      },
+      {
+        "decimal": 100,
+        "hexa": 64,
+        "html": "&#100;",
+        "character": "d",
+        "description": "Small d"
+      },
+      {
+        "decimal": 101,
+        "hexa": 65,
+        "html": "&#101;",
+        "character": "e",
+        "description": "Small e"
+      },
+      {
+        "decimal": 102,
+        "hexa": 66,
+        "html": "&#102;",
+        "character": "f",
+        "description": "Small f"
+      },
+      {
+        "decimal": 103,
+        "hexa": 67,
+        "html": "&#103;",
+        "character": "g",
+        "description": "Small g"
+      },
+      {
+        "decimal": 104,
+        "hexa": 68,
+        "html": "&#104;",
+        "character": "h",
+        "description": "Small h"
+      },
+      {
+        "decimal": 105,
+        "hexa": 69,
+        "html": "&#105;",
+        "character": "i",
+        "description": "Small i"
+      },
+      {
+        "decimal": 106,
+        "hexa": "6A",
+        "html": "&#106;",
+        "character": "j",
+        "description": "Small j"
+      },
+      {
+        "decimal": 107,
+        "hexa": "6B",
+        "html": "&#107;",
+        "character": "k",
+        "description": "Small k"
+      },
+      {
+        "decimal": 108,
+        "hexa": "6C",
+        "html": "&#108;",
+        "character": "l",
+        "description": "Small l"
+      },
+      {
+        "decimal": 109,
+        "hexa": "6D",
+        "html": "&#109;",
+        "character": "m",
+        "description": "Small m"
+      },
+      {
+        "decimal": 110,
+        "hexa": "6E",
+        "html": "&#110;",
+        "character": "n",
+        "description": "Small n"
+      },
+      {
+        "decimal": 111,
+        "hexa": "6F",
+        "html": "&#111;",
+        "character": "o",
+        "description": "Small o"
+      },
+      {
+        "decimal": 112,
+        "hexa": 70,
+        "html": "&#112;",
+        "character": "p",
+        "description": "Small p"
+      },
+      {
+        "decimal": 113,
+        "hexa": 71,
+        "html": "&#113;",
+        "character": "q",
+        "description": "Small q"
+      },
+      {
+        "decimal": 114,
+        "hexa": 72,
+        "html": "&#114;",
+        "character": "r",
+        "description": "Small r"
+      },
+      {
+        "decimal": 115,
+        "hexa": 73,
+        "html": "&#115;",
+        "character": "s",
+        "description": "Small s"
+      },
+      {
+        "decimal": 116,
+        "hexa": 74,
+        "html": "&#116;",
+        "character": "t",
+        "description": "Small t"
+      },
+      {
+        "decimal": 117,
+        "hexa": 75,
+        "html": "&#117;",
+        "character": "u",
+        "description": "Small u"
+      },
+      {
+        "decimal": 118,
+        "hexa": 76,
+        "html": "&#118;",
+        "character": "v",
+        "description": "Small v"
+      },
+      {
+        "decimal": 119,
+        "hexa": 77,
+        "html": "&#119;",
+        "character": "w",
+        "description": "Small w"
+      },
+      {
+        "decimal": 120,
+        "hexa": 78,
+        "html": "&#120;",
+        "character": "x",
+        "description": "Small x"
+      },
+      {
+        "decimal": 121,
+        "hexa": 79,
+        "html": "&#121;",
+        "character": "y",
+        "description": "Small y"
+      },
+      {
+        "decimal": 122,
+        "hexa": "7A",
+        "html": "&#122;",
+        "character": "z",
+        "description": "Small z"
+      },
+      {
+        "decimal": 123,
+        "hexa": "7B",
+        "html": "&#123;",
+        "character": "{",
+        "description": "Left curly bracket"
+      },
+      {
+        "decimal": 124,
+        "hexa": "7C",
+        "html": "&#124;",
+        "character": "|",
+        "description": "Vertical bar"
+      },
+      {
+        "decimal": 125,
+        "hexa": "7D",
+        "html": "&#125;",
+        "character": "}",
+        "description": "Right curly bracket"
+      },
+      {
+        "decimal": 126,
+        "hexa": "7E",
+        "html": "&#126;",
+        "character": "~",
+        "description": "Tilde"
+      },
+      {
+        "decimal": 127,
+        "hexa": "7F",
+        "html": "&#127;",
+        "character": "DEL",
+        "description": "Delete"
+      }
+    ];
+
+    // function to convert html code to regular character 
+    // &#41; = )
+    function decodeEntities(s){
+      var str, temp= document.createElement('p');
+      temp.innerHTML= s;
+      str= temp.textContent || temp.innerText;
+      temp=null;
+      return str;
+  }
+  
+ 
+
+  //console.log(decodeEntities('&#41;'));
+    
+
+        //console.log(ascii_val);
+    const source = document.getElementById('source');
+    const result = document.getElementById('result');
+
+    function HtmlEncode(s)
+    {
+      var el = document.createElement("div");
+      el.innerText = el.textContent = s;
+      s = el.innerHTML;
+      return s;
+    }
+
+    function find_ascii(input){
+      //console.log(input);
+      for(let i = 0; i < ascii_val.length; i++)
+      {
+        if(decodeEntities(ascii_val[i].html) == input)
+        {
+          //console.log(ascii_val[i]);
+          return "decimal("+ascii_val[i].decimal + "), hexa(" + ascii_val[i].hexa + "), ascii(" + ascii_val[i].html + "), character(" + ascii_val[i].character+"), description("+ascii_val[i].description +")";
+        }
+      }
+  }
+
+    /*
+    var ascii = [];
+
+
+
+    for(let i = 31; i<128; i++){
+        
+        //console.log(ascii_values[i]);
+        var obj = {
+            'index': i,
+            'value': ascii_values[i]
+            }
+        ascii.push(obj);
+        }
+    console.log(ascii);
+*/
+    const inputHandler = function(e) {
+      //result.innerHTML = e.target.value;
+      result.innerHTML = find_ascii(e.target.value);
+    }
+
+    source.addEventListener('input', inputHandler);
+    source.addEventListener('propertychange', inputHandler); // for IE8
+
+    let searchQuery;
+    /*
+    source.addEventListener("keydown", (e) => {
+        if (e.key == "Enter" && source.value != "") {
+            //location.href = 'pages/results/results.html';
+            //searchQuery = source.value;
+        }
+        searchQuery += e.key;
+        console.log(e)
+    })
+    */
+    </script>
 
     <script>
         function hex2a(hexx) {
@@ -104,7 +1087,7 @@
         //document.getElementById("demo").innerHTML = hex2a('0x90909062');
 
         function hex2ascii(hexx) {
-            console.log(hexx);
+            //console.log(hexx);
             if (hexx === null || hexx === '') {
                 return;
             } else {
@@ -166,7 +1149,7 @@
             //alert('Validated: '+e);
             //console.log(e);
             var lines = e.split('\n');
-            console.log(lines);
+            //console.log(lines);
             
             // get the first one for now
             var str = lines[0];
@@ -178,7 +1161,7 @@
                 linesLittleEndian.push(s);
             }
 
-            console.log(linesLittleEndian);
+            //console.log(linesLittleEndian);
 
 
             showInDivsLtEndian(linesLittleEndian);
@@ -197,17 +1180,17 @@
                     chunks.push(str.substring(i, i + 2));
                 }
 
-                console.log(chunks);
+                //console.log(chunks);
 
                 littleEndian = "";
                 // reverse the array
                 for(let c = chunks.length; c>=0; c--){
                     if(typeof chunks[c] !== "undefined"){
-                        console.log("\\x"+chunks[c]);
+                        //console.log("\\x"+chunks[c]);
                         littleEndian += "\\x"+chunks[c];
                     }
                 }
-                console.log(littleEndian);
+                //console.log(littleEndian);
             return littleEndian
         }
     </script>
@@ -249,7 +1232,7 @@
             // Loop through all lines
             for (var j = 0; j < lines.length; j++) {
                 //validate(lines[j]);
-                console.log('Line ' + j + ' is ' + lines[j])
+                //console.log('Line ' + j + ' is ' + lines[j])
 
                 if (lines[j] != null) {
                     var newDiv = document.createElement('div');
@@ -268,7 +1251,7 @@
             // Loop through all lines
             for (var j = 0; j < lines.length; j++) {
                 //validate(lines[j]);
-                console.log('Line ' + j + ' is ' + lines[j])
+                //console.log('Line ' + j + ' is ' + lines[j])
 
                 if (lines[j] != null) {
                     var newDiv = document.createElement('div');
@@ -291,7 +1274,7 @@
             // Loop through all lines
             for (var j = 0; j < lines.length; j++) {
                 //validate(lines[j]);
-                console.log('Line ' + j + ' is ' + lines[j])
+                //console.log('Line ' + j + ' is ' + lines[j])
 
                 if (lines[j] != null) {
                     var newDiv = document.createElement('div');
@@ -312,7 +1295,7 @@
             // Loop through all lines
             for (var j = 0; j < lines.length; j++) {
                 //validate(lines[j]);
-                console.log('Line ' + j + ' is ' + lines[j])
+                //console.log('Line ' + j + ' is ' + lines[j])
 
                 if (lines[j] != null) {
                     var newDiv = document.createElement('div');
@@ -350,7 +1333,7 @@
             var hexValue = document.getElementById('first').value;
             var a = document.getElementById('second').value
             var op = document.getElementById("op").value;
-            console.log(op);
+            //console.log(op);
 
         document.getElementById('firstspan').innerHTML = "First hex value";
         document.getElementById('secondspan').innerHTML = "Second hex value";
@@ -392,7 +1375,7 @@
         function decimalToHex() {
 
         var input = (document.getElementById('first').value).toString();
-        console.log(input);
+        //console.log(input);
         var d;
         //var a = document.getElementById('second').value
 
@@ -405,7 +1388,7 @@
 
             const item = 0
             arr = Array.from({length: padding}, () => item)
-            console.log('arr', arr)
+            //console.log('arr', arr)
         }else{
             d = input;
         }
@@ -420,7 +1403,7 @@
             while (hex.length < padding) {
                 hex = "0" + hex;
             }
-        console.log(hex);
+        //console.log(hex);
 
         for(let i = arr.length; i>0; i--){
       
@@ -458,13 +1441,303 @@
 
         const binary = arrBitwise.reverse().join("");
 
-        console.log(`This is the resulting binary: ${binary}`)
-        console.log(`This is the verification ${parseInt(binary, 2)}`);
+        //console.log(`This is the resulting binary: ${binary}`)
+        //console.log(`This is the verification ${parseInt(binary, 2)}`);
          document.getElementById('second').value = binary;
            
         
         }
 
+    </script>
+
+    <script>
+      var ascii_values = {
+        "31": "",      "32": " ",     "33": "!",     "34": "\"",    "35": "#",    
+        "36": "$",     "37": "%",     "38": "&",     "39": "'",     "40": "(",    
+        "41": ")",     "42": "*",     "43": "+",     "44": ",",     "45": "-",    
+        "46": ".",     "47": "/",     "48": "0",     "49": "1",     "50": "2",    
+        "51": "3",     "52": "4",     "53": "5",     "54": "6",     "55": "7",    
+        "56": "8",     "57": "9",     "58": ":",     "59": ";",     "60": "<",    
+        "61": "=",     "62": ">",     "63": "?",     "64": "@",     "65": "A",    
+        "66": "B",     "67": "C",     "68": "D",     "69": "E",     "70": "F",    
+        "71": "G",     "72": "H",     "73": "I",     "74": "J",     "75": "K",    
+        "76": "L",     "77": "M",     "78": "N",     "79": "O",     "80": "P",    
+        "81": "Q",     "82": "R",     "83": "S",     "84": "T",     "85": "U",    
+        "86": "V",     "87": "W",     "88": "X",     "89": "Y",     "90": "Z",    
+        "91": "[",     "92": "\\",    "93": "]",     "94": "^",     "95": "_",    
+        "96": "`",     "97": "a",     "98": "b",     "99": "c",     "100": "d",    
+        "101": "e",    "102": "f",    "103": "g",    "104": "h",    "105": "i",    
+        "106": "j",    "107": "k",    "108": "l",    "109": "m",    "110": "n",    
+        "111": "o",    "112": "p",    "113": "q",    "114": "r",    "115": "s",    
+        "116": "t",    "117": "u",    "118": "v",    "119": "w",    "120": "x",    
+        "121": "y",    "122": "z",    "123": "{",    "124": "|",    "125": "}",    
+        "126": "~",    "127": ""
+        };
+        
+                var ascii = {
+        "_heading":[["OCT", "HEX",	"BIN", "Symbol", "Description"]],
+        "ASCII":[
+                ["000", "00", "00000000", "NUL", "Null char"],
+                ["001", "01", "00000001", "SOH", "Start of Heading"],
+                ["002", "02", "00000010", "STX", "Start of Text"],
+                ["003", "03", "00000011", "ETX", "End of Text"],
+                ["004", "04", "00000100", "EOT", "End of Transmission"],
+                ["005", "05", "00000101", "ENQ", "Enquiry"],
+                ["006", "06", "00000110", "ACK", "Acknowledgment"],
+                ["007", "07", "00000111", "BEL", "Bell"],
+                ["010", "08", "00001000", "BS", "Back Space"],
+                ["011", "09", "00001001", "HT", "Horizontal Tab"],
+                ["012", "0A", "00001010", "LF", "Line Feed"],
+                ["013", "0B", "00001011", "VT", "Vertical Tab"],
+                ["014", "0C", "00001100", "FF", "Form Feed"],
+                ["015", "0D", "00001101", "CR", "Carriage Return"],
+                ["016", "0E", "00001110", "SO", "Shift Out / X-On"],
+                ["017", "0F", "00001111", "SI", "Shift In / X-Off"],
+                ["020", "10", "00010000", "DLE", "Data Line Escape"],
+                ["021", "11", "00010001", "DC1", "Device Control 1 (oft. XON)"],
+                ["022", "12", "00010010", "DC2", "Device Control 2"],
+                ["023", "13", "00010011", "DC3", "Device Control 3 (oft. XOFF)"],
+                ["024", "14", "00010100", "DC4", "Device Control 4"],
+                ["025", "15", "00010101", "NAK", "Negative Acknowledgement"],
+                ["026", "16", "00010110", "SYN", "Synchronous Idle"],
+                ["027", "17", "00010111", "ETB", "End of Transmit Block"],
+                ["030", "18", "00011000", "CAN", "Cancel"],
+                ["031", "19", "00011001", "EM", "End of Medium"],
+                ["032", "1A", "00011010", "SUB", "Substitute"],
+                ["033", "1B", "00011011", "ESC", "Escape"],
+                ["034", "1C", "00011100", "FS", "File Separator"],
+                ["035", "1D", "00011101", "GS", "Group Separator"],
+                ["036", "1E", "00011110", "RS", "Record Separator"],
+                ["037", "1F", "00011111", "US", "Unit Separator"],
+                ["040", "20", "00100000", " ", "Space"],
+                ["041", "21", "00100001", "!", "Exclamation mark"],
+                ["042", "22", "00100010", "\"", "Double quotes (or speech marks)"],
+                ["043", "23", "00100011", "#", "Number"],
+                ["044", "24", "00100100", "$", "Dollar"],
+                ["045", "25", "00100101", "%", "Per cent sign"],
+                ["046", "26", "00100110", "&", "&amp;", "Ampersand"],
+                ["047", "27", "00100111", "'", "Single quote"],
+                ["050", "28", "00101000", "(", "Open parenthesis (or open bracket)"],
+                ["051", "29", "00101001", ")", "Close parenthesis (or close bracket)"],
+                ["052", "2A", "00101010", "*", "Asterisk"],
+                ["053", "2B", "00101011", "+", "Plus"],
+                ["054", "2C", "00101100", ",", "Comma"],
+                ["055", "2D", "00101101", "-", "Hyphen"],
+                ["056", "2E", "00101110", ".", "Period, dot or full stop"],
+                ["057", "2F", "00101111", "/", "Slash or divide"],
+                ["060", "30", "00110000", "0", "Zero"],
+                ["061", "31", "00110001", "1", "One"],
+                ["062", "32", "00110010", "2", "Two"],
+                ["063", "33", "00110011", "3", "Three"],
+                ["064", "34", "00110100", "4", "Four"],
+                ["065", "35", "00110101", "5", "Five"],
+                ["066", "36", "00110110", "6", "Six"],
+                ["067", "37", "00110111", "7", "Seven"],
+                ["070", "38", "00111000", "8", "Eight"],
+                ["071", "39", "00111001", "9", "Nine"],
+                ["072", "3A", "00111010", ":", "Colon"],
+                ["073", "3B", "00111011", ";", "Semicolon"],
+                ["074", "3C", "00111100", "<", "Less than (or open angled bracket)"],
+                ["075", "3D", "00111101", "=", "Equals"],
+                ["076", "3E", "00111110", ">", "Greater than (or close angled bracket)"],
+                ["077", "3F", "00111111", "?", "Question mark"],
+                ["100", "40", "01000000", "@", "At symbol"],
+                ["101", "41", "01000001", "A", "Uppercase A"],
+                ["102", "42", "01000010", "B", "Uppercase B"],
+                ["103", "43", "01000011", "C", "Uppercase C"],
+                ["104", "44", "01000100", "D", "Uppercase D"],
+                ["105", "45", "01000101", "E", "Uppercase E"],
+                ["106", "46", "01000110", "F", "Uppercase F"],
+                ["107", "47", "01000111", "G", "Uppercase G"],
+                ["110", "48", "01001000", "H", "Uppercase H"],
+                ["111", "49", "01001001", "I", "Uppercase I"],
+                ["112", "4A", "01001010", "J", "Uppercase J"],
+                ["113", "4B", "01001011", "K", "Uppercase K"],
+                ["114", "4C", "01001100", "L", "Uppercase L"],
+                ["115", "4D", "01001101", "M", "Uppercase M"],
+                ["116", "4E", "01001110", "N", "Uppercase N"],
+                ["117", "4F", "01001111", "O", "Uppercase O"],
+                ["120", "50", "01010000", "P", "Uppercase P"],
+                ["121", "51", "01010001", "Q", "Uppercase Q"],
+                ["122", "52", "01010010", "R", "Uppercase R"],
+                ["123", "53", "01010011", "S", "Uppercase S"],
+                ["124", "54", "01010100", "T", "Uppercase T"],
+                ["125", "55", "01010101", "U", "Uppercase U"],
+                ["126", "56", "01010110", "V", "Uppercase V"],
+                ["127", "57", "01010111", "W", "Uppercase W"],
+                ["130", "58", "01011000", "X", "Uppercase X"],
+                ["131", "59", "01011001", "Y", "Uppercase Y"],
+                ["132", "5A", "01011010", "Z", "Uppercase Z"],
+                ["133", "5B", "01011011", "[", "Opening bracket"],
+                ["134", "5C", "01011100", "\\", "Backslash"],
+                ["135", "5D", "01011101", "]", "Closing bracket"],
+                ["136", "5E", "01011110", "^", "Caret - circumflex"],
+                ["137", "5F", "01011111", "_", "Underscore"],
+                ["140", "60", "01100000", "`", "Grave accent"],
+                ["141", "61", "01100001", "a", "Lowercase a"],
+                ["142", "62", "01100010", "b", "Lowercase b"],
+                ["143", "63", "01100011", "c", "Lowercase c"],
+                ["144", "64", "01100100", "d", "Lowercase d"],
+                ["145", "65", "01100101", "e", "Lowercase e"],
+                ["146", "66", "01100110", "f", "Lowercase f"],
+                ["147", "67", "01100111", "g", "Lowercase g"],
+                ["150", "68", "01101000", "h", "Lowercase h"],
+                ["151", "69", "01101001", "i", "Lowercase i"],
+                ["152", "6A", "01101010", "j", "Lowercase j"],
+                ["153", "6B", "01101011", "k", "Lowercase k"],
+                ["154", "6C", "01101100", "l", "Lowercase l"],
+                ["155", "6D", "01101101", "m", "Lowercase m"],
+                ["156", "6E", "01101110", "n", "Lowercase n"],
+                ["157", "6F", "01101111", "o", "Lowercase o"],
+                ["160", "70", "01110000", "p", "Lowercase p"],
+                ["161", "71", "01110001", "q", "Lowercase q"],
+                ["162", "72", "01110010", "r", "Lowercase r"],
+                ["163", "73", "01110011", "s", "Lowercase s"],
+                ["164", "74", "01110100", "t", "Lowercase t"],
+                ["165", "75", "01110101", "u", "Lowercase u"],
+                ["166", "76", "01110110", "v", "Lowercase v"],
+                ["167", "77", "01110111", "w", "Lowercase w"],
+                ["170", "78", "01111000", "x", "Lowercase x"],
+                ["171", "79", "01111001", "y", "Lowercase y"],
+                ["172", "7A", "01111010", "z", "Lowercase z"],
+                ["173", "7B", "01111011", "{", "Opening brace"],
+                ["174", "7C", "01111100", "|", "Vertical bar"],
+                ["175", "7D", "01111101", "}", "Closing brace"],
+                ["176", "7E", "01111110", "~", "Equivalency sign - tilde"],
+                ["177", "7F", "01111111", "", "Delete"],
+                ["200", "80", "10000000", "�", "Euro sign"],
+                ["201", "81", "10000001", " ", ""],
+                ["202", "82", "10000010", "�", "Single low-9 quotation mark"],
+                ["203", "83", "10000011", "�", "Latin small letter f with hook"],
+                ["204", "84", "10000100", "�", "Double low-9 quotation mark"],
+                ["205", "85", "10000101", "�", "Horizontal ellipsis"],
+                ["206", "86", "10000110", "�", "Dagger"],
+                ["207", "87", "10000111", "�", "Double dagger"],
+                ["210", "88", "10001000", "�", "Modifier letter circumflex accent"],
+                ["211", "89", "10001001", "�", "Per mille sign"],
+                ["212", "8A", "10001010", "�", "Latin capital letter S with caron"],
+                ["213", "8B", "10001011", "�", "Single left-pointing angle quotation"],
+                ["214", "8C", "10001100", "�", "Latin capital ligature OE"],
+                ["215", "8D", "10001101", " ", " "],
+                ["216", "8E", "10001110", "�", "Latin capital letter Z with caron"],
+                ["217", "8F", "10001111", " ", " "],
+                ["220", "90", "10010000", " ", " "],
+                ["221", "91", "10010001", "�", "Left single quotation mark"],
+                ["222", "92", "10010010", "�", "Right single quotation mark"],
+                ["223", "93", "10010011", "�", "Left double quotation mark"],
+                ["224", "94", "10010100", "�", "Right double quotation mark"],
+                ["225", "95", "10010101", "�", "Bullet"],
+                ["226", "96", "10010110", "�", "En dash"],
+                ["227", "97", "10010111", "�", "Em dash"],
+                ["230", "98", "10011000", "�", "Small tilde"],
+                ["231", "99", "10011001", "�", "Trade mark sign"],
+                ["232", "9A", "10011010", "�", "Latin small letter S with caron"],
+                ["233", "9B", "10011011", "�", "Single right-pointing angle quotation mark"],
+                ["234", "9C", "10011100", "�", "Latin small ligature oe"],
+                ["235", "9D", "10011101", " ", " "],
+                ["236", "9E", "10011110", "�", "Latin small letter z with caron"],
+                ["237", "9F", "10011111", "�", "Latin capital letter Y with diaeresis"],
+                ["240", "A0", "10100000", " ", "Non-breaking space"],
+                ["241", "A1", "10100001", "�", "Inverted exclamation mark"],
+                ["242", "A2", "10100010", "�", "Cent sign"],
+                ["243", "A3", "10100011", "�", "Pound sign"],
+                ["244", "A4", "10100100", "�", "Currency sign"],
+                ["245", "A5", "10100101", "�", "Yen sign"],
+                ["246", "A6", "10100110", "�", "Pipe, Broken vertical bar"],
+                ["247", "A7", "10100111", "�", "Section sign"],
+                ["250", "A8", "10101000", "�", "Spacing diaeresis - umlaut"],
+                ["251", "A9", "10101001", "�", "Copyright sign"],
+                ["252", "AA", "10101010", "�", "Feminine ordinal indicator"],
+                ["253", "AB", "10101011", "�", "Left double angle quotes"],
+                ["254", "AC", "10101100", "�", "Not sign"],
+                ["255", "AD", "10101101", "�", "Soft hyphen"],
+                ["256", "AE", "10101110", "�", "Registered trade mark sign"],
+                ["257", "AF", "10101111", "�", "Spacing macron - overline"],
+                ["260", "B0", "10110000", "�", "Degree sign"],
+                ["261", "B1", "10110001", "�", "Plus-or-minus sign"],
+                ["262", "B2", "10110010", "�", "Superscript two - squared"],
+                ["263", "B3", "10110011", "�", "Superscript three - cubed"],
+                ["264", "B4", "10110100", "�", "Acute accent - spacing acute"],
+                ["265", "B5", "10110101", "�", "Micro sign"],
+                ["266", "B6", "10110110", "�", "Pilcrow sign - paragraph sign"],
+                ["267", "B7", "10110111", "�", "Middle dot - Georgian comma"],
+                ["270", "B8", "10111000", "�", "Spacing cedilla"],
+                ["271", "B9", "10111001", "�", "Superscript one"],
+                ["272", "BA", "10111010", "�", "Masculine ordinal indicator"],
+                ["273", "BB", "10111011", "�", "Right double angle quotes"],
+                ["274", "BC", "10111100", "�", "Fraction one quarter"],
+                ["275", "BD", "10111101", "�", "Fraction one half"],
+                ["276", "BE", "10111110", "�", "Fraction three quarters"],
+                ["277", "BF", "10111111", "�", "Inverted question mark"],
+                ["300", "C0", "11000000", "�", "Latin capital letter A with grave"],
+                ["301", "C1", "11000001", "�", "Latin capital letter A with acute"],
+                ["302", "C2", "11000010", "�", "Latin capital letter A with circumflex"],
+                ["303", "C3", "11000011", "�", "Latin capital letter A with tilde"],
+                ["304", "C4", "11000100", "�", "Latin capital letter A with diaeresis"],
+                ["305", "C5", "11000101", "�", "Latin capital letter A with ring above"],
+                ["306", "C6", "11000110", "�", "Latin capital letter AE"],
+                ["307", "C7", "11000111", "�", "Latin capital letter C with cedilla"],
+                ["310", "C8", "11001000", "�", "Latin capital letter E with grave"],
+                ["311", "C9", "11001001", "�", "Latin capital letter E with acute"],
+                ["312", "CA", "11001010", "�", "Latin capital letter E with circumflex"],
+                ["313", "CB", "11001011", "�", "Latin capital letter E with diaeresis"],
+                ["314", "CC", "11001100", "�", "Latin capital letter I with grave"],
+                ["315", "CD", "11001101", "�", "Latin capital letter I with acute"],
+                ["316", "CE", "11001110", "�", "Latin capital letter I with circumflex"],
+                ["317", "CF", "11001111", "�", "Latin capital letter I with diaeresis"],
+                ["320", "D0", "11010000", "�", "Latin capital letter ETH"],
+                ["321", "D1", "11010001", "�", "Latin capital letter N with tilde"],
+                ["322", "D2", "11010010", "�", "Latin capital letter O with grave"],
+                ["323", "D3", "11010011", "�", "Latin capital letter O with acute"],
+                ["324", "D4", "11010100", "�", "Latin capital letter O with circumflex"],
+                ["325", "D5", "11010101", "�", "Latin capital letter O with tilde"],
+                ["326", "D6", "11010110", "�", "Latin capital letter O with diaeresis"],
+                ["327", "D7", "11010111", "�", "Multiplication sign"],
+                ["330", "D8", "11011000", "�", "Latin capital letter O with slash"],
+                ["331", "D9", "11011001", "�", "Latin capital letter U with grave"],
+                ["332", "DA", "11011010", "�", "Latin capital letter U with acute"],
+                ["333", "DB", "11011011", "�", "Latin capital letter U with circumflex"],
+                ["334", "DC", "11011100", "�", "Latin capital letter U with diaeresis"],
+                ["335", "DD", "11011101", "�", "Latin capital letter Y with acute"],
+                ["336", "DE", "11011110", "�", "Latin capital letter THORN"],
+                ["337", "DF", "11011111", "�", "Latin small letter sharp s - ess-zed"],
+                ["340", "E0", "11100000", "�", "Latin small letter a with grave"],
+                ["341", "E1", "11100001", "�", "Latin small letter a with acute"],
+                ["342", "E2", "11100010", "�", "Latin small letter a with circumflex"],
+                ["343", "E3", "11100011", "�", "Latin small letter a with tilde"],
+                ["344", "E4", "11100100", "�", "Latin small letter a with diaeresis"],
+                ["345", "E5", "11100101", "�", "Latin small letter a with ring above"],
+                ["346", "E6", "11100110", "�", "Latin small letter ae"],
+                ["347", "E7", "11100111", "�", "Latin small letter c with cedilla"],
+                ["350", "E8", "11101000", "�", "Latin small letter e with grave"],
+                ["351", "E9", "11101001", "�", "Latin small letter e with acute"],
+                ["352", "EA", "11101010", "�", "Latin small letter e with circumflex"],
+                ["353", "EB", "11101011", "�", "Latin small letter e with diaeresis"],
+                ["354", "EC", "11101100", "�", "Latin small letter i with grave"],
+                ["355", "ED", "11101101", "�", "Latin small letter i with acute"],
+                ["356", "EE", "11101110", "�", "Latin small letter i with circumflex"],
+                ["357", "EF", "11101111", "�", "Latin small letter i with diaeresis"],
+                ["360", "F0", "11110000", "�", "Latin small letter eth"],
+                ["361", "F1", "11110001", "�", "Latin small letter n with tilde"],
+                ["362", "F2", "11110010", "�", "Latin small letter o with grave"],
+                ["363", "F3", "11110011", "�", "Latin small letter o with acute"],
+                ["364", "F4", "11110100", "�", "Latin small letter o with circumflex"],
+                ["365", "F5", "11110101", "�", "Latin small letter o with tilde"],
+                ["366", "F6", "11110110", "�", "Latin small letter o with diaeresis"],
+                ["367", "F7", "11110111", "�", "Division sign"],
+                ["370", "F8", "11111000", "�", "Latin small letter o with slash"],
+                ["371", "F9", "11111001", "�", "Latin small letter u with grave"],
+                ["372", "FA", "11111010", "�", "Latin small letter u with acute"],
+                ["373", "FB", "11111011", "�", "Latin small letter u with circumflex"],
+                ["374", "FC", "11111100", "�", "Latin small letter u with diaeresis"],
+                ["375", "FD", "11111101", "�", "Latin small letter y with acute"],
+                ["376", "FE", "11111110", "�", "Latin small letter thorn"],
+                ["377", "FF", "11111111", "�", "Latin small letter y with diaeresis"]
+        ]
+        };
+                //console.log(ascii);
+                //console.log(ascii_values);
+                //console.log(ascii);
     </script>
 </body>
 </html>
