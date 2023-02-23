@@ -46,7 +46,7 @@
     <button onclick="toLittleEndian(document.getElementById('inputhex').value)" id="testButton">To little endian</button>
 
     <br/>
-    <input id="source">
+    <input id="source" placeholder="type here for ASCII">
     <div id="result"></div>
 
     <p id="demo"></p><br />
@@ -92,13 +92,140 @@
             onClick="decimalToBin()">
         Decimal to bin
     </button>
+    <button type="submit"
+    style="margin-right: 15px;"
+    onClick="addBin()">
+Decimal to bin then +
+</button>
+
     <br/>
     <div id="addresult"></div>
-    <script>
-
     
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <!-- <label>
+      <input type="text" name="lastname" />
+      Last Name
+   </label> -->
+   <!-- <input type="text" id="a" /> -->
+<div id="a_bin"></div>
+<div id="b_bin"></div>
+<div id="dot"></div>
+<div id="c_bin"></div>
 
 
+   <script>
+    function decimal2Bin(numberToConvert, numberOfBits=16){
+      //const numberOfBits = 32; // 32-bits binary
+        const arrBitwise = [0]; // save the resulting bitwise
+
+        for (let i=0; i<numberOfBits; i++) {
+            let mask = 1;
+
+            const bit = numberToConvert & (mask << i); // And bitwise with left shift
+
+            if(bit === 0) {
+                arrBitwise[i] = 0;
+            } else {
+                arrBitwise[i] = 1;
+            }
+        }
+
+        var binary = arrBitwise.reverse().join("");
+        return binary.match(/.{1,4}/g).join(' ');
+    }
+
+    function halfAdder(a, b){
+      const sum = xor(a,b);
+      const carry = and(a,b);
+      return [sum, carry];
+    }
+
+    function fullAdder(a, b, carry){
+      halfAdd = halfAdder(a,b);
+      const sum = xor(carry, halfAdd[0]);
+      carry = and(carry, halfAdd[0]);
+      carry = or(carry, halfAdd[1]);
+      return [sum, carry];
+    }
+
+    function xor(a, b){return (a === b ? 0 : 1);}
+    function and(a, b){return a == 1 && b == 1 ? 1 : 0;}
+    function or(a, b){return (a || b);}
+
+    function addBinary(a, b){
+
+      let sum = '';
+      let carry = '';
+    
+      for(var i = a.length-1;i>=0; i--){
+        if(i == a.length-1){
+          //half add the first pair
+          const halfAdd1 = halfAdder(a[i],b[i]);
+          sum = halfAdd1[0]+sum;
+          carry = halfAdd1[1];
+        }else{
+          //full add the rest
+          const fullAdd = fullAdder(a[i],b[i],carry);
+          sum = fullAdd[0]+sum;
+          carry = fullAdd[1];
+        }
+      }
+    
+      return carry ? carry + sum : sum;
+    }
+
+    function zeroPad(num, places) {
+      var zero = places - num.toString().length + 1;
+      return Array(+(zero > 0 && zero)).join("0") + num;
+    }
+    function addBin(){
+        
+      //document.getElementById('firstspan').innerHTML = "Decimal value";
+      //document.getElementById('secondspan').innerHTML = "Bin value";
+
+  //const numberToConvert = 5;
+  var a = document.getElementById('first').value;
+  var b = document.getElementById('second').value;
+
+  //var a = "000010100000100100110110010000010101111011011001101110111111111101000000101111001110001111100001101"
+  //var b = "110101001011101110001111100110001010100001101011101010000011011011001011101111001100000011011110011"
+  //var answer = "110111101100010011000101110110100000011101000101011001000011011000001100011110011010010011000000000";
+  
+  //console.log(addBinary(a, b) == answer); //true
+  var val1 = decimal2Bin(a);
+  var val2 = decimal2Bin(b);
+
+  var c = addBinary(val1, val2);
+  //c = (c.length && c[0] == '0') ? c.slice(1) : c;
+  // remove leading zeros
+  while(c.charAt(0) === '0')
+  {
+    c = c.substring(1);
+  }
+  // this is to add zeros to match the length of the resulting binary
+  c = zeroPad(c, (val1.length-c.length)+1)
+
+
+  console.log(c);
+  document.getElementById('a_bin').innerHTML = val1;
+  document.getElementById('b_bin').innerHTML = val2;
+
+
+  // this will add a line above the result binary
+  for(let i = 0; i<c.length+2; i++){
+    document.getElementById('dot').innerHTML += "_"
+  }
+  document.getElementById('c_bin').innerHTML = c.replace(/\d{4}(?=.)/g, '$& ');// add space after every four digits
+  
+
+}
+   </script>
+
+    <script>
+    
         var ascii_val = [
     {
       "decimal": 0,
@@ -1017,25 +1144,54 @@
     const source = document.getElementById('source');
     const result = document.getElementById('result');
 
-    function HtmlEncode(s)
-    {
-      var el = document.createElement("div");
-      el.innerText = el.textContent = s;
-      s = el.innerHTML;
-      return s;
-    }
-
+    
+   // function to find values from ascii_val based on user input
     function find_ascii(input){
       //console.log(input);
+      var result = [];
       for(let i = 0; i < ascii_val.length; i++)
       {
-        if(decodeEntities(ascii_val[i].html) == input)
+        if((decodeEntities(ascii_val[i].html) == input))
         {
           //console.log(ascii_val[i]);
-          return "decimal("+ascii_val[i].decimal + "), hexa(" + ascii_val[i].hexa + "), ascii(" + ascii_val[i].html + "), character(" + ascii_val[i].character+"), description("+ascii_val[i].description +")";
+            result.push("<div style='display: table;'><div style='display: table-row'><div style='display: table-cell;'>decimal("
+            +ascii_val[i].decimal + ")</div>, <div style='display: table-cell;'>hexa(" 
+            + ascii_val[i].hexa + ")</div>, <div style ='background-color: coral; display: table-cell;'>ascii(" 
+              + ascii_val[i].html + ")</div>, <div style='display: table-cell;'>character(" 
+              + ascii_val[i].character+")</div>, <div style='display: table-cell;'>description("
+              +ascii_val[i].description +")</div></div></div>");
+            //result.push(ascii_val[i]);
+          //return "decimal("+ascii_val[i].decimal + "), hexa(" + ascii_val[i].hexa + "), ascii(" + ascii_val[i].html + "), character(" + ascii_val[i].character+"), description("+ascii_val[i].description +")";
+        }else if(ascii_val[i].decimal == input){
+          result.push("<div style='display: table;'><div style='display: table-row'><div style='background-color: coral; display: table-cell;'>decimal("
+            +ascii_val[i].decimal + ")</div>, <div style='display: table-cell;'>hexa(" 
+            + ascii_val[i].hexa + ")</div>, <div style ='display: table-cell;'>ascii(" 
+              + ascii_val[i].html + ")</div>, <div style='display: table-cell;'>character(" 
+              + ascii_val[i].character+")</div>, <div style='display: table-cell;'>description("
+              +ascii_val[i].description +")</div></div></div>");
+            //result.push(ascii_val[i]);
+        }else if(ascii_val[i].character == input){
+          result.push("<div style='display: table;'><div style='display: table-row'><div style='display: table-cell;'>decimal("
+            +ascii_val[i].decimal + ")</div>, <div style='display: table-cell;'>hexa(" 
+            + ascii_val[i].hexa + ")</div>, <div style ='display: table-cell;'>ascii(" 
+              + ascii_val[i].html + ")</div>, <div style='background-color: coral; display: table-cell;'>character(" 
+              + ascii_val[i].character+")</div>, <div style='display: table-cell;'>description("
+              +ascii_val[i].description +")</div></div></div>");
+            //result.push(ascii_val[i]);
+        }else if(ascii_val[i].hexa == input){
+          result.push("<div style='display: table;'><div style='display: table-row'><div style='display: table-cell;'>decimal("
+            +ascii_val[i].decimal + ")</div>, <div style='background-color: coral; display: table-cell;'>hexa(" 
+            + ascii_val[i].hexa + ")</div>, <div style ='display: table-cell;'>ascii(" 
+              + ascii_val[i].html + ")</div>, <div style='display: table-cell;'>character(" 
+              + ascii_val[i].character+")</div>, <div style='display: table-cell;'>description("
+              +ascii_val[i].description +")</div></div></div>");
+            //result.push(ascii_val[i]);
         }
+        
       }
-  }
+      return result;
+    }
+ 
 
     /*
     var ascii = [];
@@ -1055,7 +1211,13 @@
 */
     const inputHandler = function(e) {
       //result.innerHTML = e.target.value;
-      result.innerHTML = find_ascii(e.target.value);
+      // clear previous values
+      result.innerHTML = "";
+      console.log(find_ascii(e.target.value))
+      for(let i =0; i<find_ascii(e.target.value).length; i++){
+        result.innerHTML += find_ascii(e.target.value)[i] +"<br/>";
+      }
+      //result.innerHTML = ;
     }
 
     source.addEventListener('input', inputHandler);
