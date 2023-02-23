@@ -213,7 +213,8 @@ Decimal to bin then +
   document.getElementById('a_bin').innerHTML = val1;
   document.getElementById('b_bin').innerHTML = val2;
 
-
+  // clear the dom
+  document.getElementById('dot').innerHTML = "";
   // this will add a line above the result binary
   for(let i = 0; i<c.length+2; i++){
     document.getElementById('dot').innerHTML += "_"
