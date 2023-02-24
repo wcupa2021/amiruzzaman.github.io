@@ -806,14 +806,18 @@ DOI = {10.3390/socsci11090404}
   publisher ={International Association for Educators and Researchers (IAER)}
 }
 
-@article{marhanum2023constructing,
-  author  = "Marhanum Che Mohd Salleh and Rizal Mohd Nor and Faizal Yusof and Md Amiruzzaman",
-  title   = "Constructing a Shariah Document Screening Prototype Based on Serverless Architecture",
-  journal = "Computers",
-  year    = 2023,
-  volume  = "12",
-  number  = "x",
-  pages   = "--",
-  publisher = "MDPI",
-  doi = "https://doi.org/10.3390/xxxxx",
+
+@Article{computers12030050,
+AUTHOR = {Salleh, Marhanum Che Mohd and Nor, Rizal Mohd and Yusof, Faizal and Amiruzzaman, Md},
+TITLE = {Constructing a Shariah Document Screening Prototype Based on Serverless Architecture},
+JOURNAL = {Computers},
+VOLUME = {12},
+YEAR = {2023},
+NUMBER = {3},
+ARTICLE-NUMBER = {50},
+URL = {https://www.mdpi.com/2073-431X/12/3/50},
+ISSN = {2073-431X},
+ABSTRACT = {The aim of this research is to discuss the groundwork of building an Islamic Banking Document Screening Prototype based on a serverless architecture framework. This research first forms an algorithm for document matching based Vector Space Model (VCM) and adopts Levenshtein Distance for similarity setting. Product proposals will become a query, and policy documents by the central bank will be a corpus or database for document matching. Both the query and corpus went through preprocessing stage prior to similarity analysis. One set of queries with two sets of corpora is tested in this research to compare similarity values. Finally, a prototype of Shariah Document Screening is built based on a serverless architecture framework and ReactJS interface. This research is the first attempt to introduce a Shariah document screening prototype based on a serverless architecture technology that would be useful to the Islamic financial industry towards achieving a Shariah-compliant business. Given the development of Fintech, the output of this research study would be a complement to the existing Fintech applications, which focus on ensuring the Islamic nature of the businesses.},
+DOI = {10.3390/computers12030050}
 }
+
